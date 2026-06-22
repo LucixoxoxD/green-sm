@@ -106,8 +106,34 @@ ul { list-style: none; padding: 0; }
 /* ============ HERO ============ */
 .hero {
   position: relative; overflow: hidden;
-  background: radial-gradient(120% 110% at 78% 12%, #45cfda 0%, #1cabc0 44%, #0c8294 100%);
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,0.15), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(255,255,255,0.08), transparent 35%),
+    linear-gradient(135deg, #0bb8c9 0%, #08a7b7 100%);
   padding-bottom: 30px;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  right: clamp(-120px, -8vw, -48px);
+  bottom: clamp(-90px, -7vw, -36px);
+  width: clamp(260px, 42vw, 560px);
+  height: clamp(260px, 42vw, 560px);
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  filter: blur(34px);
+  opacity: .72;
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 130px;
+  background: linear-gradient(180deg, rgba(8,167,183,0) 0%, rgba(8,167,183,.62) 76%, rgba(8,167,183,.96) 100%);
+  pointer-events: none;
 }
 .hero-grid {
   position: relative; z-index: 2;
@@ -158,13 +184,53 @@ ul { list-style: none; padding: 0; }
   justify-content: flex-end;
   width: 100%;
 }
-.hero-photo img {
+.hero-visual {
+  position: relative;
+  width: min(100%, 640px);
+  margin-left: auto;
+  isolation: isolate;
+  transform: translateY(16px);
+}
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: 8%;
+  width: 78%;
+  height: 38%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, rgba(255,255,255,.24), rgba(255,255,255,0) 72%),
+    radial-gradient(closest-side, rgba(255,198,41,.2), rgba(255,198,41,0) 68%);
+  filter: blur(26px);
+}
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 14% 4% 6%;
+  border-radius: 42% 58% 48% 52%;
+  background: rgba(0,83,94,.18);
+  filter: blur(42px);
+}
+.hero-visual img {
   width: 100%;
   height: auto;
   max-width: 600px;
+  display: block;
   object-fit: contain;
   margin-left: auto;
-  filter: drop-shadow(0 24px 40px rgba(8,70,74,.28));
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.18));
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
+    linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
+    linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
+          mask-composite: intersect;
 }
 
 /* ============ EARNING OPPORTUNITY ============ */
@@ -382,7 +448,8 @@ ul { list-style: none; padding: 0; }
   .hero-sub { margin-inline: auto; }
   .ticks-yellow { display: inline-grid; text-align: left; }
   .hero-photo { justify-content: center; align-self: center; }
-  .hero-photo img { width: min(72vw, 380px); max-width: 100%; margin-inline: auto; }
+  .hero-visual { width: min(72vw, 380px); max-width: 100%; margin-inline: auto; transform: translateY(8px); }
+  .hero-visual img { max-width: 100%; margin-inline: auto; }
   .earning-grid { grid-template-columns: 1fr 1fr; }
   .adv-grid { max-width: 620px; margin-inline: auto; }
   .req-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -459,14 +526,29 @@ ul { list-style: none; padding: 0; }
     justify-content: center;
     align-self: center;
   }
-  .hero-photo img {
-    display: block;
+  .hero-visual {
     width: min(85vw, 320px);
+    margin: 0 auto;
+    transform: translateY(4px);
+  }
+  .hero-visual::before {
+    bottom: 6%;
+    width: 86%;
+    height: 34%;
+    filter: blur(20px);
+  }
+  .hero-visual::after {
+    inset: 18% 7% 8%;
+    filter: blur(30px);
+  }
+  .hero-visual img {
+    display: block;
+    width: 100%;
     height: auto;
     max-width: 100%;
     object-fit: contain;
     margin: 0 auto;
-    filter: drop-shadow(0 16px 24px rgba(8,70,74,.24));
+    filter: drop-shadow(0 24px 44px rgba(0,0,0,.16));
   }
   .floaters {
     right: 14px;
@@ -492,7 +574,7 @@ ul { list-style: none; padding: 0; }
   .hero-grid { min-height: calc(88svh - 72px); gap: 16px; }
   .hero-title { font-size: clamp(32px, 9.4vw, 40px); }
   .hero-sub { font-size: 15px; }
-  .hero-photo img { width: min(85vw, 320px); }
+  .hero-visual { width: min(85vw, 320px); }
 
   /* sections: tighter vertical rhythm so it isn't a sparse endless scroll */
   .earning, .advantages, .steps, .fleet { padding-block: 44px; }
@@ -690,11 +772,11 @@ ul { list-style: none; padding: 0; }
   .hero-sub { margin-bottom: 16px; font-size: 14.5px; }
   .hero-cta { max-width: 310px; gap: 10px; }
   .hero-cta .btn { min-height: 45px; padding-block: 12px; }
-  .hero-photo img { width: min(82vw, 290px); }
+  .hero-visual { width: min(82vw, 290px); }
 }
 @media (max-width: 360px) {
   .hero-grid { gap: 12px; min-height: auto; }
   .hero-title { font-size: 28px; }
   .hero-sub { font-size: 14px; margin-bottom: 14px; }
-  .hero-photo img { width: min(78vw, 260px); }
+  .hero-visual { width: min(78vw, 260px); }
 }

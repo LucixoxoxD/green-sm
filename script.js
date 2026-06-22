@@ -10,6 +10,24 @@ function showToast(msg, isError = false) {
   toastTimer = setTimeout(() => toastEl.classList.remove("show"), 3500);
 }
 
+// ============ Mobile nav toggle ============
+const navToggle = document.querySelector(".nav-toggle");
+const navMobile = document.querySelector(".nav-mobile");
+if (navToggle && navMobile) {
+  navToggle.addEventListener("click", () => {
+    const open = navMobile.hasAttribute("hidden");
+    if (open) navMobile.removeAttribute("hidden");
+    else navMobile.setAttribute("hidden", "");
+    navToggle.setAttribute("aria-expanded", String(open));
+  });
+  navMobile.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      navMobile.setAttribute("hidden", "");
+      navToggle.setAttribute("aria-expanded", "false");
+    })
+  );
+}
+
 // ============ Form handling ============
 document.querySelectorAll(".reg-form").forEach((form) => {
   // mobile: digits only, max 10

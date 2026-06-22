@@ -150,9 +150,11 @@ ul { list-style: none; padding: 0; }
 }
 /* driver, right-center, foreground of the depth */
 .hero-driver {
-  right: clamp(-70px, -4vw, 0px);
+  right: clamp(-70px, -2vw, 24px);
   bottom: 0;
-  width: clamp(320px, 40vw, 560px);
+  /* sized by height so the head always clears the navbar on wide screens */
+  width: auto;
+  height: min(82svh, 860px);
   filter: drop-shadow(0 30px 50px rgba(0,0,0,.32));
   -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 92%, transparent 100%);
           mask-image: linear-gradient(180deg, #000 0%, #000 92%, transparent 100%);
@@ -452,6 +454,7 @@ ul { list-style: none; padding: 0; }
     right: -8%;
     bottom: 0;
     width: clamp(240px, 60vw, 380px);
+    height: auto;
   }
   .floaters {
     right: 14px;

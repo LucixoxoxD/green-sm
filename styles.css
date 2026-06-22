@@ -150,6 +150,7 @@ ul { list-style: none; padding: 0; }
 
 /* hero CTA centered within copy column (#5) */
 .hero-cta { display: flex; justify-content: center; margin-top: 4px; }
+.hero-secondary-cta { display: none; }
 
 .hero-photo {
   align-self: end;
@@ -383,17 +384,108 @@ ul { list-style: none; padding: 0; }
   .footer-cols { grid-template-columns: 1fr; gap: 22px; text-align: center; }
   .footer-col p { justify-content: center; }
 }
+@media (max-width: 768px) {
+  .hero {
+    padding-block: 24px 18px;
+  }
+  .hero-grid {
+    min-height: calc(88svh - 72px);
+    align-content: center;
+    gap: 18px;
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .title-pill {
+    order: 1;
+    margin-bottom: 12px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+  }
+  .hero-title {
+    order: 2;
+    max-width: 10ch;
+    margin-bottom: 12px;
+    font-size: clamp(34px, 9vw, 44px);
+    line-height: 1;
+  }
+  .hero-sub {
+    order: 3;
+    max-width: 30ch;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    line-height: 1.45;
+  }
+  .hero-cta {
+    order: 4;
+    width: 100%;
+    max-width: 340px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 0;
+  }
+  .hero-cta .btn {
+    width: 100%;
+    min-height: 48px;
+    padding: 13px 18px;
+    font-size: 15.5px;
+  }
+  .hero-secondary-cta {
+    display: inline-flex;
+    color: var(--white);
+    background: rgba(255,255,255,.14);
+    border: 1.5px solid rgba(255,255,255,.7);
+    box-shadow: none;
+    backdrop-filter: blur(8px);
+  }
+  .coupon,
+  .ticks-yellow {
+    display: none;
+  }
+  .hero-photo {
+    justify-content: center;
+    align-self: center;
+  }
+  .hero-photo img {
+    display: block;
+    width: min(85vw, 320px);
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    filter: drop-shadow(0 16px 24px rgba(8,70,74,.24));
+  }
+  .floaters {
+    right: 14px;
+    bottom: max(14px, env(safe-area-inset-bottom));
+    gap: 9px;
+  }
+  .floater {
+    width: 44px;
+    height: 44px;
+  }
+  .floater svg {
+    width: 23px;
+    height: 23px;
+  }
+}
 @media (max-width: 600px) {
   .container { padding-inline: 18px; }
   .navbar { position: sticky; }
   .nav-inner { min-height: 72px; padding-block: 10px; }
   .nav-logo img { height: 34px; }
 
-  .hero { padding-block: 26px 24px; }
-  .hero-grid { gap: 18px; }
-  .hero-copy { padding: 0; }
-  .title-pill { margin-bottom: 14px; padding: 8px 14px; font-size: 12px; }
-  .hero-photo img { width: min(78vw, 320px); }
+  .hero { padding-block: 22px 16px; }
+  .hero-grid { min-height: calc(88svh - 72px); gap: 16px; }
+  .hero-title { font-size: clamp(32px, 9.4vw, 40px); }
+  .hero-sub { font-size: 15px; }
+  .hero-photo img { width: min(85vw, 320px); }
 
   /* sections: tighter vertical rhythm so it isn't a sparse endless scroll */
   .earning, .advantages, .steps, .fleet { padding-block: 44px; }
@@ -403,8 +495,6 @@ ul { list-style: none; padding: 0; }
 
   .earning-grid, .steps-grid, .fleet-grid, .adv-grid { grid-template-columns: 1fr; gap: 14px; }
   .coupon { padding-inline: 32px; }
-  .hero-title { font-size: clamp(34px, 10vw, 46px); }
-  .hero-sub { font-size: 15.5px; }
 
   /* compact cards — kill the empty whitespace from the phone screenshots */
   .earn-card { flex-direction: row; align-items: center; gap: 16px; text-align: left; padding: 18px 18px; }
@@ -416,24 +506,26 @@ ul { list-style: none; padding: 0; }
 
   /* CTAs: big tap target but not edge-to-edge under the floaters */
   .btn { padding: 15px 28px; font-size: 16px; }
-  .btn-center, .btn-gold-text, .hero-cta .btn, .reg-form .btn { width: 100%; max-width: 420px; margin-inline: auto; }
-  .hero-cta { width: 100%; }
+  .btn-center, .btn-gold-text, .reg-form .btn { width: 100%; max-width: 420px; margin-inline: auto; }
 
   .fleet-card { min-height: 400px; max-width: 360px; margin-inline: auto; width: 100%; }
 
   /* smaller, lower-profile floaters so they don't cover content */
-  .floaters { right: 14px; bottom: 14px; gap: 10px; }
-  .floater { width: 46px; height: 46px; }
   .floater img { width: 25px; height: 25px; }
-  .floater svg { width: 24px; height: 24px; }
 }
 @media (max-width: 420px) {
-  .hero { padding-block: 22px 20px; }
-  .hero-grid { gap: 16px; }
-  .hero-title { font-size: clamp(30px, 9.2vw, 38px); margin-bottom: 14px; }
-  .hero-sub { margin-bottom: 18px; }
-  .coupon { margin-bottom: 20px; }
-  .ticks { gap: 10px; margin-bottom: 22px; }
-  .ticks li { font-size: 15px; }
-  .hero-photo img { width: min(76vw, 290px); }
+  .hero { padding-block: 18px 14px; }
+  .hero-grid { gap: 14px; min-height: calc(87svh - 72px); }
+  .title-pill { margin-bottom: 10px; }
+  .hero-title { font-size: clamp(29px, 9vw, 36px); margin-bottom: 10px; }
+  .hero-sub { margin-bottom: 16px; font-size: 14.5px; }
+  .hero-cta { max-width: 310px; gap: 10px; }
+  .hero-cta .btn { min-height: 45px; padding-block: 12px; }
+  .hero-photo img { width: min(82vw, 290px); }
+}
+@media (max-width: 360px) {
+  .hero-grid { gap: 12px; min-height: auto; }
+  .hero-title { font-size: 28px; }
+  .hero-sub { font-size: 14px; margin-bottom: 14px; }
+  .hero-photo img { width: min(78vw, 260px); }
 }

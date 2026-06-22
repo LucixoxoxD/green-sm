@@ -103,135 +103,92 @@ ul { list-style: none; padding: 0; }
 .nav-mobile a:hover { background: #eef9f9; }
 .nav-mobile .btn { margin-top: 6px; justify-content: center; }
 
-/* ============ HERO ============ */
+/* ============ HERO (layered immersive scene) ============ */
 .hero {
-  position: relative; overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 92svh;
+  display: flex;
+  flex-direction: column;
   background:
-    radial-gradient(circle at top right, rgba(255,255,255,0.15), transparent 40%),
-    radial-gradient(circle at bottom left, rgba(255,255,255,0.08), transparent 35%),
-    linear-gradient(135deg, #0bb8c9 0%, #08a7b7 100%);
-  padding-bottom: 30px;
+    radial-gradient(120% 80% at 75% 18%, rgba(86,224,236,.45) 0%, rgba(86,224,236,0) 55%),
+    radial-gradient(130% 90% at 12% 92%, rgba(7,86,95,.55) 0%, rgba(7,86,95,0) 58%),
+    linear-gradient(168deg, #19c2d2 0%, #0aa6b7 46%, #07707d 100%);
 }
+/* soft top glow + grounding shadow that blends the scene into one space */
 .hero::before {
   content: "";
-  position: absolute;
-  right: clamp(-120px, -8vw, -48px);
-  bottom: clamp(-90px, -7vw, -36px);
-  width: clamp(260px, 42vw, 560px);
-  height: clamp(260px, 42vw, 560px);
-  border-radius: 50%;
-  background: rgba(255,255,255,.12);
-  filter: blur(34px);
-  opacity: .72;
-  pointer-events: none;
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(80% 50% at 50% 0%, rgba(255,255,255,.16) 0%, transparent 60%),
+    radial-gradient(70% 40% at 22% 100%, rgba(4,40,44,.45) 0%, transparent 62%);
 }
-.hero::after {
-  content: "";
+
+/* ---- layered visuals ---- */
+.hero-scene { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.hero-scene img {
   position: absolute;
-  left: 0;
-  right: 0;
+  display: block;
+  height: auto;
+  object-fit: contain;
+}
+/* back of the EV, lower-left, sunk into the gradient with a soft fade */
+.hero-car {
+  left: clamp(-120px, -7vw, -40px);
+  bottom: clamp(-40px, -3vw, 0px);
+  width: clamp(360px, 46vw, 720px);
+  filter: drop-shadow(0 26px 40px rgba(0,0,0,.28)) saturate(1.05);
+  -webkit-mask-image:
+    linear-gradient(180deg, transparent 0%, #000 26%, #000 100%),
+    linear-gradient(90deg, transparent 0%, #000 14%, #000 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(180deg, transparent 0%, #000 26%, #000 100%),
+    linear-gradient(90deg, transparent 0%, #000 14%, #000 100%);
+          mask-composite: intersect;
+}
+/* driver, right-center, foreground of the depth */
+.hero-driver {
+  right: clamp(-70px, -4vw, 0px);
   bottom: 0;
-  height: 130px;
-  background: linear-gradient(180deg, rgba(8,167,183,0) 0%, rgba(8,167,183,.62) 76%, rgba(8,167,183,.96) 100%);
-  pointer-events: none;
+  width: clamp(320px, 40vw, 560px);
+  filter: drop-shadow(0 30px 50px rgba(0,0,0,.32));
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 92%, transparent 100%);
 }
-.hero-grid {
+
+/* ---- centered content overlay ---- */
+.hero-content {
   position: relative; z-index: 2;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;
-  min-height: 520px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding-top: clamp(34px, 6vw, 70px);
+  padding-bottom: clamp(220px, 34vw, 380px); /* room so the visuals own the lower scene */
 }
-.hero-copy { padding: 12px 0 40px; }
-.title-pill {
-  display: inline-block; background: var(--white); color: var(--heading);
-  font-weight: 800; font-size: clamp(13px, 1.5vw, 15px); letter-spacing: 1.5px;
-  padding: 9px 20px; border-radius: 12px; box-shadow: var(--shadow-sm); margin-bottom: 18px;
+.hero-eyebrow {
+  color: rgba(255,255,255,.92); font-weight: 700;
+  font-size: clamp(12px, 1.5vw, 15px); letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 16px; text-shadow: 0 1px 10px rgba(8,70,74,.35);
 }
 .hero-title {
   font-family: var(--font-display);
-  color: var(--white); font-weight: 700; line-height: 1.04; letter-spacing: -.5px;
-  font-size: clamp(40px, 6vw, 72px);
-  text-shadow: 0 3px 14px rgba(8, 70, 74, .28); margin-bottom: 18px;
+  color: var(--white); font-weight: 700; line-height: 1.02; letter-spacing: -.5px;
+  font-size: clamp(40px, 6.2vw, 76px);
+  text-shadow: 0 4px 18px rgba(8, 70, 74, .35); margin-bottom: 18px;
 }
 .hero-sub {
-  color: var(--white); font-size: clamp(16px, 1.9vw, 20px); font-weight: 500;
-  max-width: 46ch; margin-bottom: 24px; text-shadow: 0 1px 8px rgba(8, 70, 74, .2);
+  color: rgba(255,255,255,.96); font-size: clamp(16px, 1.9vw, 20px); font-weight: 500;
+  max-width: 52ch; margin-bottom: 30px; text-shadow: 0 1px 10px rgba(8, 70, 74, .3);
 }
 .hero-sub strong { color: var(--yellow); font-weight: 800; }
 
-/* coupon / ticket badge */
-.coupon {
-  position: relative; display: inline-flex; flex-direction: column; gap: 2px;
-  background: var(--yellow); color: var(--teal-ink);
-  padding: 16px 46px; border-radius: 16px; margin-bottom: 26px;
-  -webkit-mask:
-    radial-gradient(circle 13px at 0 50%, transparent 0 13px, #000 14px),
-    radial-gradient(circle 13px at 100% 50%, transparent 0 13px, #000 14px);
-  -webkit-mask-composite: source-in;
-          mask-composite: intersect;
+.hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+/* secondary call button: clean teal, sits on the scene */
+.hero-call {
+  background: var(--teal-ink);
+  box-shadow: 0 14px 30px -16px rgba(4,40,44,.8);
 }
-.coupon-label { font-size: 18px; font-weight: 700; }
-.coupon-amount { font-weight: 900; font-size: clamp(34px, 4.6vw, 52px); line-height: 1; letter-spacing: -1px; }
-.coupon-amount b { font-size: .7em; margin-right: 2px; }
-.coupon-amount small { font-size: .42em; font-weight: 800; }
-
-/* hero CTA centered within copy column (#5) */
-.hero-cta { display: flex; justify-content: center; margin-top: 4px; }
-.hero-secondary-cta { display: none; }
-
-.hero-photo {
-  align-self: end;
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-.hero-visual {
-  position: relative;
-  width: min(100%, 640px);
-  margin-left: auto;
-  isolation: isolate;
-  transform: translateY(16px);
-}
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 50%;
-  bottom: 8%;
-  width: 78%;
-  height: 38%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background:
-    radial-gradient(closest-side, rgba(255,255,255,.24), rgba(255,255,255,0) 72%),
-    radial-gradient(closest-side, rgba(255,198,41,.2), rgba(255,198,41,0) 68%);
-  filter: blur(26px);
-}
-.hero-visual::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 14% 4% 6%;
-  border-radius: 42% 58% 48% 52%;
-  background: rgba(0,83,94,.18);
-  filter: blur(42px);
-}
-.hero-visual img {
-  width: 100%;
-  height: auto;
-  max-width: 600px;
-  display: block;
-  object-fit: contain;
-  margin-left: auto;
-  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.18));
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
-    linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
-  -webkit-mask-composite: source-in;
-          mask-image:
-    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
-    linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
-          mask-composite: intersect;
-}
+.hero-call:hover { background: #073f44; transform: translateY(-2px); }
 
 /* ============ EARNING OPPORTUNITY ============ */
 .earning { background: var(--white); padding-block: 64px; text-align: center; }
@@ -442,14 +399,8 @@ ul { list-style: none; padding: 0; }
 @media (max-width: 980px) {
   .nav-links, .nav-cta { display: none; }
   .nav-toggle { display: flex; margin-left: auto; }
-  .hero { padding-block: 34px 28px; }
-  .hero-grid { grid-template-columns: 1fr; min-height: 0; text-align: center; gap: 22px; align-items: center; }
-  .hero-copy { padding: 10px 0 4px; }
-  .hero-sub { margin-inline: auto; }
-  .ticks-yellow { display: inline-grid; text-align: left; }
-  .hero-photo { justify-content: center; align-self: center; }
-  .hero-visual { width: min(72vw, 380px); max-width: 100%; margin-inline: auto; transform: translateY(8px); }
-  .hero-visual img { max-width: 100%; margin-inline: auto; }
+  .hero-car { width: clamp(340px, 52vw, 560px); }
+  .hero-driver { width: clamp(300px, 46vw, 460px); }
   .earning-grid { grid-template-columns: 1fr 1fr; }
   .adv-grid { max-width: 620px; margin-inline: auto; }
   .req-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -459,96 +410,48 @@ ul { list-style: none; padding: 0; }
   .footer-col p { justify-content: center; }
 }
 @media (max-width: 768px) {
-  .hero {
-    padding-block: 24px 18px;
+  /* mobile: text owns the top, visuals fill the lower scene side-by-side */
+  .hero { min-height: 94svh; }
+  .hero-content {
+    padding-top: clamp(26px, 7vw, 44px);
+    padding-bottom: clamp(260px, 62vw, 420px);
   }
-  .hero-grid {
-    min-height: calc(88svh - 72px);
-    align-content: center;
-    gap: 18px;
-  }
-  .hero-copy {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
-  }
-  .title-pill {
-    order: 1;
-    margin-bottom: 12px;
-    padding: 7px 13px;
-    border-radius: 999px;
-    font-size: 11px;
-    letter-spacing: 1.2px;
-  }
+  .hero-eyebrow { letter-spacing: 2.2px; margin-bottom: 12px; }
   .hero-title {
-    order: 2;
-    max-width: 10ch;
-    margin-bottom: 12px;
-    font-size: clamp(34px, 9vw, 44px);
+    max-width: 11ch;
+    margin-bottom: 14px;
+    font-size: clamp(36px, 11vw, 52px);
     line-height: 1;
   }
   .hero-sub {
-    order: 3;
-    max-width: 30ch;
-    margin-bottom: 18px;
+    max-width: 34ch;
+    margin-bottom: 24px;
     font-size: 15.5px;
     line-height: 1.45;
   }
   .hero-cta {
-    order: 4;
     width: 100%;
     max-width: 340px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
-    margin-top: 0;
   }
   .hero-cta .btn {
     width: 100%;
-    min-height: 48px;
+    min-height: 50px;
     padding: 13px 18px;
-    font-size: 15.5px;
+    font-size: 16px;
   }
-  .hero-secondary-cta {
-    display: inline-flex;
-    color: var(--white);
-    background: rgba(255,255,255,.14);
-    border: 1.5px solid rgba(255,255,255,.7);
-    box-shadow: none;
-    backdrop-filter: blur(8px);
+  /* car anchored bottom-left, driver bottom-right — both rooted to the same floor line */
+  .hero-car {
+    left: -10%;
+    bottom: 0;
+    width: clamp(280px, 72vw, 460px);
   }
-  .coupon,
-  .ticks-yellow {
-    display: none;
-  }
-  .hero-photo {
-    justify-content: center;
-    align-self: center;
-  }
-  .hero-visual {
-    width: min(85vw, 320px);
-    margin: 0 auto;
-    transform: translateY(4px);
-  }
-  .hero-visual::before {
-    bottom: 6%;
-    width: 86%;
-    height: 34%;
-    filter: blur(20px);
-  }
-  .hero-visual::after {
-    inset: 18% 7% 8%;
-    filter: blur(30px);
-  }
-  .hero-visual img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    margin: 0 auto;
-    filter: drop-shadow(0 24px 44px rgba(0,0,0,.16));
+  .hero-driver {
+    right: -8%;
+    bottom: 0;
+    width: clamp(240px, 60vw, 380px);
   }
   .floaters {
     right: 14px;
@@ -570,11 +473,9 @@ ul { list-style: none; padding: 0; }
   .nav-inner { min-height: 72px; padding-block: 10px; }
   .nav-logo img { height: 34px; }
 
-  .hero { padding-block: 22px 16px; }
-  .hero-grid { min-height: calc(88svh - 72px); gap: 16px; }
-  .hero-title { font-size: clamp(32px, 9.4vw, 40px); }
+  .hero-content { padding-bottom: clamp(220px, 64vw, 340px); }
+  .hero-title { font-size: clamp(32px, 11vw, 42px); }
   .hero-sub { font-size: 15px; }
-  .hero-visual { width: min(85vw, 320px); }
 
   /* sections: tighter vertical rhythm so it isn't a sparse endless scroll */
   .earning, .advantages, .steps, .fleet { padding-block: 44px; }
@@ -765,18 +666,15 @@ ul { list-style: none; padding: 0; }
   .floater img { width: 25px; height: 25px; }
 }
 @media (max-width: 420px) {
-  .hero { padding-block: 18px 14px; }
-  .hero-grid { gap: 14px; min-height: calc(87svh - 72px); }
-  .title-pill { margin-bottom: 10px; }
-  .hero-title { font-size: clamp(29px, 9vw, 36px); margin-bottom: 10px; }
-  .hero-sub { margin-bottom: 16px; font-size: 14.5px; }
-  .hero-cta { max-width: 310px; gap: 10px; }
-  .hero-cta .btn { min-height: 45px; padding-block: 12px; }
-  .hero-visual { width: min(82vw, 290px); }
+  .hero-content { padding-bottom: clamp(200px, 66vw, 300px); }
+  .hero-title { font-size: clamp(29px, 11vw, 38px); margin-bottom: 10px; }
+  .hero-sub { margin-bottom: 18px; font-size: 14.5px; }
+  .hero-cta { max-width: 320px; gap: 10px; }
+  .hero-cta .btn { min-height: 48px; padding-block: 13px; }
+  .hero-car { left: -14%; width: clamp(240px, 76vw, 360px); }
+  .hero-driver { right: -12%; width: clamp(210px, 62vw, 320px); }
 }
 @media (max-width: 360px) {
-  .hero-grid { gap: 12px; min-height: auto; }
-  .hero-title { font-size: 28px; }
+  .hero-title { font-size: 27px; }
   .hero-sub { font-size: 14px; margin-bottom: 14px; }
-  .hero-visual { width: min(78vw, 260px); }
 }

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body>
 
@@ -42,32 +42,20 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <span class="title-pill">DRIVER PARTNER PROGRAM</span>
-        <h1 class="hero-title">Driver Nahi,<br><span class="accent-y">Partner Bano!</span></h1>
-        <p class="hero-sub">Green SM Driver Partner Community ka hissa bano aur Brand-New EV Cars ke saath kamao <strong>&#8377;50,000+*</strong> tak har mahine.</p>
+    <!-- layered scene: car lower-left, driver right-center, integrated into the gradient -->
+    <div class="hero-scene" aria-hidden="true">
+      <img class="hero-car" src="assets/images/car-ev-web.png" alt="" width="1600" height="1067" fetchpriority="high" />
+      <img class="hero-driver" src="assets/images/driver-005-web.png" alt="" width="1000" height="1792" fetchpriority="high" />
+    </div>
 
-        <div class="coupon">
-          <span class="coupon-label">Kamao har mahine</span>
-          <span class="coupon-amount"><b>&#8377;</b>50,000<small>+*</small></span>
-        </div>
+    <div class="container hero-content">
+      <span class="hero-eyebrow">DRIVER PARTNER PROGRAM</span>
+      <h1 class="hero-title">Driver Nahi,<br><span class="accent-y">Partner Bano!</span></h1>
+      <p class="hero-sub">Green SM Driver Partner Community ka hissa bano aur Brand-New EV Cars ke saath kamao <strong>&#8377;50,000+*</strong> tak har mahine.</p>
 
-        <ul class="ticks ticks-yellow">
-          <li><span class="ic-check"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M6.5 12.4l3.4 3.4 7-7.6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Brand-New EV Cars Chalane Ka Mauka</li>
-          <li><span class="ic-check"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M6.5 12.4l3.4 3.4 7-7.6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Extra Incentives Aur Rewards Ka Mauka*</li>
-        </ul>
-
-        <div class="hero-cta">
-          <a href="#daftar" class="btn btn-stack">Aaj Hi Join Karein</a>
-          <a href="tel:9801470664" class="btn hero-secondary-cta">Call Karein</a>
-        </div>
-      </div>
-
-      <div class="hero-photo">
-        <div class="hero-visual">
-          <img src="assets/images/hero-driver-car.png" alt="Green SM driver partner with electric taxi" width="640" height="720" fetchpriority="high" />
-        </div>
+      <div class="hero-cta">
+        <a href="#daftar" class="btn btn-stack">Aaj Hi Join Karein</a>
+        <a href="tel:9801470664" class="btn hero-call">Call Karein</a>
       </div>
     </div>
   </section>

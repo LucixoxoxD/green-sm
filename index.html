@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=11" />
 </head>
 <body>
 
@@ -41,14 +41,11 @@
   </header>
 
   <!-- ============ HERO ============ -->
+  <!-- 3-column grid: [car] [content + CTAs] [driver]; images bottom-aligned to a shared baseline -->
   <section class="hero">
-    <!-- layered scene: car lower-left, driver right-center, integrated into the gradient -->
-    <div class="hero-scene" aria-hidden="true">
-      <img class="hero-car" src="assets/images/car-ev-web.png" alt="" width="1600" height="1067" fetchpriority="high" />
-      <img class="hero-driver" src="assets/images/driver-005-web.png" alt="" width="1000" height="1792" fetchpriority="high" />
-    </div>
+    <img class="hero-car" src="assets/images/car-ev-web.png" alt="" width="1600" height="1067" fetchpriority="high" aria-hidden="true" />
 
-    <div class="container hero-content">
+    <div class="hero-content">
       <span class="hero-eyebrow">DRIVER PARTNER PROGRAM</span>
       <h1 class="hero-title">Driver Nahi,<br><span class="accent-y">Partner Bano!</span></h1>
       <p class="hero-sub">Green SM Driver Partner Community ka hissa bano aur Brand-New EV Cars ke saath kamao <strong>&#8377;50,000+*</strong> tak har mahine.</p>
@@ -58,6 +55,8 @@
         <a href="tel:9801470664" class="btn hero-call">Call Karein</a>
       </div>
     </div>
+
+    <img class="hero-driver" src="assets/images/driver-005-web.png" alt="Green SM driver partner" width="1000" height="1792" fetchpriority="high" />
   </section>
 
   <!-- ============ EARNING OPPORTUNITY ============ -->

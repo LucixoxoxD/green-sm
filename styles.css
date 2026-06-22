@@ -106,7 +106,8 @@ ul { list-style: none; padding: 0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
-.nav-mobile { display: flex; flex-direction: column; gap: 6px; padding: 12px 22px 20px; border-top: 1px solid var(--line); background: var(--white); }
+.nav-mobile { display: none; flex-direction: column; gap: 6px; padding: 12px 22px 20px; border-top: 1px solid var(--line); background: var(--white); }
+.nav-mobile.open { display: flex; }
 .nav-mobile a { padding: 12px 14px; border-radius: 10px; font-weight: 600; color: var(--heading); }
 .nav-mobile a:hover { background: #eef9f9; }
 .nav-mobile .btn { margin-top: 6px; justify-content: center; }
@@ -362,25 +363,53 @@ ul { list-style: none; padding: 0; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 980px) {
-  .hero-grid { grid-template-columns: 1fr; min-height: 0; text-align: center; }
-  .hero-copy { padding-bottom: 20px; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: flex; margin-left: auto; }
+  .hero-grid { grid-template-columns: 1fr; min-height: 0; text-align: center; gap: 18px; }
+  .hero-copy { padding: 10px 0 4px; }
   .hero-sub { margin-inline: auto; }
   .ticks-yellow { display: inline-grid; text-align: left; }
-  .hero-photo { order: -1; }
-  .hero-photo img { max-width: 420px; margin-inline: auto; }
+  .hero-photo img { max-width: 460px; margin-inline: auto; }
   .earning-grid { grid-template-columns: 1fr 1fr; }
   .adv-grid { max-width: 620px; margin-inline: auto; }
   .req-grid { grid-template-columns: 1fr; gap: 30px; }
-  .nav-links, .nav-cta { display: none; }
-  .nav-toggle { display: flex; }
   .steps-grid { grid-template-columns: 1fr 1fr; }
   .fleet-grid { grid-template-columns: 1fr 1fr; }
-  .footer-cols { grid-template-columns: 1fr; gap: 22px; }
+  .footer-cols { grid-template-columns: 1fr; gap: 22px; text-align: center; }
+  .footer-col p { justify-content: center; }
 }
-@media (max-width: 560px) {
-  .earning-grid, .steps-grid, .fleet-grid, .adv-grid { grid-template-columns: 1fr; }
-  .coupon { padding-inline: 34px; }
-  .hero-title { font-size: clamp(36px, 11vw, 50px); }
-  .btn-center, .btn-gold-text, .hero-cta .btn { width: 100%; }
-  .fleet-card { min-height: 420px; max-width: 360px; margin-inline: auto; width: 100%; }
+@media (max-width: 600px) {
+  /* sections: tighter vertical rhythm so it isn't a sparse endless scroll */
+  .earning, .advantages, .steps, .fleet { padding-block: 44px; }
+  .requirements { padding-block: 48px; }
+  .cta-banner { padding-block: 48px; }
+  .earning .section-h, .steps .section-h, .fleet .section-h { margin-bottom: 26px; }
+
+  .earning-grid, .steps-grid, .fleet-grid, .adv-grid { grid-template-columns: 1fr; gap: 14px; }
+  .coupon { padding-inline: 32px; }
+  .hero-title { font-size: clamp(34px, 10vw, 46px); }
+  .hero-sub { font-size: 15.5px; }
+
+  /* compact cards — kill the empty whitespace from the phone screenshots */
+  .earn-card { flex-direction: row; align-items: center; gap: 16px; text-align: left; padding: 18px 18px; }
+  .earn-ic { width: 48px; height: 48px; margin: 0; flex: none; }
+  .earn-ic svg { width: 24px; height: 24px; }
+  .earn-card p { font-size: 15px; }
+  .step { padding: 26px 20px; }
+  .pill { padding: 14px 18px; }
+
+  /* CTAs: big tap target but not edge-to-edge under the floaters */
+  .btn { padding: 15px 28px; font-size: 16px; }
+  .btn-center, .btn-gold-text, .hero-cta .btn, .reg-form .btn { width: 100%; max-width: 420px; margin-inline: auto; }
+  .hero-cta { width: 100%; }
+
+  .fleet-card { min-height: 400px; max-width: 360px; margin-inline: auto; width: 100%; }
+
+  /* smaller, lower-profile floaters so they don't cover content */
+  .floaters { right: 14px; bottom: 14px; gap: 10px; }
+  .floater { width: 46px; height: 46px; }
+  .floater img { width: 25px; height: 25px; }
+  .floater svg { width: 24px; height: 24px; }
+
+  .nav-logo img { height: 34px; }
 }

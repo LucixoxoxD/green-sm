@@ -15,14 +15,12 @@ const navToggle = document.querySelector(".nav-toggle");
 const navMobile = document.querySelector(".nav-mobile");
 if (navToggle && navMobile) {
   navToggle.addEventListener("click", () => {
-    const open = navMobile.hasAttribute("hidden");
-    if (open) navMobile.removeAttribute("hidden");
-    else navMobile.setAttribute("hidden", "");
+    const open = navMobile.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(open));
   });
   navMobile.querySelectorAll("a").forEach((a) =>
     a.addEventListener("click", () => {
-      navMobile.setAttribute("hidden", "");
+      navMobile.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
     })
   );

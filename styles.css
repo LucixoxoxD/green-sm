@@ -111,7 +111,7 @@ ul { list-style: none; padding: 0; }
   isolation: isolate;
   display: flex;
   align-items: flex-end;
-  min-height: 580px;
+  min-height: 680px;
   gap: clamp(20px, 4vw, 68px);
   padding: 3rem 5% 0;
   background:
@@ -182,8 +182,6 @@ ul { list-style: none; padding: 0; }
   height: auto;
   object-fit: contain;
   display: block;
-  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 95%);
-          mask-image: linear-gradient(to bottom, black 75%, transparent 95%);
 }
 
 /* ============ EARNING OPPORTUNITY ============ */

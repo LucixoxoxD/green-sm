@@ -13,17 +13,29 @@ function showToast(msg, isError = false) {
 // ============ Mobile nav toggle ============
 const navToggle = document.querySelector(".nav-toggle");
 const navMobile = document.querySelector(".nav-mobile");
+const navClose = document.querySelector(".nav-close");
+const navBackdrop = document.querySelector(".nav-backdrop");
+
+function setNav(open) {
+  if (!navMobile) return;
+  navMobile.classList.toggle("open", open);
+  if (navBackdrop) navBackdrop.classList.toggle("show", open);
+  if (navToggle) navToggle.setAttribute("aria-expanded", String(open));
+  document.body.classList.toggle("nav-open", open);
+}
+
 if (navToggle && navMobile) {
-  navToggle.addEventListener("click", () => {
-    const open = navMobile.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", String(open));
-  });
-  navMobile.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => {
-      navMobile.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    })
+  navToggle.addEventListener("click", () =>
+    setNav(!navMobile.classList.contains("open"))
   );
+  navClose?.addEventListener("click", () => setNav(false));
+  navBackdrop?.addEventListener("click", () => setNav(false));
+  navMobile.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => setNav(false))
+  );
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setNav(false);
+  });
 }
 
 // ============ Form handling ============

@@ -212,6 +212,9 @@ body.nav-open { overflow: hidden; }
 }
 .hero-sub strong { color: var(--yellow); font-weight: 800; }
 
+.hero-benefits { margin-bottom: 28px; gap: 10px; }
+.hero-benefits li { font-size: clamp(15px, 1.7vw, 17px); }
+
 .hero-cta { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; }
 .hero-call {
   background: var(--teal-ink);

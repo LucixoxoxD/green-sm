@@ -154,6 +154,9 @@ ul { list-style: none; padding: 0; }
 body.nav-open { overflow: hidden; }
 @media (min-width: 981px) { .nav-mobile, .nav-backdrop { display: none; } }
 
+/* offset anchored sections so the sticky navbar doesn't cover their titles */
+#earning, #fayde, #daftar, #register, #process, #kontak { scroll-margin-top: 88px; }
+
 /* ============ HERO ============ */
 .hero {
   position: relative;
@@ -419,7 +422,7 @@ body.nav-open { overflow: hidden; }
 .footer-logo {
   height: 50px;
   width: auto;
-  margin-bottom: 0.75rem;
+  margin: 0 auto 0.75rem;
 }
 .footer-title {
   font-size: 1.1rem;

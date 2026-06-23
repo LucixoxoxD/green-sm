@@ -104,7 +104,7 @@ ul { list-style: none; padding: 0; }
 .nav-mobile a:hover { background: #eef9f9; }
 .nav-mobile .btn { margin-top: 6px; justify-content: center; }
 
-/* ============ HERO (3-column grid: car | content | driver) ============ */
+/* ============ HERO (2-column grid: content | visual) ============ */
 .hero {
   position: relative;
   overflow: hidden;
@@ -112,9 +112,7 @@ ul { list-style: none; padding: 0; }
   min-height: calc(100vh - 70px);
   max-height: 790px;
   padding: clamp(42px, 5vw, 74px) max(22px, calc((100vw - var(--maxw)) / 2 + 22px)) 0;
-  /* car flanks left, content sits center, driver flanks right.
-     side columns are capped so the images fill their column (width:100%)
-     and can NEVER overlap the centered content — columns don't overlap */
+  /* text content on the left, the car+driver visual composition on the right */
   display: grid;
   grid-template-columns: minmax(420px, .9fr) minmax(520px, 1.1fr);
   align-items: center;
@@ -140,34 +138,6 @@ ul { list-style: none; padding: 0; }
   z-index: 1;
   pointer-events: none;
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.7) 74%, var(--white) 100%);
-}
-
-/* ---- images: fill their column, bottom-anchored to a shared baseline ---- */
-.hero-car, .hero-driver {
-  align-self: end;               /* explicit bottom baseline */
-  display: block;
-  width: 100%;                   /* fill the column → cannot overlap content */
-  height: auto;
-  z-index: 1;
-  pointer-events: none;
-}
-.hero-car {
-  grid-area: car;
-  filter: drop-shadow(0 26px 40px rgba(0,0,0,.28)) saturate(1.05);
-  -webkit-mask-image:
-    linear-gradient(180deg, transparent 0%, #000 26%, #000 100%),
-    linear-gradient(90deg, transparent 0%, #000 12%, #000 100%);
-  -webkit-mask-composite: source-in;
-          mask-image:
-    linear-gradient(180deg, transparent 0%, #000 26%, #000 100%),
-    linear-gradient(90deg, transparent 0%, #000 12%, #000 100%);
-          mask-composite: intersect;
-}
-.hero-driver {
-  grid-area: driver;
-  filter: drop-shadow(0 30px 50px rgba(0,0,0,.32));
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 94%, transparent 100%);
-          mask-image: linear-gradient(180deg, #000 0%, #000 94%, transparent 100%);
 }
 
 /* ---- center content column ---- */
@@ -207,7 +177,10 @@ ul { list-style: none; padding: 0; }
   z-index: 2;
   align-self: end;
   width: min(100%, 690px);
-  height: clamp(520px, 45vw, 680px);
+  /* aspect-ratio (not a fixed height) keeps the car+driver composition
+     proportional at every viewport — width drives height, so the two
+     PNGs scale together and never disjoint or squish */
+  aspect-ratio: 1.15;
   justify-self: end;
   -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 87%, rgba(0,0,0,.88) 94%, transparent 100%);
           mask-image: linear-gradient(180deg, #000 0%, #000 87%, rgba(0,0,0,.88) 94%, transparent 100%);
@@ -495,6 +468,7 @@ ul { list-style: none; padding: 0; }
     min-height: auto;
     max-height: none;
     padding: clamp(28px, 6vw, 44px) 18px 0;
+    margin-bottom: 2rem;       /* 2rem gap before the EARNING OPPORTUNITY section */
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: none;
     gap: 8px;
@@ -537,21 +511,24 @@ ul { list-style: none; padding: 0; }
   }
   .hero-visual {
     width: min(100%, 500px);
-    height: clamp(300px, 52vw, 410px);
+    min-height: 280px;        /* never compress below a comfortable height */
     justify-self: center;
     margin-top: -2px;
+    /* show the full figures on mobile — no bottom fade eating the feet */
+    -webkit-mask-image: none;
+            mask-image: none;
   }
   .hero-car {
-    left: 4%;
-    bottom: 4%;
-    width: 68%;
+    left: 2%;
+    bottom: 2%;
+    width: 74%;               /* car is the hero product — keep it dominant */
     height: auto;
     margin: 0;
   }
   .hero-driver {
-    right: 7%;
-    bottom: 1%;
-    width: 34%;
+    right: 6%;
+    bottom: 2%;               /* lifted off the edge so the feet stay visible */
+    width: 32%;
     height: auto;
     margin: 0;
   }
@@ -586,7 +563,7 @@ ul { list-style: none; padding: 0; }
   .hero-cta .btn { min-height: 46px; padding-block: 12px; }
   .hero-visual {
     width: min(96vw, 390px);
-    height: clamp(245px, 61vw, 320px);
+    min-height: 280px;
     margin-top: -4px;
   }
   .hero::after { height: 74px; }
@@ -784,12 +761,12 @@ ul { list-style: none; padding: 0; }
   .hero-sub { margin-bottom: 18px; font-size: 14.5px; }
   .hero-cta { max-width: 320px; gap: 12px; }
   .hero-cta .btn { min-height: 48px; padding-block: 13px; }
-  .hero-visual { width: min(96vw, 350px); height: clamp(230px, 64vw, 285px); }
-  .hero-car { left: 2%; bottom: 5%; width: 69%; height: auto; margin: 0; }
-  .hero-driver { right: 6%; bottom: 1%; width: 35%; height: auto; }
+  .hero-visual { width: min(96vw, 350px); }
+  .hero-car { left: 2%; bottom: 2%; width: 74%; height: auto; margin: 0; }
+  .hero-driver { right: 6%; bottom: 2%; width: 32%; height: auto; }
 }
 @media (max-width: 360px) {
   .hero-title { font-size: 27px; }
   .hero-sub { font-size: 14px; margin-bottom: 14px; }
-  .hero-visual { height: 220px; }
+  .hero-visual { min-height: 280px; }
 }

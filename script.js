@@ -38,6 +38,24 @@ if (navToggle && navMobile) {
   });
 }
 
+// ============ Flash Contact Details (navbar "Contact" link only) ============
+const contactBox = document.getElementById("contact-details");
+function flashContact() {
+  if (!contactBox) return;
+  contactBox.classList.remove("flash");
+  void contactBox.offsetWidth; // restart the animation if already running
+  contactBox.classList.add("flash");
+  setTimeout(() => contactBox.classList.remove("flash"), 2600);
+}
+document
+  .querySelectorAll('.nav-links a[href="#kontak"], .nav-mobile a[href="#kontak"]')
+  .forEach((a) =>
+    a.addEventListener("click", () => {
+      // wait for the smooth-scroll to reach the footer, then highlight
+      setTimeout(flashContact, 650);
+    })
+  );
+
 // ============ Form handling ============
 document.querySelectorAll(".reg-form").forEach((form) => {
   // mobile: digits only, max 10

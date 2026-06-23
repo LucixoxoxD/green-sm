@@ -104,25 +104,21 @@ ul { list-style: none; padding: 0; }
 .nav-mobile a:hover { background: #eef9f9; }
 .nav-mobile .btn { margin-top: 6px; justify-content: center; }
 
-/* ============ HERO (2-column grid: content | visual) ============ */
+/* ============ HERO ============ */
 .hero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  min-height: calc(100vh - 70px);
-  max-height: 790px;
-  padding: clamp(42px, 5vw, 74px) max(22px, calc((100vw - var(--maxw)) / 2 + 22px)) 0;
-  /* text content on the left, the car+driver visual composition on the right */
-  display: grid;
-  grid-template-columns: minmax(420px, .9fr) minmax(520px, 1.1fr);
+  display: flex;
   align-items: center;
   gap: clamp(20px, 4vw, 68px);
+  padding: 3rem 5%;
+  margin-bottom: 2rem;
   background:
     radial-gradient(52% 62% at 76% 38%, rgba(255,255,255,.24) 0%, rgba(255,255,255,0) 62%),
     radial-gradient(42% 48% at 22% 18%, rgba(91,231,238,.35) 0%, rgba(91,231,238,0) 68%),
     linear-gradient(152deg, #2ccbd5 0%, #12aeba 39%, #087f89 72%, #075f66 100%);
 }
-/* soft top glow + grounding shadow that blends everything into one space */
 .hero::before {
   content: "";
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
@@ -140,12 +136,12 @@ ul { list-style: none; padding: 0; }
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.7) 74%, var(--white) 100%);
 }
 
-/* ---- center content column ---- */
+/* ---- text column ---- */
 .hero-content {
   position: relative; z-index: 2;
   display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+  flex: 1 1 0%;
   max-width: 600px;
-  padding-bottom: clamp(44px, 6vw, 96px);
 }
 .hero-eyebrow {
   color: rgba(255,255,255,.92); font-weight: 700;
@@ -165,74 +161,27 @@ ul { list-style: none; padding: 0; }
 .hero-sub strong { color: var(--yellow); font-weight: 800; }
 
 .hero-cta { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; }
-/* secondary call button: clean teal, sits on the scene */
 .hero-call {
   background: var(--teal-ink);
   box-shadow: 0 14px 30px -16px rgba(4,40,44,.8);
 }
 .hero-call:hover { background: #073f44; transform: translateY(-2px); }
 
+/* ---- combined image ---- */
 .hero-visual {
-  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 50%;
+  max-width: 650px;
+  overflow: visible;
   z-index: 2;
-  align-self: end;
-  width: min(100%, 690px);
-  aspect-ratio: 1.25;
-  justify-self: end;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 87%, rgba(0,0,0,.88) 94%, transparent 100%);
-          mask-image: linear-gradient(180deg, #000 0%, #000 87%, rgba(0,0,0,.88) 94%, transparent 100%);
 }
-.hero-visual::before,
-.hero-visual::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-.hero-visual::before {
-  width: 82%;
-  height: 58%;
-  right: 3%;
-  top: 13%;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 64% 42%, rgba(255,255,255,.32), transparent 44%),
-    radial-gradient(circle at 32% 64%, rgba(255,198,41,.18), transparent 52%);
-  filter: blur(32px);
-  opacity: .78;
-}
-.hero-visual::after {
-  width: 78%;
-  height: 32px;
-  left: 7%;
-  bottom: 8%;
-  border-radius: 50%;
-  background: rgba(4, 40, 44, .32);
-  filter: blur(18px);
-}
-.hero-car,
-.hero-driver {
-  position: absolute;
-  display: block;
+.hero-combined-img {
   width: 100%;
   height: auto;
   object-fit: contain;
-  pointer-events: none;
-  -webkit-mask-image: none;
-          mask-image: none;
-}
-.hero-car {
-  left: 0;
-  bottom: 3%;
-  width: 72%;
-  z-index: 2;
-  filter: drop-shadow(0 22px 28px rgba(3, 48, 52, .34)) saturate(1.06);
-}
-.hero-driver {
-  right: -5%;
-  bottom: 0;
-  width: 40%;
-  z-index: 3;
-  filter: drop-shadow(0 28px 34px rgba(3, 48, 52, .26));
+  display: block;
 }
 
 /* ============ EARNING OPPORTUNITY ============ */
@@ -507,18 +456,10 @@ ul { list-style: none; padding: 0; }
   .footer-col p { justify-content: center; }
 }
 @media (max-width: 980px) {
-  /* tablet + mobile: content + CTAs on top, then car (left) + driver (right)
-     in a bottom row — images live BELOW the buttons, never behind them */
   .hero {
-    min-height: auto;
-    max-height: none;
-    padding: clamp(28px, 6vw, 44px) 18px 0;
-    margin-bottom: 2rem;       /* 2rem gap before the EARNING OPPORTUNITY section */
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: none;
+    flex-direction: column;
+    padding: 2rem 5%;
     gap: 8px;
-    align-items: center;
-    justify-items: center;
   }
   .hero-content {
     align-items: center;
@@ -546,7 +487,7 @@ ul { list-style: none; padding: 0; }
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
-    gap: 12px;            /* full-width stacked buttons, 12px gap */
+    gap: 12px;
   }
   .hero-cta .btn {
     width: 100%;
@@ -555,27 +496,9 @@ ul { list-style: none; padding: 0; }
     font-size: 16px;
   }
   .hero-visual {
-    width: min(100%, 500px);
-    aspect-ratio: 1.3;
-    min-height: 280px;
-    justify-self: center;
-    margin-top: -2px;
-    -webkit-mask-image: none;
-            mask-image: none;
-  }
-  .hero-car {
-    left: 0;
-    bottom: 0;
-    width: 68%;
-    height: auto;
-    margin: 0;
-  }
-  .hero-driver {
-    right: 5%;
-    bottom: 0;
-    width: 30%;
-    height: auto;
-    margin: 0;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto 0;
   }
   .floaters {
     right: 14px;
@@ -607,8 +530,9 @@ ul { list-style: none; padding: 0; }
   .hero-cta { max-width: 300px; gap: 10px; }
   .hero-cta .btn { min-height: 46px; padding-block: 12px; }
   .hero-visual {
-    width: min(96vw, 390px);
-    margin-top: -4px;
+    width: 90%;
+    max-width: 400px;
+    margin: 1.5rem auto 0;
   }
   .hero::after { height: 74px; }
 
@@ -805,7 +729,10 @@ ul { list-style: none; padding: 0; }
   .hero-sub { margin-bottom: 18px; font-size: 14.5px; }
   .hero-cta { max-width: 320px; gap: 12px; }
   .hero-cta .btn { min-height: 48px; padding-block: 13px; }
-  .hero-visual { width: min(96vw, 350px); }
+  .hero-visual {
+    width: 95%;
+    max-width: 340px;
+  }
 }
 @media (max-width: 360px) {
   .hero-title { font-size: 27px; }

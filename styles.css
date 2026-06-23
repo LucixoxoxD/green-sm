@@ -416,13 +416,13 @@ body.nav-open { overflow: hidden; }
   padding: 2.5rem 5%;
 }
 .footer-header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 2.5rem;
 }
 .footer-logo {
   height: 50px;
   width: auto;
-  margin: 0 auto 0.75rem;
+  margin-bottom: 0.75rem;
 }
 .footer-title {
   font-size: 1.1rem;

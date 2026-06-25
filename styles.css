@@ -234,13 +234,14 @@ body.nav-open { overflow: hidden; }
 }
 .hero-title .accent-y { color: var(--heading); }
 .hero-sub {
-  color: rgba(255,255,255,.96); font-size: clamp(16px, 1.9vw, 20px); font-weight: 500;
+  font-family: "Public Sans", system-ui, sans-serif;
+  color: rgba(255,255,255,.96); font-size: clamp(16px, 1.9vw, 20px); font-weight: 400;
   max-width: 48ch; margin-bottom: 30px; text-shadow: 0 1px 10px rgba(8, 70, 74, .3);
 }
-.hero-sub strong { color: var(--yellow); font-weight: 800; }
+.hero-sub strong { color: var(--yellow); font-weight: 700; }
 
 .hero-benefits { margin-bottom: 28px; gap: 10px; }
-.hero-benefits li { font-size: clamp(15px, 1.7vw, 17px); }
+.hero-benefits li { font-family: "Public Sans", system-ui, sans-serif; font-weight: 500; font-size: clamp(15px, 1.7vw, 17px); }
 
 .hero-cta { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; }
 .hero-call {
@@ -774,7 +775,8 @@ body.nav-open { overflow: hidden; }
   .cta-banner h2 { font-size: clamp(18px, 4.9vw, 23px); max-width: 26ch; }
   .section-sub2 { font-size: 15px; }
   .lead { font-size: 14.5px; margin: 10px auto 24px; }
-  .req-sub { font-size: 14px; margin: 10px 0 18px; }
+  .req-sub { font-size: 16px; margin: 8px 0 18px; }
+  .req-list li { font-size: 14px; }
   .steps-after { font-size: 13px; }
   .cta-banner p { font-size: 15px; }
 

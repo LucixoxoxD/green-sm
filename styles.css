@@ -425,6 +425,8 @@ body.nav-open { overflow: hidden; }
   width: 100%; height: 100%; object-fit: cover;
   transition: transform .4s ease;
 }
+/* bias the crop upward so the speaker's head isn't cut off */
+.event-img img.ev-top { object-position: center top; }
 .event-img:hover img { transform: scale(1.06); }
 .event-cap {
   position: absolute; left: 0; right: 0; bottom: 0;

@@ -121,8 +121,8 @@ document.querySelectorAll(".reg-form").forEach((form) => {
       return;
     }
 
-    const nama = (form.querySelector('[name="nama"]')?.value || "").trim();
     form.reset();
-    showToast(`Dhanyavaad${nama ? ", " + nama : ""}! Aapka registration mil gaya hai.`);
+    closeModal();
+    window.location.href = "thankyou.html";
   });
 });

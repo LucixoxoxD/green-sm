@@ -178,6 +178,47 @@
         </ul>
       </div>
 
+      <div class="form-card" id="register">
+        <div class="form-card-head">
+          <h2>Registration Form</h2>
+          <p>Apni details bharein, hamari team aapse jaldi sampark karegi.</p>
+        </div>
+        <form class="reg-form" novalidate>
+          <label>
+            <input type="text" name="nama" placeholder="Aapka Naam" required />
+          </label>
+          <label>
+            <input type="tel" name="mobile" placeholder="Mobile Number" maxlength="10" inputmode="numeric" required />
+          </label>
+          <label>
+            <select name="licence" required>
+              <option value="" disabled selected>Licence Ka Type Chunein</option>
+              <option>LMV-TR (Light Motor Vehicle – Transport)</option>
+              <option>PSV (Public Service Vehicle Badge)</option>
+              <option>IDP (International Driving Permit)</option>
+            </select>
+          </label>
+          <p class="field-hint">LMV-TR: commercial gaadi/cab licence • PSV: passenger vehicle permit • IDP: videsh mein gaadi chalane ka permit</p>
+          <label>
+            <select name="location" required>
+              <option value="" disabled selected>Interview Ke Liye Location</option>
+              <option>Gurugram — ThinkValley B-17, Institutional Area, Sector 32, Gurugram</option>
+              <option>Greater Noida — Hotel Golden Petals &amp; Banquets, Gate No. 2, Noida Extension</option>
+            </select>
+          </label>
+          <label>
+            <select name="experience" required>
+              <option value="" disabled selected>Driving Ka Kitna Anubhav Hai?</option>
+              <option>1–3 Saal Ka Anubhav</option>
+              <option>3–5 Saal Ka Anubhav</option>
+              <option>5–7 Saal Ka Anubhav</option>
+              <option>7+ Saal Ka Anubhav</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-stack btn-block">Aaj Hi Join Karein</button>
+        </form>
+      </div>
+
     </div>
   </section>
 

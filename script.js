@@ -86,17 +86,42 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && regModal?.classList.contains("open")) closeModal();
 });
 
-// ============ Event gallery: tap-to-reveal caption (touch devices) ============
-const eventImgs = document.querySelectorAll(".event-img");
-if (window.matchMedia("(hover: none)").matches) {
-  eventImgs.forEach((card) => {
-    card.addEventListener("click", () => {
-      const wasOpen = card.classList.contains("show-cap");
-      eventImgs.forEach((c) => c.classList.remove("show-cap"));
-      if (!wasOpen) card.classList.add("show-cap");
-    });
-  });
+// ============ Event gallery: click image to open in lightbox ============
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = lightbox?.querySelector(".lightbox-img");
+const lightboxCap = lightbox?.querySelector(".lightbox-cap");
+
+function openLightbox(src, alt, caption) {
+  if (!lightbox || !lightboxImg) return;
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || "";
+  if (lightboxCap) lightboxCap.textContent = caption || "";
+  lightbox.classList.add("open");
+  document.body.style.overflow = "hidden";
 }
+function closeLightbox() {
+  if (!lightbox) return;
+  lightbox.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll(".event-img").forEach((card) => {
+  const img = card.querySelector("img");
+  const cap = card.querySelector(".event-cap");
+  if (!img) return;
+  card.style.cursor = "zoom-in";
+  card.addEventListener("click", () =>
+    openLightbox(img.currentSrc || img.src, img.alt, cap ? cap.textContent : "")
+  );
+});
+
+lightbox?.querySelector(".lightbox-close")?.addEventListener("click", closeLightbox);
+lightbox?.addEventListener("click", (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && lightbox?.classList.contains("open")) closeLightbox();
+});
 
 // ============ Form handling ============
 document.querySelectorAll(".reg-form").forEach((form) => {

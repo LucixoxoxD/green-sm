@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=21" />
+  <link rel="stylesheet" href="styles.css?v=22" />
 </head>
 <body>
 
@@ -52,6 +52,7 @@
         <a href="#fayde">Fayde</a>
         <a href="#daftar">Eligibility</a>
         <a href="#process">Process</a>
+        <a href="#events">Events</a>
         <a href="#kontak">Contact</a>
       </nav>
       <a href="#" data-open-modal="regModal" class="btn btn-stack nav-cta">Aaj Hi Join Karein</a>
@@ -72,6 +73,7 @@
     <a href="#fayde">Fayde</a>
     <a href="#daftar">Eligibility</a>
     <a href="#process">Process</a>
+    <a href="#events">Events</a>
     <a href="#kontak">Contact</a>
     <a href="#" data-open-modal="regModal" class="btn btn-stack">Aaj Hi Join Karein</a>
   </nav>
@@ -266,7 +268,6 @@
   <section class="events" id="events">
     <div class="container">
       <span class="eyebrow-y">Events</span>
-      <!-- <h2 class="section-h">Hamare Pichle Events Ki Kuch Photos</h2> -->
       <p class="events-sub">Hamare Pichle Events Ki Kuch Photos</p>
       <div class="events-grid">
         <figure class="event-img event-img-wide">
@@ -348,6 +349,17 @@
     </div>
   </footer>
 
+  <!-- ============ EVENT IMAGE LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Event photo">
+    <button class="lightbox-close" aria-label="Band karein">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <figure class="lightbox-figure">
+      <img class="lightbox-img" src="" alt="" />
+      <figcaption class="lightbox-cap"></figcaption>
+    </figure>
+  </div>
+
   <!-- ============ FLOATING ACTIONS (test number 9801470664) ============ -->
   <div class="floaters">
     <a href="https://wa.me/919801470664?text=Namaste%20Green%20SM%21%20Main%20aapke%20Driver%20Partner%20Program%20ke%20saath%20%E2%82%B950%2C000%2B%20har%20mahine%20kamana%20chahta%20hoon.%20Kripya%20mujhe%20join%20karne%20ki%20jaankari%20dein." class="floater wa" aria-label="WhatsApp" target="_blank" rel="noopener">
@@ -408,6 +420,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>

@@ -382,6 +382,31 @@ body.nav-open { overflow: hidden; }
 .cta-banner h2 { font-family: var(--font-display); font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; max-width: 24ch; margin: 0 auto 14px; }
 .cta-banner p { font-size: 18px; max-width: 56ch; margin: 0 auto 28px; opacity: .95; }
 
+/* ============ EVENT GALLERY ============ */
+.events { background: #f4fbfb; padding-block: 66px; text-align: center; }
+.events .eyebrow-y { color: var(--cyan-deep); }
+.events .section-h { margin: 6px 0 12px; }
+.events-sub {
+  max-width: 60ch; margin: 0 auto 36px; font-size: 16px;
+  color: var(--muted); line-height: 1.6;
+}
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: 14px;
+}
+.event-img {
+  border-radius: 14px; overflow: hidden;
+  position: relative;
+}
+.event-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .35s ease;
+}
+.event-img:hover img { transform: scale(1.05); }
+.event-img-wide { grid-column: span 2; }
+
 /* ============ STANDALONE REGISTER PAGE ============ */
 .register-page {
   padding-block: 120px 60px;
@@ -591,7 +616,7 @@ body.nav-open { overflow: hidden; }
   .adv-grid { max-width: 620px; margin-inline: auto; }
   .req-grid { grid-template-columns: 1fr; gap: 30px; }
   .steps-grid { grid-template-columns: 1fr 1fr; }
-
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 980px) {
   .hero {
@@ -678,7 +703,9 @@ body.nav-open { overflow: hidden; }
   .hero::after { height: 74px; }
 
   /* sections: tighter vertical rhythm so it isn't a sparse endless scroll */
-  .earning, .advantages, .steps { padding-block: 44px; }
+  .earning, .advantages, .steps, .events { padding-block: 44px; }
+  .events-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+  .event-img-wide { grid-column: span 2; }
   .requirements { padding-block: 48px; }
   .cta-banner { padding-block: 48px; }
   .earning .section-h, .steps .section-h { margin-bottom: 26px; }

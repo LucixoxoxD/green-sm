@@ -162,10 +162,10 @@ body.nav-open { overflow: hidden; }
   overflow: visible;
   isolation: isolate;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   min-height: 680px;
   gap: clamp(20px, 4vw, 68px);
-  padding: 3rem 5% 0;
+  padding: 3rem 5% 3.5rem;
   background:
     radial-gradient(52% 62% at 76% 38%, rgba(255,255,255,.24) 0%, rgba(255,255,255,0) 62%),
     radial-gradient(42% 48% at 22% 18%, rgba(91,231,238,.35) 0%, rgba(91,231,238,0) 68%),
@@ -225,7 +225,7 @@ body.nav-open { overflow: hidden; }
 /* ---- combined image ---- */
 .hero-visual {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   width: 55%;
   max-width: 700px;
@@ -235,8 +235,11 @@ body.nav-open { overflow: hidden; }
 .hero-combined-img {
   width: 100%;
   height: auto;
-  object-fit: contain;
   display: block;
+  border-radius: 22px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .28),
+    0 26px 64px -26px rgba(4, 40, 44, .72);
 }
 
 /* ============ EARNING OPPORTUNITY ============ */
@@ -684,7 +687,7 @@ body.nav-open { overflow: hidden; }
     align-items: center;
     overflow: hidden;
     min-height: auto;
-    padding: 2rem 5%;
+    padding: 2rem 5% 4.5rem;
     gap: 8px;
   }
   .hero-content {

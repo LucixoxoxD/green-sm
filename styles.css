@@ -1,3 +1,26 @@
+/* ============ CUSTOM FONTS ============ */
+@font-face {
+  font-family: "XanhDisplay";
+  src: url("assets/fonts/XanhDisplay2.0-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "XanhDisplay";
+  src: url("assets/fonts/XanhDisplay2.0-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PublicSansXanhSM";
+  src: url("assets/fonts/PublicSansForXanhSM-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ============ DESIGN TOKENS (matched to xanhsm reference) ============ */
 :root {
   --cyan: #21c3d6;
@@ -16,8 +39,8 @@
   --shadow: 0 22px 50px -24px rgba(8, 70, 74, 0.45);
   --shadow-sm: 0 10px 26px -16px rgba(8, 70, 74, 0.4);
   --maxw: 1200px;
-  --font: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font: "PublicSansXanhSM", "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "XanhDisplay", "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 /* ============ RESET ============ */

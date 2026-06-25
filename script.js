@@ -86,6 +86,18 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && regModal?.classList.contains("open")) closeModal();
 });
 
+// ============ Event gallery: tap-to-reveal caption (touch devices) ============
+const eventImgs = document.querySelectorAll(".event-img");
+if (window.matchMedia("(hover: none)").matches) {
+  eventImgs.forEach((card) => {
+    card.addEventListener("click", () => {
+      const wasOpen = card.classList.contains("show-cap");
+      eventImgs.forEach((c) => c.classList.remove("show-cap"));
+      if (!wasOpen) card.classList.add("show-cap");
+    });
+  });
+}
+
 // ============ Form handling ============
 document.querySelectorAll(".reg-form").forEach((form) => {
   // mobile: digits only, max 10

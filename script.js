@@ -56,6 +56,36 @@ document
     })
   );
 
+// ============ Registration Modal ============
+const regModal = document.getElementById("regModal");
+
+function openModal() {
+  if (!regModal) return;
+  regModal.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeModal() {
+  if (!regModal) return;
+  regModal.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll("[data-open-modal]").forEach((el) =>
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    setNav(false);
+    openModal();
+  })
+);
+
+regModal?.querySelector(".modal-close")?.addEventListener("click", closeModal);
+regModal?.addEventListener("click", (e) => {
+  if (e.target === regModal) closeModal();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && regModal?.classList.contains("open")) closeModal();
+});
+
 // ============ Form handling ============
 document.querySelectorAll(".reg-form").forEach((form) => {
   // mobile: digits only, max 10

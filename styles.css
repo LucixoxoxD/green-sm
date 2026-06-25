@@ -439,27 +439,7 @@ body.nav-open { overflow: hidden; }
   line-height: 1.5;
   color: #374151;
 }
-.footer-disclaimer {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-.footer-disclaimer summary {
-  font-weight: 600;
-  color: #1a2b3c;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-.footer-disclaimer p {
-  text-align: left;
-  max-width: 900px;
-  margin: 1rem auto 0;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: #6b7280;
-}
+
 .footer-legal-links {
   display: flex;
   justify-content: center;

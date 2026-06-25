@@ -382,39 +382,6 @@ body.nav-open { overflow: hidden; }
 .cta-banner h2 { font-family: var(--font-display); font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; max-width: 24ch; margin: 0 auto 14px; }
 .cta-banner p { font-size: 18px; max-width: 56ch; margin: 0 auto 28px; opacity: .95; }
 
-/* ============ MEET YOUR FLEET (last section #12) ============ */
-.fleet { background: #f4fbfb; padding-block: 66px; text-align: center; }
-.fleet .eyebrow-y { color: var(--cyan-deep); }
-.fleet .section-h { margin: 6px 0 40px; }
-.fleet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-.fleet-card {
-  position: relative; border-radius: 22px; overflow: hidden; min-height: 380px;
-  display: flex; align-items: flex-end;
-  background: radial-gradient(120% 90% at 50% 0%, #2bc4d4 0%, #12a7ba 55%, #0a4e52 100%);
-  box-shadow: var(--shadow);
-}
-.fleet-card::before {
-  content: ""; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,.2) 1.3px, transparent 1.3px);
-  background-size: 20px 20px; opacity: .4;
-}
-.fleet-card img {
-  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-  height: 90%; width: auto; object-fit: contain; z-index: 1;
-}
-.fleet-cap {
-  position: relative; z-index: 2; width: 100%; text-align: left;
-  padding: 50px 22px 22px; color: var(--white);
-  background: linear-gradient(180deg, transparent 0%, rgba(4,30,32,.78) 70%);
-}
-.fleet-tag {
-  display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 800;
-  letter-spacing: .04em; text-transform: uppercase; color: var(--teal-ink);
-  background: var(--yellow); padding: 5px 12px; border-radius: 999px; margin-bottom: 10px;
-}
-.fleet-cap h4 { font-size: 19px; font-weight: 800; margin-bottom: 4px; }
-.fleet-cap p { font-size: 14px; line-height: 1.45; color: rgba(255,255,255,.88); }
-
 /* ============ FOOTER ============ */
 .site-footer {
   background: #f8f9fa;
@@ -612,7 +579,7 @@ body.nav-open { overflow: hidden; }
   .adv-grid { max-width: 620px; margin-inline: auto; }
   .req-grid { grid-template-columns: 1fr; gap: 30px; }
   .steps-grid { grid-template-columns: 1fr 1fr; }
-  .fleet-grid { grid-template-columns: 1fr 1fr; }
+
 }
 @media (max-width: 980px) {
   .hero {
@@ -699,12 +666,12 @@ body.nav-open { overflow: hidden; }
   .hero::after { height: 74px; }
 
   /* sections: tighter vertical rhythm so it isn't a sparse endless scroll */
-  .earning, .advantages, .steps, .fleet { padding-block: 44px; }
+  .earning, .advantages, .steps { padding-block: 44px; }
   .requirements { padding-block: 48px; }
   .cta-banner { padding-block: 48px; }
-  .earning .section-h, .steps .section-h, .fleet .section-h { margin-bottom: 26px; }
+  .earning .section-h, .steps .section-h { margin-bottom: 26px; }
 
-  .earning-grid, .steps-grid, .fleet-grid, .adv-grid { grid-template-columns: 1fr; gap: 14px; }
+  .earning-grid, .steps-grid, .adv-grid { grid-template-columns: 1fr; gap: 14px; }
   .coupon { padding-inline: 32px; }
 
   /* compact cards — kill the empty whitespace from the phone screenshots */
@@ -719,7 +686,7 @@ body.nav-open { overflow: hidden; }
   .btn { padding: 15px 28px; font-size: 16px; }
   .btn-center, .btn-gold-text, .reg-form .btn { width: 100%; max-width: 420px; margin-inline: auto; }
 
-  .fleet-card { min-height: 400px; max-width: 360px; margin-inline: auto; width: 100%; }
+
 
   .footer-info-grid {
     grid-template-columns: 1fr;

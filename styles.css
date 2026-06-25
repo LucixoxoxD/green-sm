@@ -228,7 +228,7 @@ body.nav-open { overflow: hidden; }
 }
 .hero-title {
   font-family: var(--font-display);
-  color: var(--white); font-weight: 700; line-height: 1.02; letter-spacing: -.5px;
+  color: var(--yellow); font-weight: 700; line-height: 1.02; letter-spacing: -.5px;
   font-size: clamp(50px, 5.4vw, 78px);
   text-shadow: 0 4px 18px rgba(8, 70, 74, .35); margin-bottom: 18px;
 }

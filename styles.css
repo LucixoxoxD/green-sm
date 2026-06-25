@@ -127,7 +127,7 @@ ul { list-style: none; padding: 0; }
 }
 .nav-mobile-logo { height: 34px; width: auto; }
 .nav-close {
-  width: 42px; height: 42px; flex: none; border-radius: 50%;
+  width: 44px; height: 44px; flex: none; border-radius: 50%;
   border: 1px solid var(--line); background: #f4fbfb; color: var(--teal-ink);
   display: grid; place-items: center; cursor: pointer;
   transition: background .15s ease, transform .12s ease;
@@ -457,6 +457,8 @@ body.nav-open { overflow: hidden; }
   position: absolute; top: 12px; right: 14px; z-index: 1;
   background: none; border: none; font-size: 28px; line-height: 1;
   color: var(--muted); cursor: pointer; transition: color .15s;
+  min-width: 48px; min-height: 48px;
+  display: flex; align-items: center; justify-content: center;
 }
 .modal-close:hover { color: var(--heading); }
 
@@ -529,6 +531,7 @@ body.nav-open { overflow: hidden; }
   color: #00b4d8;
   text-decoration: none;
   font-weight: 500;
+  padding: 12px 4px;
 }
 .footer-legal-links a:hover {
   text-decoration: underline;

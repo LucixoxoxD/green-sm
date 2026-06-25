@@ -159,33 +159,27 @@ body.nav-open { overflow: hidden; }
 /* ============ HERO ============ */
 .hero {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   isolation: isolate;
   display: flex;
   align-items: center;
   min-height: 680px;
-  gap: clamp(20px, 4vw, 68px);
-  padding: 3rem 5% 3.5rem;
-  background:
-    radial-gradient(52% 62% at 76% 38%, rgba(255,255,255,.24) 0%, rgba(255,255,255,0) 62%),
-    radial-gradient(42% 48% at 22% 18%, rgba(91,231,238,.35) 0%, rgba(91,231,238,0) 68%),
-    linear-gradient(152deg, #2ccbd5 0%, #12aeba 39%, #087f89 72%, #075f66 100%);
+  padding: 3rem 5%;
+  background: #0a4e52; /* fallback while the photo loads */
 }
+/* full-bleed background photo */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 58%;
+}
+/* readability overlay: darken left (text) + bottom, keep the right open */
 .hero::before {
   content: "";
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    radial-gradient(58% 24% at 66% 88%, rgba(4,43,48,.34) 0%, transparent 72%),
-    linear-gradient(180deg, rgba(255,255,255,.12) 0%, transparent 28%, rgba(4,55,60,.12) 100%);
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: 96px;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.7) 74%, var(--white) 100%);
+    linear-gradient(100deg, rgba(5,58,62,.92) 0%, rgba(5,58,62,.6) 38%, rgba(5,58,62,.15) 70%, rgba(5,58,62,0) 100%),
+    linear-gradient(180deg, rgba(5,58,62,.32) 0%, rgba(4,40,44,0) 38%, rgba(4,40,44,.5) 100%);
 }
 
 /* ---- text column ---- */
@@ -222,31 +216,6 @@ body.nav-open { overflow: hidden; }
 }
 .hero-call:hover { background: #073f44; transform: translateY(-2px); }
 
-/* ---- combined image ---- */
-.hero-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 55%;
-  max-width: 700px;
-  overflow: visible;
-  z-index: 2;
-}
-.hero-combined-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  /* feather all four edges to transparent so the photo melts into the
-     teal hero gradient instead of showing a hard, pasted-on rectangle */
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%),
-    linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%),
-    linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
-  mask-composite: intersect;
-}
 
 /* ============ EARNING OPPORTUNITY ============ */
 .earning {
@@ -690,11 +659,17 @@ body.nav-open { overflow: hidden; }
 @media (max-width: 980px) {
   .hero {
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     overflow: hidden;
-    min-height: auto;
-    padding: 2rem 5% 4.5rem;
+    min-height: 92vh;
+    padding: 2.5rem 5% 3rem;
     gap: 8px;
+  }
+  /* centered text on mobile: even vertical scrim instead of left-weighted */
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(5,58,62,.74) 0%, rgba(5,58,62,.42) 44%, rgba(4,40,44,.64) 100%);
   }
   .hero-content {
     align-items: center;
@@ -730,11 +705,6 @@ body.nav-open { overflow: hidden; }
     padding: 13px 18px;
     font-size: 16px;
   }
-  .hero-visual {
-    width: 100%;
-    max-width: 500px;
-    margin: 2rem auto 0;
-  }
   .floaters {
     right: 14px;
     bottom: max(22px, env(safe-area-inset-bottom));
@@ -764,12 +734,6 @@ body.nav-open { overflow: hidden; }
   .hero-sub { font-size: 15px; margin-bottom: 18px; }
   .hero-cta { max-width: 300px; gap: 10px; }
   .hero-cta .btn { min-height: 46px; padding-block: 12px; }
-  .hero-visual {
-    width: 90%;
-    max-width: 400px;
-    margin: 1.5rem auto 0;
-  }
-  .hero::after { height: 74px; }
 
   /* sections: tighter vertical rhythm so it isn't a sparse endless scroll */
   .earning, .advantages, .steps, .events { padding-block: 44px; }
@@ -829,10 +793,6 @@ body.nav-open { overflow: hidden; }
   .hero-sub { margin-bottom: 18px; font-size: 14.5px; }
   .hero-cta { max-width: 320px; gap: 12px; }
   .hero-cta .btn { min-height: 48px; padding-block: 13px; }
-  .hero-visual {
-    width: 95%;
-    max-width: 340px;
-  }
 }
 @media (max-width: 360px) {
   .hero-title { font-size: 27px; }

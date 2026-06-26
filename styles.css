@@ -221,14 +221,15 @@ body.nav-open { overflow: hidden; }
 }
 .hero-title .accent-y {
   color: var(--yellow);
-  font-weight: 800;
-  /* fine dark outline + soft depth so yellow pops over the light bg */
+  font-weight: 700;
+  /* thin dark outline + soft depth so yellow pops over the light bg
+     without looking heavier than the rest of the heading */
   text-shadow:
-    -1px -1px 0 rgba(10, 78, 82, .55),
-     1px -1px 0 rgba(10, 78, 82, .55),
-    -1px  1px 0 rgba(10, 78, 82, .55),
-     1px  1px 0 rgba(10, 78, 82, .55),
-     0 2px 6px rgba(8, 70, 74, .28);
+    -0.5px -0.5px 0 rgba(10, 78, 82, .45),
+     0.5px -0.5px 0 rgba(10, 78, 82, .45),
+    -0.5px  0.5px 0 rgba(10, 78, 82, .45),
+     0.5px  0.5px 0 rgba(10, 78, 82, .45),
+     0 2px 6px rgba(8, 70, 74, .22);
 }
 .hero-sub {
   font-family: "Public Sans", system-ui, sans-serif;

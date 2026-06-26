@@ -224,8 +224,19 @@ body.nav-open { overflow: hidden; }
     display: block;
     flex: 0 0 50%;
     width: 50%;
-    object-fit: cover;                   /* full-height, flush to the right edge */
+    align-self: stretch;                 /* match the full hero height */
+    overflow: hidden;                    /* clip the crop to this column only */
+  }
+  .hero-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;                        /* image fills the full hero height */
+    object-fit: cover;
     object-position: center;
+    /* gentle zoom anchored to the road so the pale sunset band at the top is
+       trimmed and the cars read as the focus, with no gaps */
+    transform: scale(1.14);
+    transform-origin: center bottom;
   }
 }
 .hero-eyebrow {

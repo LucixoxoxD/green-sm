@@ -216,19 +216,21 @@ body.nav-open { overflow: hidden; }
   font-family: var(--font-display);
   color: var(--heading); font-weight: 600; line-height: 1.02; letter-spacing: -.3px;
   font-size: clamp(28px, 3.8vw, 50px);
-  text-shadow: 0 2px 10px rgba(255, 255, 255, .25); margin-bottom: 18px;
+  text-shadow: none; margin-bottom: 18px;
   white-space: nowrap;
 }
 .hero-title .accent-y { color: var(--yellow); }
 .hero-sub {
   font-family: "Public Sans", system-ui, sans-serif;
-  color: rgba(255,255,255,.96); font-size: clamp(16px, 1.9vw, 20px); font-weight: 400;
-  max-width: 48ch; margin-bottom: 30px; text-shadow: 0 1px 10px rgba(8, 70, 74, .3);
+  color: var(--heading); font-size: clamp(16px, 1.9vw, 20px); font-weight: 400;
+  max-width: 48ch; margin-bottom: 24px; text-shadow: none;
 }
-.hero-sub strong { color: inherit; font-weight: inherit; }
+.hero-sub strong { color: var(--yellow); font-weight: 700; }
 
 .hero-benefits { margin-bottom: 28px; gap: 10px; }
+.hero-benefits { color: var(--heading); }
 .hero-benefits li { font-family: "Public Sans", system-ui, sans-serif; font-weight: 400; font-size: clamp(15px, 1.7vw, 17px); }
+.hero-benefits .ic-check { color: var(--yellow); }
 
 .hero-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
 /* deeper fill so the cyan button stays visible against the cyan hero bg,
@@ -718,6 +720,7 @@ body.nav-open { overflow: hidden; }
     align-items: center;
     text-align: center;
     padding: 0;
+    margin-top: clamp(14px, 4vh, 28px);
     max-width: 560px;
     width: 100%;
     margin-inline: auto;
@@ -726,21 +729,21 @@ body.nav-open { overflow: hidden; }
   .hero-title {
     max-width: none;
     margin-bottom: 14px;
-    font-size: clamp(22px, 5vw, 34px);
+    font-size: clamp(22px, 4.9vw, 32px);
     line-height: 1;
   }
   .hero-sub {
     max-width: 36ch;
-    margin-bottom: 18px;
-    font-size: clamp(14px, 3.8vw, 16px);
+    margin-bottom: 14px;
+    font-size: clamp(14px, 3.6vw, 15px);
     line-height: 1.4;
   }
   .hero-benefits {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     gap: 10px;
   }
   .hero-benefits li {
-    font-size: clamp(14px, 3.55vw, 16px);
+    font-size: clamp(14px, 3.4vw, 15px);
   }
   .hero-cta {
     width: 100%;
@@ -775,9 +778,9 @@ body.nav-open { overflow: hidden; }
   .navbar { position: sticky; }
   .nav-inner { min-height: 72px; padding-block: 10px; }
   .nav-logo img { height: 34px; }
-  .hero-title { font-size: clamp(24px, 5.6vw, 34px); line-height: 1; margin-bottom: 12px; }
-  .hero-sub { font-size: 14.5px; margin-bottom: 16px; }
-  .hero-benefits { margin-bottom: 16px; }
+  .hero-title { font-size: clamp(21px, 5.1vw, 30px); line-height: 1; margin-bottom: 12px; }
+  .hero-sub { font-size: 14px; margin-bottom: 12px; }
+  .hero-benefits { margin-bottom: 12px; }
   .hero-cta { max-width: 300px; gap: 10px; }
   .hero-cta .btn { min-height: 48px; padding-block: 12px; }
 
@@ -850,14 +853,14 @@ body.nav-open { overflow: hidden; }
   .floater img { width: 25px; height: 25px; }
 }
 @media (max-width: 420px) {
-  .hero-title { font-size: clamp(20px, 5.2vw, 28px); margin-bottom: 10px; }
-  .hero-sub { margin-bottom: 14px; font-size: 13.8px; }
+  .hero-title { font-size: clamp(19px, 5vw, 26px); margin-bottom: 8px; }
+  .hero-sub { margin-bottom: 10px; font-size: 13.4px; }
   .hero-cta { max-width: 320px; gap: 12px; }
   .hero-cta .btn { min-height: 48px; padding-block: 13px; }
   .section-h { font-size: clamp(17px, 5.4vw, 22px); }
   .steps .section-h { font-size: clamp(15px, 4.8vw, 19px); }
 }
 @media (max-width: 360px) {
-  .hero-title { font-size: clamp(18px, 5vw, 24px); }
-  .hero-sub { font-size: 13.2px; margin-bottom: 12px; }
+  .hero-title { font-size: clamp(18px, 4.8vw, 24px); }
+  .hero-sub { font-size: 13px; margin-bottom: 10px; }
 }

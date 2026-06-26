@@ -61,6 +61,12 @@ const regModal = document.getElementById("regModal");
 
 function openModal() {
   if (!regModal) return;
+  // open afresh every time a CTA triggers it: clear any partially-filled
+  // fields from a previous open and drop their validation/error state
+  regModal.querySelectorAll(".reg-form").forEach((form) => {
+    form.reset();
+    form.querySelectorAll(".invalid").forEach((f) => f.classList.remove("invalid"));
+  });
   regModal.classList.add("open");
   document.body.style.overflow = "hidden";
 }

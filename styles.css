@@ -716,7 +716,7 @@ body.nav-open { overflow: hidden; }
 .toast {
   position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 24px);
   background: var(--teal-ink); color: var(--white); padding: 14px 22px;
-  border-radius: 12px; font-weight: 700; font-size: 14px; z-index: 80;
+  border-radius: 12px; font-weight: 700; font-size: 14px; z-index: 10000;
   box-shadow: var(--shadow); max-width: 90vw;
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity .3s ease, transform .35s cubic-bezier(.2, .8, .2, 1), visibility .3s ease;

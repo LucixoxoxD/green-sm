@@ -736,6 +736,17 @@ body.nav-open { overflow: hidden; }
     height: 23px;
   }
 }
+/* Mobile portrait: fit the full image width (all 3 cars), no side crop.
+   Image sits at the bottom; the cyan gradient + bg-color fill the space
+   above it and blend into the top of the photo. */
+@media (max-width: 768px) {
+  .hero {
+    background-color: var(--cyan);
+    background-size: cover, 100% auto;
+    background-position: top center, bottom center;
+    background-repeat: no-repeat, no-repeat;
+  }
+}
 @media (max-width: 600px) {
   .container { padding-inline: 18px; }
   .navbar { position: sticky; }

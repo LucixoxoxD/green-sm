@@ -219,13 +219,33 @@ body.nav-open { overflow: hidden; }
   text-shadow: none; margin-bottom: 18px;
   white-space: nowrap;
 }
-.hero-title .accent-y { color: var(--yellow); }
+.hero-title .accent-y {
+  color: var(--yellow);
+  font-weight: 800;
+  /* fine dark outline + soft depth so yellow pops over the light bg */
+  text-shadow:
+    -1px -1px 0 rgba(10, 78, 82, .55),
+     1px -1px 0 rgba(10, 78, 82, .55),
+    -1px  1px 0 rgba(10, 78, 82, .55),
+     1px  1px 0 rgba(10, 78, 82, .55),
+     0 2px 6px rgba(8, 70, 74, .28);
+}
 .hero-sub {
   font-family: "Public Sans", system-ui, sans-serif;
   color: var(--heading); font-size: clamp(16px, 1.9vw, 20px); font-weight: 400;
   max-width: 48ch; margin-bottom: 24px; text-shadow: none;
 }
-.hero-sub strong { color: var(--yellow); font-weight: 700; }
+.hero-sub strong {
+  color: var(--yellow);
+  font-weight: 800;
+  /* fine dark outline + soft depth so the figure pops over the light bg */
+  text-shadow:
+    -0.5px -0.5px 0 rgba(10, 78, 82, .5),
+     0.5px -0.5px 0 rgba(10, 78, 82, .5),
+    -0.5px  0.5px 0 rgba(10, 78, 82, .5),
+     0.5px  0.5px 0 rgba(10, 78, 82, .5),
+     0 1px 4px rgba(8, 70, 74, .25);
+}
 
 .hero-benefits { margin-bottom: 28px; gap: 10px; }
 .hero-benefits { color: var(--heading); }

@@ -180,45 +180,41 @@ body.nav-open { overflow: hidden; }
 #earning, #fayde, #daftar, #register, #process, #events, #kontak { scroll-margin-top: 88px; }
 
 /* ============ HERO ============ */
-/* ---- DESKTOP: two-column hero (text left, clear car image right) ---- */
+/* ---- DESKTOP: full-bleed car photo behind the content (immersive) ---- */
 .hero {
   position: relative;
   isolation: isolate;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: clamp(32px, 4vw, 64px);
-  min-height: min(600px, calc(100vh - 72px));
+  min-height: min(620px, calc(100vh - 72px));
   /* center the inner content to the site max-width, like other sections */
   padding-block: clamp(48px, 6vh, 80px);
   padding-inline: max(5%, calc((100% - var(--maxw)) / 2));
   box-sizing: border-box;
   overflow: hidden;
-  /* clean on-brand teal wash — no washed-out photo behind the text */
-  background: linear-gradient(135deg, #d6f1f2 0%, #c2e7ea 48%, #a9e2e7 100%);
-}
-/* the car photo as a crisp rounded card on the right (no overlay) */
-.hero::after {
-  content: "";
-  flex: 1 1 50%;
-  align-self: stretch;
-  min-height: 340px;
-  max-height: 480px;
-  margin-block: auto;
-  border-radius: 22px;
-  background-image: url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: var(--shadow);
+  background-color: #badbe3;
+  background-image:
+    /* left-to-right brand wash keeps the text readable, then clears so the
+       photo reveals the cars on the right and feels part of the scene */
+    linear-gradient(to right,
+      #c5e9ec 0%,
+      rgba(197, 233, 236, 0.97) 38%,
+      rgba(197, 233, 236, 0.55) 56%,
+      rgba(197, 233, 236, 0) 78%),
+    url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
 }
 
-/* ---- text column ---- */
+/* ---- text column (left ~half) ---- */
 .hero-content {
   position: relative; z-index: 2;
   display: flex; flex-direction: column; align-items: flex-start; text-align: left;
-  flex: 1 1 50%;
-  max-width: 600px;
+  flex: 0 1 auto;
+  max-width: min(52%, 580px);
+  margin-right: auto;
 }
 .hero-eyebrow {
   color: rgba(255,255,255,.92); font-weight: 700;

@@ -45,7 +45,7 @@ function flashContact() {
   contactBox.classList.remove("flash");
   void contactBox.offsetWidth; // restart the animation if already running
   contactBox.classList.add("flash");
-  setTimeout(() => contactBox.classList.remove("flash"), 2600);
+  setTimeout(() => contactBox.classList.remove("flash"), 2050);
 }
 document
   .querySelectorAll('.nav-links a[href="#kontak"], .nav-mobile a[href="#kontak"]')

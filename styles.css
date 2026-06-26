@@ -318,7 +318,19 @@ body.nav-open { overflow: hidden; }
 .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 .req-copy .section-h { color: var(--heading); max-width: 16ch; }
 .req-sub { color: var(--white); font-weight: 800; font-size: 19px; margin: 14px 0 24px; }
-.req-list li { color: var(--heading); font-size: 17px; font-weight: 600; }
+.req-list { gap: 12px; margin-bottom: 24px; }
+.req-list li {
+  color: var(--heading);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+  gap: 10px;
+}
+.req-list .ic-check {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
 .req-list .ic-check { color: var(--cyan-deep); }
 .req-list strong { color: var(--teal-ink); }
 
@@ -385,7 +397,7 @@ body.nav-open { overflow: hidden; }
 
 /* ============ EVENT GALLERY ============ */
 .events { background: #f4fbfb; padding-block: 70px; text-align: center; }
-.events .eyebrow-y { color: var(--yellow-deep); }
+.events .eyebrow-y { color: #000; }
 .events .section-h { margin: 6px 0 12px; }
 .events-sub {
   max-width: 60ch; margin: 0 auto 44px; font-size: 16px;
@@ -476,11 +488,11 @@ body.nav-open { overflow: hidden; }
 .footer-main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2.5rem 5% 1.25rem;
+  padding: 2rem 5% 0.8rem;
 }
 .footer-header {
   text-align: left;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 .footer-logo {
   height: 50px;
@@ -497,7 +509,7 @@ body.nav-open { overflow: hidden; }
   display: grid;
   grid-template-columns: 1fr 1.5fr 1.5fr;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.1rem;
 }
 .footer-info-col h4 {
   font-size: 0.95rem;
@@ -527,21 +539,21 @@ body.nav-open { overflow: hidden; }
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 0;
+  margin-bottom: 0.35rem;
 }
 .footer-legal-links a {
   font-size: 0.9rem;
   color: #00b4d8;
   text-decoration: none;
   font-weight: 500;
-  padding: 12px 4px;
+  padding: 6px 4px;
 }
 .footer-legal-links a:hover {
   text-decoration: underline;
 }
 .footer-bottom {
   border-top: 1px solid #e5e7eb;
-  padding: 1rem 5%;
+  padding: 0.7rem 5%;
   text-align: center;
 }
 .footer-bottom p {
@@ -557,7 +569,7 @@ body.nav-open { overflow: hidden; }
 }
 .footer-info-col.flash {
   border-radius: 12px;
-  animation: contactFlash 1.2s ease-in-out 2;
+  animation: contactFlash 2s ease-in-out 1;
 }
 .footer-info-col.flash h4 { color: var(--cyan-deep); }
 .footer-info-col.flash .footer-info-item p { color: var(--cyan-deep); font-weight: 700; }

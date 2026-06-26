@@ -99,7 +99,7 @@ ul { list-style: none; padding: 0; }
   position: sticky; top: 0; z-index: 50;
   background: rgba(255, 255, 255, .96);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  /* no hard border line under the navbar — soft shadow handles separation */
   box-shadow: 0 6px 20px -18px rgba(8, 70, 74, .5);
 }
 .nav-inner { display: flex; align-items: center; gap: 18px; padding-block: 12px; }
@@ -180,31 +180,44 @@ body.nav-open { overflow: hidden; }
 #earning, #fayde, #daftar, #register, #process, #events, #kontak { scroll-margin-top: 88px; }
 
 /* ============ HERO ============ */
+/* ---- DESKTOP: two-column hero (text left, clear car image right) ---- */
 .hero {
   position: relative;
   isolation: isolate;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 100vh; /* Strictly clamps container to viewport screen boundaries */
-  min-height: 620px;
-  padding: 3rem 5% 0;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(32px, 4vw, 64px);
+  min-height: min(600px, calc(100vh - 72px));
+  /* center the inner content to the site max-width, like other sections */
+  padding-block: clamp(48px, 6vh, 80px);
+  padding-inline: max(5%, calc((100% - var(--maxw)) / 2));
   box-sizing: border-box;
-  background-color: #badbe3; /* Seamlessly fills upper background grid */
-  background-image:
-    linear-gradient(to bottom, #badbe3 0%, #badbe3 20%, rgba(186, 219, 227, 0.6) 50%, transparent 85%),
-    url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-  background-size: 135% auto; /* Scaled precisely to match Expected.jpeg proportions on standard viewports */
-  background-position: center bottom; /* Drops road and cars perfectly along bottom line */
+  overflow: hidden;
+  /* clean on-brand teal wash — no washed-out photo behind the text */
+  background: linear-gradient(135deg, #d6f1f2 0%, #c2e7ea 48%, #a9e2e7 100%);
+}
+/* the car photo as a crisp rounded card on the right (no overlay) */
+.hero::after {
+  content: "";
+  flex: 1 1 50%;
+  align-self: stretch;
+  min-height: 340px;
+  max-height: 480px;
+  margin-block: auto;
+  border-radius: 22px;
+  background-image: url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+  box-shadow: var(--shadow);
 }
 
 /* ---- text column ---- */
 .hero-content {
   position: relative; z-index: 2;
   display: flex; flex-direction: column; align-items: flex-start; text-align: left;
-  flex: 1 1 0%;
+  flex: 1 1 50%;
   max-width: 600px;
 }
 .hero-eyebrow {
@@ -217,7 +230,6 @@ body.nav-open { overflow: hidden; }
   color: var(--heading); font-weight: 600; line-height: 1.02; letter-spacing: -.3px;
   font-size: clamp(28px, 3.8vw, 50px);
   text-shadow: none; margin-bottom: 18px;
-  white-space: nowrap;
 }
 .hero-title .accent-y {
   color: var(--yellow);
@@ -746,6 +758,8 @@ body.nav-open { overflow: hidden; }
     background-position: center bottom 34vw, center bottom;
     background-repeat: no-repeat, no-repeat;
   }
+  /* mobile keeps the stacked layout — hide the desktop image card */
+  .hero::after { display: none; }
   .hero-content {
     align-items: center;
     text-align: center;
@@ -761,6 +775,7 @@ body.nav-open { overflow: hidden; }
     margin-bottom: 14px;
     font-size: clamp(22px, 4.9vw, 32px);
     line-height: 1;
+    white-space: nowrap;
   }
   .hero-sub {
     max-width: 36ch;

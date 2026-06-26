@@ -247,13 +247,11 @@ body.nav-open { overflow: hidden; }
      color can't read everywhere — use white with a thin dark outline + soft
      shadow so it stays crisp over BOTH. (heading + yellow accent keep colors.)
      .hero-content prefix raises specificity over the later base .hero-sub rule */
-  .hero-content .hero-sub,
+  /* checklist: white with a thin dark outline + soft halo so it holds over both
+     light haze and the dark trees (bg shifts with screen aspect — photo is cover) */
   .hero-content .hero-benefits,
   .hero-content .hero-benefits li {
     color: #ffffff;
-    /* thin dark outline keeps white crisp over LIGHT haze; the soft dark halo
-       backs the letters so they also hold over DARK trees (the bg behind this
-       copy shifts light<->dark with screen aspect because the photo is cover) */
     text-shadow:
       -1px -1px 0 rgba(7, 33, 36, .85),
        1px -1px 0 rgba(7, 33, 36, .85),
@@ -261,6 +259,11 @@ body.nav-open { overflow: hidden; }
        1px  1px 0 rgba(7, 33, 36, .85),
        0 0 14px rgba(7, 33, 36, .55),
        0 2px 6px rgba(7, 33, 36, .55);
+  }
+  /* subheading paragraph: keep the earlier dark look, just a little bolder */
+  .hero-content .hero-sub {
+    color: #1a2b32;
+    font-weight: 500;
   }
   /* keep the whole heading on a single line so "Partner Bano!" never breaks */
   .hero-content .hero-title {

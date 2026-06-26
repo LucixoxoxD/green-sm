@@ -713,10 +713,14 @@ body.nav-open { overflow: hidden; }
     box-sizing: border-box;
     background-color: #badbe3;
     background-image:
-      linear-gradient(180deg, #badbe3 0%, #badbe3 56%, rgba(186, 219, 227, 0.96) 72%, rgba(186, 219, 227, 0.42) 88%, rgba(186, 219, 227, 0) 100%),
+      /* short blend strip over ONLY the top edge of the photo so the cars
+         and monument stay clear and vibrant instead of washing out under a
+         full-height overlay. strip sits at the image top (56vw from bottom)
+         and fades out over its upper ~22vw; everything below stays clear. */
+      linear-gradient(180deg, #badbe3 0%, rgba(186, 219, 227, 0) 100%),
       url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-    background-size: 100% 100%, 100% auto;
-    background-position: center top, center bottom;
+    background-size: 100% 22vw, 100% auto;
+    background-position: center bottom 34vw, center bottom;
     background-repeat: no-repeat, no-repeat;
   }
   .hero-content {

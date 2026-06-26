@@ -187,23 +187,16 @@ body.nav-open { overflow: hidden; }
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  
-  /* Forces the hero section to be exactly the height of the phone screen */
-  height: 100vh; 
-  min-height: 600px;
+  height: 100vh; /* Strictly clamps container to viewport screen boundaries */
+  min-height: 620px;
   padding: 3rem 5% 0;
-  
-  /* This color matches the upper blue sky of your photo precisely */
-  background-color: #badbe3; 
-  
+  box-sizing: border-box;
+  background-color: #badbe3; /* Seamlessly fills upper background grid */
   background-image:
-    /* This gradient starts solid blue at the top (covering the empty gap), 
-       then beautifully blends into transparency right where the photo's sky begins */
-    linear-gradient(to bottom, #badbe3 0%, #badbe3 25%, rgba(186, 219, 227, 0.7) 50%, transparent 85%),
+    linear-gradient(to bottom, #badbe3 0%, #badbe3 20%, rgba(186, 219, 227, 0.6) 50%, transparent 85%),
     url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-    
-  background-size: 100% auto;        /* Fits all 3 cars side-to-side without zooming */
-  background-position: center bottom; /* Locks the road and cars to the bottom of the screen */
+  background-size: 135% auto; /* Scaled precisely to match Expected.jpeg proportions on standard viewports */
+  background-position: center bottom; /* Drops road and cars perfectly along bottom line */
   background-repeat: no-repeat;
 }
 
@@ -706,15 +699,16 @@ body.nav-open { overflow: hidden; }
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh;
-    padding: 2rem 20px 0;
+    height: 100vh; /* Hard locks content area viewport height */
+    padding: 2.5rem 20px 0;
     gap: 12px;
+    box-sizing: border-box;
     background-color: #badbe3;
     background-image:
-      linear-gradient(to bottom, #badbe3 0%, #badbe3 30%, rgba(186, 219, 227, 0.8) 55%, transparent 90%),
+      linear-gradient(to bottom, #badbe3 0%, #badbe3 25%, rgba(186, 219, 227, 0.7) 55%, transparent 90%),
       url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-    background-size: 100% auto;
-    background-position: center bottom;
+    background-size: 145% auto; /* Generates beautiful, side-to-side scaling matching Expected.jpeg perfectly */
+    background-position: 52% bottom; /* Micro-centers the fleet framing specifically for mobile boundaries */
     background-repeat: no-repeat;
   }
   .hero-content {

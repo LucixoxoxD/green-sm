@@ -702,10 +702,13 @@ body.nav-open { overflow: hidden; }
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: calc(100svh - 72px);
-    min-height: calc(100svh - 72px);
+    /* size to content + reserve space for the bottom car image
+       (image is 1080x608 = 56.3% aspect, shown at 100% width) so the
+       photo sits flush under the CTAs with no empty blue void */
+    height: auto;
+    min-height: 0;
     overflow: hidden;
-    padding: 14px 18px 0;
+    padding: 14px 18px 56vw;
     gap: 10px;
     box-sizing: border-box;
     background-color: #badbe3;

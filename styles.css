@@ -187,14 +187,23 @@ body.nav-open { overflow: hidden; }
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  min-height: 100vh;
-  padding: 3rem 5% 38vh; /* Bottom padding keeps text safely away from the cars */
-  background-color: #badbe3; /* Matches the soft upper sky tone of the image */
+  
+  /* Forces the hero section to be exactly the height of the phone screen */
+  height: 100vh; 
+  min-height: 600px;
+  padding: 3rem 5% 0;
+  
+  /* This color matches the upper blue sky of your photo precisely */
+  background-color: #badbe3; 
+  
   background-image:
-    linear-gradient(to bottom, rgba(186, 219, 227, 0.95) 0%, rgba(186, 219, 227, 0.5) 35%, transparent 75%),
+    /* This gradient starts solid blue at the top (covering the empty gap), 
+       then beautifully blends into transparency right where the photo's sky begins */
+    linear-gradient(to bottom, #badbe3 0%, #badbe3 25%, rgba(186, 219, 227, 0.7) 50%, transparent 85%),
     url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-  background-size: 100% auto; /* CRUCIAL: Fits entire image widthwise, revealing all 3 cars */
-  background-position: center bottom; /* Anchors the road and fleet to the bottom edge */
+    
+  background-size: 100% auto;        /* Fits all 3 cars side-to-side without zooming */
+  background-position: center bottom; /* Locks the road and cars to the bottom of the screen */
   background-repeat: no-repeat;
 }
 
@@ -697,14 +706,14 @@ body.nav-open { overflow: hidden; }
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 100vh;
-    padding: 2.5rem 20px 30vh; /* Perfectly lifts content above India Gate on mobile */
-    gap: 16px;
+    height: 100vh;
+    padding: 2rem 20px 0;
+    gap: 12px;
     background-color: #badbe3;
     background-image:
-      linear-gradient(to bottom, rgba(186, 219, 227, 0.95) 0%, rgba(186, 219, 227, 0.6) 45%, transparent 80%),
+      linear-gradient(to bottom, #badbe3 0%, #badbe3 30%, rgba(186, 219, 227, 0.8) 55%, transparent 90%),
       url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-    background-size: 100% auto; /* Ensures no zoom/cropping happens on smaller screens */
+    background-size: 100% auto;
     background-position: center bottom;
     background-repeat: no-repeat;
   }

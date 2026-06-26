@@ -180,41 +180,53 @@ body.nav-open { overflow: hidden; }
 #earning, #fayde, #daftar, #register, #process, #events, #kontak { scroll-margin-top: 88px; }
 
 /* ============ HERO ============ */
-/* ---- DESKTOP: full-bleed car photo behind the content (immersive) ---- */
+/* ---- HERO (base; mobile keeps stacked layout via the max-width:980 block) ---- */
 .hero {
   position: relative;
   isolation: isolate;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  min-height: min(620px, calc(100vh - 72px));
-  /* center the inner content to the site max-width, like other sections */
-  padding-block: clamp(48px, 6vh, 80px);
-  padding-inline: max(5%, calc((100% - var(--maxw)) / 2));
-  box-sizing: border-box;
-  overflow: hidden;
-  background-color: #badbe3;
-  background-image:
-    /* left-to-right brand wash keeps the text readable, then clears so the
-       photo reveals the cars on the right and feels part of the scene */
-    linear-gradient(to right,
-      #c5e9ec 0%,
-      rgba(197, 233, 236, 0.97) 38%,
-      rgba(197, 233, 236, 0.55) 56%,
-      rgba(197, 233, 236, 0) 78%),
-    url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-  background-size: cover, cover;
-  background-position: center, center;
-  background-repeat: no-repeat, no-repeat;
 }
 
-/* ---- text column (left ~half) ---- */
+/* ---- text column ---- */
 .hero-content {
   position: relative; z-index: 2;
   display: flex; flex-direction: column; align-items: flex-start; text-align: left;
-  flex: 0 1 auto;
-  max-width: min(52%, 580px);
-  margin-right: auto;
+}
+
+/* the split-screen car photo only renders on desktop */
+.hero-photo { display: none; }
+
+/* ---- DESKTOP (lg+): clean 50/50 split — teal text panel | car photo ---- */
+@media (min-width: 981px) {
+  .hero {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: min(620px, calc(100vh - 72px));
+    overflow: hidden;
+    background: #e8f6f6;
+  }
+  .hero-content {
+    flex: 0 0 50%;
+    max-width: 50%;
+    justify-content: center;            /* vertically centered */
+    padding: 48px clamp(40px, 5vw, 80px);
+    box-sizing: border-box;
+  }
+  /* keep the whole heading on a single line (sized to fit the panel) so
+     "Partner Bano!" never breaks onto its own line.
+     .hero-content prefix raises specificity over the base .hero-title size. */
+  .hero-content .hero-title {
+    white-space: nowrap;
+    font-size: clamp(26px, 2.8vw, 46px);
+  }
+  .hero-content .hero-title .accent-y { white-space: nowrap; }
+  .hero-photo {
+    display: block;
+    flex: 0 0 50%;
+    width: 50%;
+    object-fit: cover;                   /* full-height, flush to the right edge */
+    object-position: center;
+  }
 }
 .hero-eyebrow {
   color: rgba(255,255,255,.92); font-weight: 700;

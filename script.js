@@ -4,7 +4,25 @@ let toastTimer;
 function showToast(msg, isError = false) {
   if (!toastEl) return;
   clearTimeout(toastTimer);
-  toastEl.textContent = msg;
+  if (!toastEl.dataset.enhanced) {
+    toastEl.innerHTML = `
+      <span class="toast-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 8v5" />
+          <path d="M12 16.5h.01" />
+          <path d="M10.29 4.86 2.82 18a1.9 1.9 0 0 0 1.65 2.85h15.06A1.9 1.9 0 0 0 21.18 18L13.71 4.86a1.9 1.9 0 0 0-3.42 0Z" />
+        </svg>
+      </span>
+      <span class="toast-text"></span>
+    `;
+    toastEl.dataset.enhanced = "true";
+  }
+  const toastText = toastEl.querySelector(".toast-text");
+  if (toastText) {
+    toastText.textContent = msg;
+  } else {
+    toastEl.textContent = msg;
+  }
   toastEl.classList.toggle("error", isError);
   toastEl.classList.add("show");
   toastTimer = setTimeout(() => toastEl.classList.remove("show"), 3500);

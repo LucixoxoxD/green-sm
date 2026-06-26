@@ -715,14 +715,43 @@ body.nav-open { overflow: hidden; }
 /* ============ TOAST ============ */
 .toast {
   position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 24px);
-  background: var(--teal-ink); color: var(--white); padding: 14px 22px;
-  border-radius: 12px; font-weight: 700; font-size: 14px; z-index: 10000;
-  box-shadow: var(--shadow); max-width: 90vw;
+  display: flex; align-items: center; gap: 12px;
+  width: fit-content; max-width: min(92vw, 440px);
+  background: linear-gradient(180deg, rgba(50, 10, 16, .98), rgba(24, 7, 10, .98));
+  color: var(--white); padding: 14px 20px 14px 16px;
+  border: 1px solid #7a1220; border-left: 4px solid #9b1626;
+  border-radius: 16px; font-weight: 700; font-size: 14px; line-height: 1.4;
+  z-index: 10000; box-shadow: 0 18px 45px rgba(64, 8, 18, .32);
+  backdrop-filter: blur(10px);
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity .3s ease, transform .35s cubic-bezier(.2, .8, .2, 1), visibility .3s ease;
 }
 .toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; pointer-events: auto; }
-.toast.error { background: #e9573f; }
+.toast.error {
+  background: linear-gradient(180deg, rgba(64, 12, 18, .98), rgba(28, 6, 9, .98));
+  border-color: #86111f;
+  border-left-color: #cf2034;
+}
+.toast-icon {
+  width: 18px; height: 18px; flex: none;
+  display: inline-grid; place-items: center;
+  color: #ffb7c0;
+}
+.toast-icon svg { width: 100%; height: 100%; }
+.toast-text { display: block; }
+
+@media (max-width: 600px) {
+  .toast {
+    left: 0; right: 0; bottom: 0; transform: translateY(110%);
+    width: 100%; max-width: none; box-sizing: border-box;
+    border-radius: 0; border-left-width: 0; border-right-width: 0; border-bottom-width: 0;
+    border-top: 1px solid #7a1220;
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+    justify-content: flex-start;
+    box-shadow: 0 -10px 28px rgba(64, 8, 18, .34);
+  }
+  .toast.show { transform: translateY(0); }
+}
 
 /* ============ LEGAL PAGES ============ */
 .legal-page {

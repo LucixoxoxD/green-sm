@@ -211,14 +211,13 @@ body.nav-open { overflow: hidden; }
     overflow: hidden;
     background-color: #badbe3;            /* sky tone, same as mobile */
     background-image:
-      /* sky tint up top for clean text, fading out HIGH so the India Gate arch
-         (~30% down) stays crisp & bright — cars/lower frame fully clear */
+      /* light sky tint ONLY behind the heading at the very top, gone by ~20%
+         so the entire top half of India Gate is completely sharp & clear */
       linear-gradient(180deg,
         #badbe3 0%,
-        rgba(186, 219, 227, 0.95) 13%,
-        rgba(186, 219, 227, 0.45) 24%,
-        rgba(186, 219, 227, 0.12) 33%,
-        rgba(186, 219, 227, 0) 43%),
+        rgba(186, 219, 227, 0.82) 7%,
+        rgba(186, 219, 227, 0.30) 14%,
+        rgba(186, 219, 227, 0) 21%),
       url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
     /* gradient covers the whole hero; the ~16:9 photo is sized to COVER and
        pinned to the bottom, so it always fills the banner (no seam on any
@@ -244,6 +243,12 @@ body.nav-open { overflow: hidden; }
     box-sizing: border-box;
   }
   .hero-cta { align-items: flex-start; }
+  /* high-contrast charcoal so the copy reads cleanly now that the blue tint is
+     gone behind it (heading + yellow accent keep their own colors).
+     .hero-content prefix raises specificity over the later base .hero-sub rule */
+  .hero-content .hero-sub,
+  .hero-content .hero-benefits,
+  .hero-content .hero-benefits li { color: #1a2b32; }
   /* keep the whole heading on a single line so "Partner Bano!" never breaks */
   .hero-content .hero-title {
     white-space: nowrap;

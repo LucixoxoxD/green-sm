@@ -188,14 +188,14 @@ body.nav-open { overflow: hidden; }
   justify-content: flex-start;
   align-items: flex-start;
   min-height: 100vh;
-  /* large bottom space so the content/buttons sit high in the sky, clear of cars */
-  padding: 3rem 5% 35vh;
-  background-color: var(--cyan); /* fills the sky area above the image */
+  padding: 2.5rem 22px 42vh; /* Bottom space reserves room so cars sit clear of text */
+  background-color: #badbe3; /* Matches the exact light blue-teal sky tone at the top of the photo */
   background-image:
-    linear-gradient(to bottom, var(--cyan) 0%, rgba(33, 195, 214, 0.8) 40%, transparent 100%),
-    url('assets/images/hero-latest.jpg');
-  background-size: 100% auto; /* full image width — all 3 cars, no side crop */
-  background-position: bottom center; /* anchor cars to the bottom */
+    /* A premium light-to-transparent gradient blend that ensures text remains highly legible */
+    linear-gradient(to bottom, rgba(186, 219, 227, 0.9) 0%, rgba(186, 219, 227, 0.4) 40%, transparent 80%),
+    url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
+  background-size: cover;
+  background-position: 54% bottom; /* Micro-shifts horizontally to center all 3 cars on mobile screen boundaries */
   background-repeat: no-repeat;
 }
 
@@ -699,10 +699,10 @@ body.nav-open { overflow: hidden; }
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
-    /* reserve the lower part of the screen for the cars */
-    padding: 2rem 5% 35vh;
-    gap: 18px;
-    background-position: bottom center;
+    padding: 2rem 20px 40vh; /* Keeps content perfectly elevated above India Gate */
+    gap: 16px;
+    background-position: 54% bottom;
+    background-size: cover;
   }
   .hero-content {
     align-items: center;
@@ -758,11 +758,6 @@ body.nav-open { overflow: hidden; }
   .navbar { position: sticky; }
   .nav-inner { min-height: 72px; padding-block: 10px; }
   .nav-logo img { height: 34px; }
-
-  .hero {
-    padding-top: 24px;
-    gap: 18px;
-  }
   .hero-eyebrow { font-size: 11px; margin-bottom: 8px; }
   .hero-title { font-size: clamp(21px, 6vw, 26px); line-height: 1.14; margin-bottom: 12px; }
   .hero-title .hero-br { display: none; } /* let it flow onto one line */

@@ -188,13 +188,14 @@ body.nav-open { overflow: hidden; }
   justify-content: flex-start;
   align-items: flex-start;
   min-height: 100vh;
-  /* large bottom space so the content/buttons end above the cars */
-  padding: 3rem 5% 30vh;
-  background:
-    linear-gradient(to bottom, var(--cyan) 0%, rgba(33, 195, 214, 0.7) 40%, transparent 100%),
+  /* large bottom space so the content/buttons sit high in the sky, clear of cars */
+  padding: 3rem 5% 35vh;
+  background-color: var(--cyan); /* fills the sky area above the image */
+  background-image:
+    linear-gradient(to bottom, var(--cyan) 0%, rgba(33, 195, 214, 0.8) 40%, transparent 100%),
     url('assets/images/hero-latest.jpg');
-  background-size: cover;
-  background-position: bottom center;
+  background-size: 100% auto; /* full image width — all 3 cars, no side crop */
+  background-position: bottom center; /* anchor cars to the bottom */
   background-repeat: no-repeat;
 }
 
@@ -228,6 +229,10 @@ body.nav-open { overflow: hidden; }
 .hero-benefits li { font-family: "Public Sans", system-ui, sans-serif; font-weight: 500; font-size: clamp(15px, 1.7vw, 17px); }
 
 .hero-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+/* deeper fill so the cyan button stays visible against the cyan hero bg,
+   letting the yellow read as a proper solid stacked shadow (not a stray line) */
+.hero-cta .btn-stack { background: var(--cyan-deep); }
+.hero-cta .btn-stack:hover { background: #0e8fa0; }
 .hero-call {
   background: var(--teal-ink);
   box-shadow: 0 14px 30px -16px rgba(4,40,44,.8);
@@ -683,7 +688,7 @@ body.nav-open { overflow: hidden; }
     align-items: center;
     min-height: 100vh;
     /* reserve the lower part of the screen for the cars */
-    padding: 2rem 5% 34vh;
+    padding: 2rem 5% 35vh;
     gap: 18px;
     background-position: bottom center;
   }
@@ -734,17 +739,6 @@ body.nav-open { overflow: hidden; }
   .floater svg {
     width: 23px;
     height: 23px;
-  }
-}
-/* Mobile portrait: fit the full image width (all 3 cars), no side crop.
-   Image sits at the bottom; the cyan gradient + bg-color fill the space
-   above it and blend into the top of the photo. */
-@media (max-width: 768px) {
-  .hero {
-    background-color: var(--cyan);
-    background-size: cover, 100% auto;
-    background-position: top center, bottom center;
-    background-repeat: no-repeat, no-repeat;
   }
 }
 @media (max-width: 600px) {

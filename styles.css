@@ -203,7 +203,7 @@ body.nav-open { overflow: hidden; }
 @media (min-width: 981px) {
   .hero {
     flex-direction: row;
-    align-items: center;                 /* text vertically centered */
+    align-items: flex-start;             /* text pinned to the TOP (upper sky) */
     justify-content: flex-start;         /* text pinned to the left */
     /* exactly fill the screen below the 69px sticky navbar => no page scroll */
     height: calc(100vh - 70px);
@@ -211,13 +211,14 @@ body.nav-open { overflow: hidden; }
     overflow: hidden;
     background-color: #badbe3;            /* sky tone, same as mobile */
     background-image:
-      /* solid sky at the top melting into transparent so the photo's own sky
-         takes over — covers the seam, cars in the lower band stay crisp */
+      /* sky tint up top for clean text, fading out HIGH so the India Gate arch
+         (~30% down) stays crisp & bright — cars/lower frame fully clear */
       linear-gradient(180deg,
         #badbe3 0%,
-        #badbe3 22%,
-        rgba(186, 219, 227, 0.55) 42%,
-        rgba(186, 219, 227, 0) 64%),
+        rgba(186, 219, 227, 0.95) 13%,
+        rgba(186, 219, 227, 0.45) 24%,
+        rgba(186, 219, 227, 0.12) 33%,
+        rgba(186, 219, 227, 0) 43%),
       url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
     /* gradient covers the whole hero; the ~16:9 photo is sized to COVER and
        pinned to the bottom, so it always fills the banner (no seam on any
@@ -238,7 +239,8 @@ body.nav-open { overflow: hidden; }
     width: 100%;
     max-width: 560px;
     margin: 0;
-    padding: 0 clamp(40px, 6vw, 90px);
+    /* sit just below the navbar in the upper sky, not vertically centered */
+    padding: clamp(28px, 5vh, 64px) clamp(40px, 6vw, 90px) 0;
     box-sizing: border-box;
   }
   .hero-cta { align-items: flex-start; }

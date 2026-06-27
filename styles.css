@@ -266,10 +266,16 @@ body.nav-open { overflow: hidden; }
        0 0 14px rgba(7, 33, 36, .55),
        0 2px 6px rgba(7, 33, 36, .55);
   }
-  /* subheading paragraph: keep the earlier dark look, just a little bolder */
+  /* subheading paragraph: keep the premium dark look (great over the light sky),
+     a bit bolder, plus a soft white halo so the line that crosses the dark green
+     trees ("saath kamao...") stays cleanly readable instead of vanishing */
   .hero-content .hero-sub {
     color: #1a2b32;
-    font-weight: 500;
+    font-weight: 600;
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.9),
+      0 0 9px rgba(255, 255, 255, 0.6),
+      0 1px 1px rgba(255, 255, 255, 0.85);
   }
   /* keep the whole heading on a single line so "Partner Bano!" never breaks */
   .hero-content .hero-title {

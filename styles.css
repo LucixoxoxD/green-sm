@@ -903,9 +903,9 @@ body.nav-open { overflow: hidden; }
     grid-template-columns: 1fr;
     justify-content: center;
     gap: 10px;
-    /* generous clearance below the CTA so there's clear breathing space between
-       the button and the pointy top of India Gate (yellow shadow sits on blue) */
-    margin-bottom: 64px;
+    /* tight gap so the CTA sits close to the top of India Gate; just enough room
+       for the button's yellow stacked shadow to rest on the blue, not the photo */
+    margin-bottom: 12px;
   }
   .hero-cta .btn {
     width: 100%;

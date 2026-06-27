@@ -211,6 +211,12 @@ body.nav-open { overflow: hidden; }
     overflow: hidden;
     background-color: #badbe3;            /* sky tone, same as mobile */
     background-image:
+      /* bottom edge melts to pure white so the dark asphalt road blends
+         seamlessly into the white next section (no hard cut-off line) */
+      linear-gradient(to top,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.8) 2.5%,
+        rgba(255, 255, 255, 0) 9%),
       /* light sky tint ONLY behind the heading at the very top, gone by ~20%
          so the entire top half of India Gate is completely sharp & clear */
       linear-gradient(180deg,
@@ -219,13 +225,13 @@ body.nav-open { overflow: hidden; }
         rgba(186, 219, 227, 0.30) 14%,
         rgba(186, 219, 227, 0) 21%),
       url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-    /* gradient covers the whole hero; the ~16:9 photo is sized to COVER and
+    /* gradients cover the whole hero; the ~16:9 photo is sized to COVER and
        pinned to the bottom, so it always fills the banner (no seam on any
        screen) with the cars resting on the very bottom edge and only excess
        sky trimmed off the top */
-    background-size: 100% 100%, cover;
-    background-position: center top, center bottom;
-    background-repeat: no-repeat, no-repeat;
+    background-size: 100% 100%, 100% 100%, cover;
+    background-position: center bottom, center top, center bottom;
+    background-repeat: no-repeat, no-repeat, no-repeat;
   }
   /* using the background image now — hide the inline photo element */
   .hero-photo { display: none; }
@@ -269,6 +275,8 @@ body.nav-open { overflow: hidden; }
   .hero-content .hero-title {
     white-space: nowrap;
     font-size: clamp(30px, 3.4vw, 48px);
+    /* extra breathing room so the subheading drops ~2 lines below the headline */
+    margin-bottom: 40px;
   }
   .hero-content .hero-title .accent-y { white-space: nowrap; }
 }

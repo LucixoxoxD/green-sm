@@ -835,6 +835,9 @@ body.nav-open { overflow: hidden; }
     box-sizing: border-box;
     background-color: #badbe3;
     background-image:
+      /* bottom edge melts to pure white so the dark asphalt road blends
+         seamlessly into the white next section (no hard cut-off line) */
+      linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0.8) 28%, rgba(255, 255, 255, 0) 100%),
       /* short blend strip over ONLY the top edge of the photo so the cars
          and monument stay clear and vibrant instead of washing out under a
          full-height overlay. its SOLID top extends a few vw above the photo's
@@ -843,9 +846,9 @@ body.nav-open { overflow: hidden; }
          everything below ~34vw from the bottom stays clear. */
       linear-gradient(180deg, #badbe3 0%, #badbe3 18%, rgba(186, 219, 227, 0) 100%),
       url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-    background-size: 100% 26vw, 100% auto;
-    background-position: center bottom 34vw, center bottom;
-    background-repeat: no-repeat, no-repeat;
+    background-size: 100% 11vw, 100% 26vw, 100% auto;
+    background-position: center bottom, center bottom 34vw, center bottom;
+    background-repeat: no-repeat, no-repeat, no-repeat;
   }
   /* mobile keeps the stacked layout — hide the desktop image card */
   .hero::after { display: none; }
@@ -861,7 +864,8 @@ body.nav-open { overflow: hidden; }
   .hero-cta { align-items: center; }
   .hero-title {
     max-width: none;
-    margin-bottom: 14px;
+    /* extra breathing room so the subheading drops well below the headline */
+    margin-bottom: 24px;
     font-size: clamp(22px, 4.9vw, 32px);
     line-height: 1;
     white-space: nowrap;
@@ -915,7 +919,7 @@ body.nav-open { overflow: hidden; }
   .navbar { position: sticky; }
   .nav-inner { min-height: 72px; padding-block: 10px; }
   .nav-logo img { height: 34px; }
-  .hero-title { font-size: clamp(21px, 5.1vw, 30px); line-height: 1; margin-bottom: 12px; }
+  .hero-title { font-size: clamp(21px, 5.1vw, 30px); line-height: 1; margin-bottom: 24px; }
   .hero-sub { font-size: 14px; margin-bottom: 12px; }
   .hero-benefits { margin-bottom: 12px; }
   .hero-cta { max-width: 300px; gap: 10px; }
@@ -990,7 +994,7 @@ body.nav-open { overflow: hidden; }
   .floater img { width: 25px; height: 25px; }
 }
 @media (max-width: 420px) {
-  .hero-title { font-size: clamp(19px, 5vw, 26px); margin-bottom: 8px; }
+  .hero-title { font-size: clamp(19px, 5vw, 26px); margin-bottom: 22px; }
   .hero-sub { margin-bottom: 10px; font-size: 13.4px; }
   .hero-cta { max-width: 320px; gap: 12px; }
   .hero-cta .btn { min-height: 48px; padding-block: 13px; }

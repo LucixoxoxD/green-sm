@@ -862,7 +862,8 @@ body.nav-open { overflow: hidden; }
     align-items: center;
     text-align: center;
     padding: 0;
-    margin-top: clamp(14px, 4vh, 28px);
+    /* sit closer to the navbar — less dead space above the headline */
+    margin-top: clamp(2px, 1vh, 10px);
     max-width: 560px;
     width: 100%;
     margin-inline: auto;
@@ -870,24 +871,30 @@ body.nav-open { overflow: hidden; }
   .hero-cta { align-items: center; }
   .hero-title {
     max-width: none;
-    /* extra breathing room so the subheading drops well below the headline */
-    margin-bottom: 24px;
+    /* a couple of lines of breathing room below the headline */
+    margin-bottom: 26px;
     font-size: clamp(22px, 4.9vw, 32px);
     line-height: 1;
     white-space: nowrap;
   }
+  /* premium subheading: charcoal, slightly heavier, airier line-height */
   .hero-sub {
     max-width: 36ch;
-    margin-bottom: 14px;
+    margin-bottom: 20px;
     font-size: clamp(14px, 3.6vw, 15px);
-    line-height: 1.4;
+    line-height: 1.55;
+    color: #1a2b32;
+    font-weight: 500;
+    letter-spacing: 0.1px;
   }
   .hero-benefits {
-    margin-bottom: 14px;
-    gap: 10px;
+    margin-bottom: 20px;
+    gap: 12px;
+    color: #1a2b32;
   }
   .hero-benefits li {
     font-size: clamp(14px, 3.4vw, 15px);
+    font-weight: 500;
   }
   .hero-cta {
     width: 100%;
@@ -896,9 +903,9 @@ body.nav-open { overflow: hidden; }
     grid-template-columns: 1fr;
     justify-content: center;
     gap: 10px;
-    /* clearance so the button's yellow stacked shadow sits against the blue,
-       not on top of the car photo (which made it look like a stray line) */
-    margin-bottom: 22px;
+    /* a few lines of clearance below the CTA so the TOP of India Gate stays
+       visible above the cars (and the yellow stacked shadow sits on the blue) */
+    margin-bottom: 30px;
   }
   .hero-cta .btn {
     width: 100%;
@@ -925,9 +932,9 @@ body.nav-open { overflow: hidden; }
   .navbar { position: sticky; }
   .nav-inner { min-height: 72px; padding-block: 10px; }
   .nav-logo img { height: 34px; }
-  .hero-title { font-size: clamp(21px, 5.1vw, 30px); line-height: 1; margin-bottom: 24px; }
-  .hero-sub { font-size: 14px; margin-bottom: 12px; }
-  .hero-benefits { margin-bottom: 12px; }
+  .hero-title { font-size: clamp(21px, 5.1vw, 30px); line-height: 1; margin-bottom: 26px; }
+  .hero-sub { font-size: 14px; margin-bottom: 20px; }
+  .hero-benefits { margin-bottom: 20px; }
   .hero-cta { max-width: 300px; gap: 10px; }
   .hero-cta .btn { min-height: 48px; padding-block: 12px; }
 
@@ -1000,8 +1007,8 @@ body.nav-open { overflow: hidden; }
   .floater img { width: 25px; height: 25px; }
 }
 @media (max-width: 420px) {
-  .hero-title { font-size: clamp(19px, 5vw, 26px); margin-bottom: 22px; }
-  .hero-sub { margin-bottom: 10px; font-size: 13.4px; }
+  .hero-title { font-size: clamp(19px, 5vw, 26px); margin-bottom: 24px; }
+  .hero-sub { margin-bottom: 18px; font-size: 13.4px; }
   .hero-cta { max-width: 320px; gap: 12px; }
   .hero-cta .btn { min-height: 48px; padding-block: 13px; }
   .section-h { font-size: clamp(17px, 5.4vw, 22px); }
@@ -1009,5 +1016,5 @@ body.nav-open { overflow: hidden; }
 }
 @media (max-width: 360px) {
   .hero-title { font-size: clamp(18px, 4.8vw, 24px); }
-  .hero-sub { font-size: 13px; margin-bottom: 10px; }
+  .hero-sub { font-size: 13px; margin-bottom: 16px; }
 }

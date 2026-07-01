@@ -185,7 +185,7 @@ body.nav-open { overflow: hidden; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 30px 64px 30px;
+  padding: 56px 64px;
   background: linear-gradient(180deg, #EFFAFA 0%, #F7FDFD 55%, #FFFFFF 100%);
   font-family: "Be Vietnam Pro", system-ui, sans-serif;
 }
@@ -239,7 +239,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---- headline ---- */
 .h2a-title {
-  margin: 14px 0 0;
+  margin: 22px 0 0;
   /* same typeface/style as the ".section-h" headings (e.g. "Aapki Mehnat...") */
   font-family: var(--font-display);
   font-weight: 700;
@@ -252,7 +252,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---- subheadline ---- */
 .h2a-sub {
-  margin: 14px auto 0;
+  margin: 18px auto 0;
   max-width: 46ch;
   font-size: clamp(17px, 1.6vw, 20px);
   line-height: 1.5;
@@ -272,7 +272,7 @@ body.nav-open { overflow: hidden; }
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-  margin-top: 22px;
+  margin-top: 30px;
 }
 .h2a-btn {
   display: inline-flex;
@@ -306,7 +306,7 @@ body.nav-open { overflow: hidden; }
 .h2a-media {
   position: relative;
   width: 100%;
-  margin-top: 26px;
+  margin-top: 44px;
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 26px 60px rgba(10, 42, 43, 0.2);
@@ -314,10 +314,9 @@ body.nav-open { overflow: hidden; }
 .h2a-media img {
   display: block;
   width: 100%;
-  /* height scales with the viewport so the whole hero (heading + image) fits
-     in one screen on laptops, while staying tall enough to show the India Gate
-     spire (top) and the cars (bottom) */
-  height: clamp(240px, 42vh, 520px);
+  /* taller frame + higher crop so the India Gate spire (top) is visible while
+     the cars (bottom) still stay in view */
+  height: 560px;
   object-fit: cover;
   object-position: center 55%;
 }

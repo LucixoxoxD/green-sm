@@ -205,13 +205,20 @@ body.nav-open { overflow: hidden; }
 .hero-2a-inner {
   position: relative;
   z-index: 1;
-  max-width: 960px;
+  /* wider shell so the hero image fills more of the screen (Option B); the text
+     elements below stay compact/centered, only the image spans this full width */
+  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
+/* keep the text block itself comfortably narrow (~960) while the image goes wide */
+.h2a-badge,
+.h2a-title,
+.h2a-sub,
+.h2a-cta { max-width: 960px; }
 
 /* ---- badge pill ---- */
 .h2a-badge {
@@ -233,9 +240,10 @@ body.nav-open { overflow: hidden; }
 /* ---- headline ---- */
 .h2a-title {
   margin: 22px 0 0;
-  font-family: "Be Vietnam Pro", system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  /* same typeface/style as the ".section-h" headings (e.g. "Aapki Mehnat...") */
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.4px;
   line-height: 1.05;
   color: #0A2A2B;
   font-size: clamp(38px, 6vw, 60px);

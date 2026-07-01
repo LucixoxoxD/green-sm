@@ -185,8 +185,7 @@ body.nav-open { overflow: hidden; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  /* navbar removed — add breathing room at the very top of the viewport */
-  padding: 48px 64px 30px;
+  padding: 30px 64px 30px;
   background: linear-gradient(180deg, #EFFAFA 0%, #F7FDFD 55%, #FFFFFF 100%);
   font-family: "Be Vietnam Pro", system-ui, sans-serif;
 }
@@ -359,7 +358,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---- responsive ---- */
 @media (max-width: 768px) {
-  .hero-2a { padding: 44px 20px 28px; }
+  .hero-2a { padding: 32px 20px 28px; }
   .h2a-title { font-size: clamp(30px, 9vw, 44px); }
   .h2a-sub { font-size: 16px; max-width: 34ch; }
   .h2a-btn { width: 100%; max-width: 360px; justify-content: center; }

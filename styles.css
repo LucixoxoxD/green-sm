@@ -370,8 +370,8 @@ body.nav-open { overflow: hidden; }
   .h2a-btn { width: 100%; max-width: 360px; justify-content: center; }
   .h2a-media { margin-top: 32px; border-radius: 18px; }
   .h2a-media img { height: 300px; }
-  /* chips drop below the image on small screens so they don't crowd it */
-  .h2a-chips { position: static; margin-top: 14px; padding: 0; }
+  /* hide the stat chips on small screens — they crowd the layout under the image */
+  .h2a-chips { display: none; }
 }
 
 

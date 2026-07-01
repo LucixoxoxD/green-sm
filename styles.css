@@ -246,7 +246,7 @@ body.nav-open { overflow: hidden; }
   letter-spacing: -0.4px;
   line-height: 1.05;
   color: #0A2A2B;
-  font-size: clamp(38px, 6vw, 60px);
+  font-size: clamp(32px, 5vw, 50px);
 }
 .h2a-accent { color: #0E8C91; }
 
@@ -254,7 +254,7 @@ body.nav-open { overflow: hidden; }
 .h2a-sub {
   margin: 14px auto 0;
   max-width: 46ch;
-  font-size: clamp(17px, 1.6vw, 20px);
+  font-size: clamp(15px, 1.4vw, 18px);
   line-height: 1.5;
   font-weight: 400;
   color: #3C5153;
@@ -306,7 +306,7 @@ body.nav-open { overflow: hidden; }
 .h2a-media {
   position: relative;
   width: 100%;
-  margin-top: 28px;
+  margin-top: 24px;
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 26px 60px rgba(10, 42, 43, 0.2);
@@ -316,7 +316,7 @@ body.nav-open { overflow: hidden; }
   width: 100%;
   /* full-width banner, height scales with the viewport so the whole hero fits
      one screen; cover keeps it edge-to-edge (India Gate spire + cars framed) */
-  height: clamp(300px, 40vh, 480px);
+  height: clamp(320px, 44vh, 540px);
   object-fit: cover;
   object-position: center 58%;
 }

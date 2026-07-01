@@ -368,8 +368,20 @@ body.nav-open { overflow: hidden; }
   .h2a-title { font-size: clamp(30px, 9vw, 44px); }
   .h2a-sub { font-size: 16px; max-width: 34ch; }
   .h2a-btn { width: 100%; max-width: 360px; justify-content: center; }
-  .h2a-media { margin-top: 32px; border-radius: 18px; }
-  .h2a-media img { height: 300px; }
+  /* full-bleed to the screen edges (no side seams) with only the TOP and BOTTOM
+     feathered into the background, so the horizontal edges disappear and the
+     photo blends seamlessly into the page. no rounded corners / shadow. */
+  .h2a-media {
+    margin-top: 24px;
+    width: calc(100% + 40px);
+    margin-inline: -20px;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 16%, #000 82%, transparent 100%);
+  }
+  .h2a-media::after { display: none; }
+  .h2a-media img { height: 340px; object-fit: cover; object-position: center 50%; }
   /* hide the stat chips on small screens — they crowd the layout under the image */
   .h2a-chips { display: none; }
 }

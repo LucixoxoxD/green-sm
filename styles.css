@@ -314,9 +314,11 @@ body.nav-open { overflow: hidden; }
 .h2a-media img {
   display: block;
   width: 100%;
-  height: 400px;
+  /* taller frame + higher crop so the India Gate spire (top) is visible while
+     the cars (bottom) still stay in view */
+  height: 560px;
   object-fit: cover;
-  object-position: center 72%;
+  object-position: center 55%;
 }
 .h2a-media::after {
   content: "";
@@ -365,7 +367,7 @@ body.nav-open { overflow: hidden; }
   .hero-2a { padding: 36px 20px; }
   .h2a-title { font-size: clamp(30px, 9vw, 44px); }
   .h2a-sub { font-size: 16px; max-width: 34ch; }
-  .h2a-btn { flex: 1 1 auto; justify-content: center; }
+  .h2a-btn { width: 100%; max-width: 360px; justify-content: center; }
   .h2a-media { margin-top: 32px; border-radius: 18px; }
   .h2a-media img { height: 300px; }
   /* chips drop below the image on small screens so they don't crowd it */

@@ -381,7 +381,8 @@ body.nav-open { overflow: hidden; }
     mask-image: linear-gradient(to bottom, transparent 0, #000 16%, #000 82%, transparent 100%);
   }
   .h2a-media::after { display: none; }
-  .h2a-media img { height: 340px; object-fit: cover; object-position: center 50%; }
+  /* natural height at full-bleed width — the FULL photo shows, nothing cropped */
+  .h2a-media img { height: auto; width: 100%; object-fit: fill; }
   /* hide the stat chips on small screens — they crowd the layout under the image */
   .h2a-chips { display: none; }
 }

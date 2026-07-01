@@ -180,167 +180,189 @@ body.nav-open { overflow: hidden; }
 #earning, #fayde, #daftar, #register, #process, #events, #kontak { scroll-margin-top: 88px; }
 
 /* ============ HERO ============ */
-/* ---- HERO (base; mobile keeps stacked layout via the max-width:980 block) ---- */
-.hero {
+/* ============ HERO (2a — single centered hero) ============ */
+.hero-2a {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
+  padding: 56px 64px;
+  background: linear-gradient(180deg, #EFFAFA 0%, #F7FDFD 55%, #FFFFFF 100%);
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+}
+/* soft cyan radial glow blob, top-center behind the content */
+.hero-2a::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -170px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 840px;
+  height: 520px;
+  background: radial-gradient(closest-side, rgba(45, 204, 211, 0.22), rgba(45, 204, 211, 0) 70%);
+  pointer-events: none;
+}
+.hero-2a-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-/* ---- text column ---- */
-.hero-content {
-  position: relative; z-index: 2;
-  display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+/* ---- badge pill ---- */
+.h2a-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #CFEDED;
+  color: #0C6E73;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 2px 10px rgba(12, 110, 115, 0.06);
 }
+.h2a-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #2DCCD3; flex: none; }
 
-/* the split-screen car photo only renders on desktop */
-.hero-photo { display: none; }
-
-/* ---- DESKTOP (lg+): full-screen 100vh banner. Text pinned LEFT, the car
-   photo is a full-width background anchored to the very bottom of the screen,
-   and the solid sky color blends seamlessly down into it (same gradient
-   technique as mobile) so there is no hard edge — one continuous banner. ---- */
-@media (min-width: 981px) {
-  .hero {
-    flex-direction: row;
-    align-items: flex-start;             /* text pinned to the TOP (upper sky) */
-    justify-content: flex-start;         /* text pinned to the left */
-    /* exactly fill the screen below the 69px sticky navbar => no page scroll */
-    height: calc(100vh - 70px);
-    min-height: 560px;
-    overflow: hidden;
-    background-color: #badbe3;            /* sky tone, same as mobile */
-    background-image:
-      /* bottom edge melts to pure white so the dark asphalt road blends
-         seamlessly into the white next section (no hard cut-off line) */
-      linear-gradient(to top,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0.8) 2.5%,
-        rgba(255, 255, 255, 0) 9%),
-      /* light sky tint ONLY behind the heading at the very top, gone by ~20%
-         so the entire top half of India Gate is completely sharp & clear */
-      linear-gradient(180deg,
-        #badbe3 0%,
-        rgba(186, 219, 227, 0.82) 7%,
-        rgba(186, 219, 227, 0.30) 14%,
-        rgba(186, 219, 227, 0) 21%),
-      url('Brand Kit GSM/LatestHeroImage/HeroImageLatest.jpg');
-    /* gradients cover the whole hero; the ~16:9 photo is sized to COVER and
-       pinned to the bottom, so it always fills the banner (no seam on any
-       screen) with the cars resting on the very bottom edge and only excess
-       sky trimmed off the top */
-    background-size: 100% 100%, 100% 100%, cover;
-    background-position: center bottom, center top, center bottom;
-    background-repeat: no-repeat, no-repeat, no-repeat;
-  }
-  /* using the background image now — hide the inline photo element */
-  .hero-photo { display: none; }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    align-items: flex-start;
-    text-align: left;
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 560px;
-    margin: 0;
-    /* sit just below the navbar in the upper sky, not vertically centered */
-    padding: clamp(28px, 5vh, 64px) clamp(40px, 6vw, 90px) 0;
-    box-sizing: border-box;
-  }
-  .hero-cta { align-items: flex-start; }
-  /* the copy crosses from light sky (top) into dark trees (bottom), so a flat
-     color can't read everywhere — use white with a thin dark outline + soft
-     shadow so it stays crisp over BOTH. (heading + yellow accent keep colors.)
-     .hero-content prefix raises specificity over the later base .hero-sub rule */
-  /* checklist: white with a thin dark outline + soft halo so it holds over both
-     light haze and the dark trees (bg shifts with screen aspect — photo is cover) */
-  .hero-content .hero-benefits,
-  .hero-content .hero-benefits li {
-    color: #ffffff;
-    text-shadow:
-      -1px -1px 0 rgba(7, 33, 36, .85),
-       1px -1px 0 rgba(7, 33, 36, .85),
-      -1px  1px 0 rgba(7, 33, 36, .85),
-       1px  1px 0 rgba(7, 33, 36, .85),
-       0 0 14px rgba(7, 33, 36, .55),
-       0 2px 6px rgba(7, 33, 36, .55);
-  }
-  /* subheading paragraph: keep the premium dark look (great over the light sky),
-     a bit bolder, plus a soft white halo so the line that crosses the dark green
-     trees ("saath kamao...") stays cleanly readable instead of vanishing */
-  .hero-content .hero-sub {
-    color: #1a2b32;
-    font-weight: 600;
-    text-shadow:
-      0 0 4px rgba(255, 255, 255, 0.9),
-      0 0 9px rgba(255, 255, 255, 0.6),
-      0 1px 1px rgba(255, 255, 255, 0.85);
-  }
-  /* keep the whole heading on a single line so "Partner Bano!" never breaks */
-  .hero-content .hero-title {
-    white-space: nowrap;
-    font-size: clamp(30px, 3.4vw, 48px);
-    /* extra breathing room so the subheading drops ~2 lines below the headline */
-    margin-bottom: 40px;
-  }
-  .hero-content .hero-title .accent-y { white-space: nowrap; }
-}
-.hero-eyebrow {
-  color: rgba(255,255,255,.92); font-weight: 700;
-  font-size: clamp(12px, 1.5vw, 15px); letter-spacing: 3px; text-transform: uppercase;
-  margin-bottom: 16px; text-shadow: 0 1px 10px rgba(8,70,74,.35);
-}
-.hero-title {
-  font-family: var(--font-display);
-  color: var(--heading); font-weight: 600; line-height: 1.02; letter-spacing: -.3px;
-  font-size: clamp(28px, 3.8vw, 50px);
-  text-shadow: none; margin-bottom: 18px;
-}
-.hero-title .accent-y {
-  color: var(--yellow);
-  font-weight: 700;
-  /* thin dark outline + soft depth so yellow pops over the light bg
-     without looking heavier than the rest of the heading */
-  text-shadow:
-    -0.5px -0.5px 0 rgba(10, 78, 82, .45),
-     0.5px -0.5px 0 rgba(10, 78, 82, .45),
-    -0.5px  0.5px 0 rgba(10, 78, 82, .45),
-     0.5px  0.5px 0 rgba(10, 78, 82, .45),
-     0 2px 6px rgba(8, 70, 74, .22);
-}
-.hero-sub {
-  font-family: "Public Sans", system-ui, sans-serif;
-  color: var(--heading); font-size: clamp(16px, 1.9vw, 20px); font-weight: 400;
-  max-width: 48ch; margin-bottom: 24px; text-shadow: none;
-}
-.hero-sub strong {
-  color: var(--yellow);
+/* ---- headline ---- */
+.h2a-title {
+  margin: 22px 0 0;
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
   font-weight: 800;
-  /* fine dark outline + soft depth so the figure pops over the light bg */
-  text-shadow:
-    -0.5px -0.5px 0 rgba(10, 78, 82, .5),
-     0.5px -0.5px 0 rgba(10, 78, 82, .5),
-    -0.5px  0.5px 0 rgba(10, 78, 82, .5),
-     0.5px  0.5px 0 rgba(10, 78, 82, .5),
-     0 1px 4px rgba(8, 70, 74, .25);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #0A2A2B;
+  font-size: clamp(38px, 6vw, 60px);
+}
+.h2a-accent { color: #0E8C91; }
+
+/* ---- subheadline ---- */
+.h2a-sub {
+  margin: 18px auto 0;
+  max-width: 46ch;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.5;
+  font-weight: 400;
+  color: #3C5153;
+}
+.h2a-hl {
+  background: linear-gradient(transparent 62%, #FFE283 62%);
+  color: #0A2A2B;
+  font-weight: 700;
+  padding: 0 2px;
 }
 
-.hero-benefits { margin-bottom: 28px; gap: 10px; }
-.hero-benefits { color: var(--heading); }
-.hero-benefits li { font-family: "Public Sans", system-ui, sans-serif; font-weight: 400; font-size: clamp(15px, 1.7vw, 17px); }
-.hero-benefits .ic-check { color: var(--yellow); }
-
-.hero-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
-/* deeper fill so the cyan button stays visible against the cyan hero bg,
-   letting the yellow read as a proper solid stacked shadow (not a stray line) */
-.hero-cta .btn-stack { background: var(--cyan-deep); }
-.hero-cta .btn-stack:hover { background: #0e8fa0; }
-.hero-call {
-  background: var(--teal-ink);
-  box-shadow: 0 14px 30px -16px rgba(4,40,44,.8);
+/* ---- buttons ---- */
+.h2a-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
 }
-.hero-call:hover { background: #073f44; transform: translateY(-2px); }
+.h2a-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 15px 26px;
+  border-radius: 999px;
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.h2a-btn svg { width: 18px; height: 18px; }
+.h2a-btn-primary {
+  background: #12A3A9;
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(18, 163, 169, 0.3);
+}
+.h2a-btn-primary:hover { background: #0E8C91; transform: translateY(-2px); }
+.h2a-btn-secondary {
+  background: #fff;
+  color: #0C6E73;
+  border: 1.5px solid #BFE7E7;
+}
+.h2a-btn-secondary:hover { background: #F2FBFB; transform: translateY(-2px); }
+
+/* ---- image + overlay ---- */
+.h2a-media {
+  position: relative;
+  width: 100%;
+  margin-top: 44px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 26px 60px rgba(10, 42, 43, 0.2);
+}
+.h2a-media img {
+  display: block;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center 72%;
+}
+.h2a-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(6, 40, 42, 0.55) 100%);
+}
+
+/* ---- floating chips ---- */
+.h2a-chips {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 16px;
+}
+.h2a-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 28px rgba(6, 40, 42, 0.28);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  color: #0A2A2B;
+}
+.h2a-chip strong { font-size: 20px; font-weight: 800; color: #0A2A2B; }
+.h2a-chip-sub { color: #5B7072; font-weight: 500; font-size: 14px; }
+.h2a-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.h2a-dot-cyan { background: #2DCCD3; }
+.h2a-dot-yellow { background: #FFCA00; }
+
+/* ---- responsive ---- */
+@media (max-width: 768px) {
+  .hero-2a { padding: 36px 20px; }
+  .h2a-title { font-size: clamp(30px, 9vw, 44px); }
+  .h2a-sub { font-size: 16px; max-width: 34ch; }
+  .h2a-btn { flex: 1 1 auto; justify-content: center; }
+  .h2a-media { margin-top: 32px; border-radius: 18px; }
+  .h2a-media img { height: 300px; }
+  /* chips drop below the image on small screens so they don't crowd it */
+  .h2a-chips { position: static; margin-top: 14px; padding: 0; }
+}
 
 
 /* ============ EARNING OPPORTUNITY ============ */

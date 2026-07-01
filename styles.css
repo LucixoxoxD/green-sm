@@ -305,10 +305,7 @@ body.nav-open { overflow: hidden; }
 /* ---- image + overlay ---- */
 .h2a-media {
   position: relative;
-  /* hug the image (which is sized by height below) so the rounded frame wraps
-     it tightly and the whole hero fits one screen without scrolling */
-  width: auto;
-  max-width: 100%;
+  width: 100%;
   margin-top: 28px;
   border-radius: 22px;
   overflow: hidden;
@@ -316,11 +313,12 @@ body.nav-open { overflow: hidden; }
 }
 .h2a-media img {
   display: block;
-  /* size by height and let width follow so the FULL photo shows uncropped;
-     the vh cap keeps the whole hero within one viewport on laptops */
-  height: clamp(260px, 42vh, 560px);
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  /* full-width banner, height scales with the viewport so the whole hero fits
+     one screen; cover keeps it edge-to-edge (India Gate spire + cars framed) */
+  height: clamp(300px, 40vh, 480px);
+  object-fit: cover;
+  object-position: center 58%;
 }
 .h2a-media::after {
   content: "";

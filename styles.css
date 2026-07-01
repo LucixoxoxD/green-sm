@@ -185,7 +185,7 @@ body.nav-open { overflow: hidden; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 30px 64px 30px;
+  padding: 20px 64px 24px;
   background: linear-gradient(180deg, #EFFAFA 0%, #F7FDFD 55%, #FFFFFF 100%);
   font-family: "Be Vietnam Pro", system-ui, sans-serif;
 }
@@ -239,7 +239,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---- headline ---- */
 .h2a-title {
-  margin: 16px 0 0;
+  margin: 0;
   /* same typeface/style as the ".section-h" headings (e.g. "Aapki Mehnat...") */
   font-family: var(--font-display);
   font-weight: 700;
@@ -252,7 +252,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---- subheadline ---- */
 .h2a-sub {
-  margin: 14px auto 0;
+  margin: 12px auto 0;
   max-width: 46ch;
   font-size: clamp(15px, 1.4vw, 18px);
   line-height: 1.5;
@@ -272,7 +272,7 @@ body.nav-open { overflow: hidden; }
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-  margin-top: 24px;
+  margin-top: 18px;
 }
 .h2a-btn {
   display: inline-flex;
@@ -306,7 +306,7 @@ body.nav-open { overflow: hidden; }
 .h2a-media {
   position: relative;
   width: 100%;
-  margin-top: 24px;
+  margin-top: 18px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 22px 50px rgba(10, 42, 43, 0.18);
@@ -314,10 +314,11 @@ body.nav-open { overflow: hidden; }
 .h2a-media img {
   display: block;
   width: 100%;
-  /* big full-width banner (like the reference design) — cover crop keeps it
-     edge-to-edge. anchored to the BOTTOM so the cars' wheels and road are never
-     cut off; only excess sky is trimmed from the top */
-  height: clamp(340px, 52vh, 580px);
+  /* big full-width banner — the height fills ALL viewport space left after the
+     text block (navbar+heading+sub+CTA+paddings ≈ 330px), so every pixel of
+     freed spacing goes to the photo. still bottom-anchored: wheels stay in
+     frame and the extra height reveals more of the TOP (India Gate) */
+  height: clamp(340px, calc(100vh - 330px), 660px);
   object-fit: cover;
   object-position: center bottom;
 }

@@ -382,6 +382,22 @@ body.nav-open { overflow: hidden; }
   .h2a-chips { display: none; }
 }
 
+/* ---- desktop-only: maximize the photo, reveal the monument ---- */
+@media (min-width: 769px) {
+  .hero-2a { padding: 16px 64px 20px; }
+  /* one line instead of two — saves ~28px that goes to the photo */
+  .h2a-sub { max-width: none; margin-top: 10px; }
+  .h2a-cta { margin-top: 16px; }
+  .h2a-media { margin-top: 16px; }
+  .h2a-media img {
+    height: clamp(360px, calc(100vh - 285px), 640px);
+    /* split the crop: mostly from the top sky, but ~15% from the empty road
+       strip below the wheels — the monument gains ~50-90px of reveal while
+       the wheels stay fully in frame */
+    object-position: center 85%;
+  }
+}
+
 
 /* ============ EARNING OPPORTUNITY ============ */
 .earning {

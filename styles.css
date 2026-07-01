@@ -316,10 +316,11 @@ body.nav-open { overflow: hidden; }
   display: block;
   width: 100%;
   /* big full-width banner (like the reference design) — cover crop keeps it
-     edge-to-edge with the India Gate centered and cars along the bottom */
+     edge-to-edge. anchored to the BOTTOM so the cars' wheels and road are never
+     cut off; only excess sky is trimmed from the top */
   height: clamp(340px, 52vh, 580px);
   object-fit: cover;
-  object-position: center 55%;
+  object-position: center bottom;
 }
 
 /* ---- floating chips ---- */

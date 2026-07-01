@@ -368,7 +368,20 @@ body.nav-open { overflow: hidden; }
   .h2a-title { font-size: clamp(30px, 9vw, 44px); }
   .h2a-sub { font-size: 16px; max-width: 34ch; }
   .h2a-btn { width: 100%; max-width: 360px; justify-content: center; }
-  .h2a-media { margin-top: 32px; border-radius: 18px; }
+  /* blend the photo into the page: full-bleed to the screen edges (no side
+     seams) and feather the top + bottom into the background, dropping the
+     card's rounded corners and shadow so there's no hard border */
+  .h2a-media {
+    margin-top: 28px;
+    width: calc(100% + 40px);
+    margin-inline: -20px;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 17%, #000 83%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 17%, #000 83%, rgba(0,0,0,0) 100%);
+  }
+  /* no dark overlay needed on mobile (chips are hidden here) */
+  .h2a-media::after { display: none; }
   .h2a-media img { height: 300px; }
   /* hide the stat chips on small screens — they crowd the layout under the image */
   .h2a-chips { display: none; }

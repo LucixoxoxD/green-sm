@@ -308,25 +308,19 @@ body.nav-open { overflow: hidden; }
   position: relative;
   width: 100%;
   margin-top: 24px;
-  border-radius: 22px;
+  /* smaller, tighter rounded corners */
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 26px 60px rgba(10, 42, 43, 0.2);
+  box-shadow: 0 22px 50px rgba(10, 42, 43, 0.18);
 }
 .h2a-media img {
   display: block;
   width: 100%;
-  /* full-width banner, height scales with the viewport so the whole hero fits
-     one screen; cover keeps it edge-to-edge (India Gate spire + cars framed) */
-  height: clamp(320px, 44vh, 540px);
+  /* full-width banner, a bit larger; height scales with the viewport so the
+     whole hero still fits one screen. cover keeps it edge-to-edge. */
+  height: clamp(340px, 50vh, 580px);
   object-fit: cover;
-  object-position: center 58%;
-}
-.h2a-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(6, 40, 42, 0.55) 100%);
+  object-position: center 55%;
 }
 
 /* ---- floating chips ---- */

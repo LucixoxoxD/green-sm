@@ -368,29 +368,8 @@ body.nav-open { overflow: hidden; }
   .h2a-title { font-size: clamp(30px, 9vw, 44px); }
   .h2a-sub { font-size: 16px; max-width: 34ch; }
   .h2a-btn { width: 100%; max-width: 360px; justify-content: center; }
-  /* blend the photo into the page: keep it inset (within the padding), drop the
-     rounded corners + shadow, and feather ALL FOUR sides into the background so
-     there's no hard border. two crossed gradients are intersected so the fade
-     wraps every edge. */
-  .h2a-media {
-    margin-top: 28px;
-    width: 100%;
-    margin-inline: 0;
-    border-radius: 0;
-    box-shadow: none;
-    -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0, #000 13%, #000 87%, transparent 100%),
-      linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-image:
-      linear-gradient(to bottom, transparent 0, #000 13%, #000 87%, transparent 100%),
-      linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
-    mask-composite: intersect;
-  }
-  /* no dark overlay needed on mobile (chips are hidden here) */
-  .h2a-media::after { display: none; }
-  /* show the FULL photo — natural aspect ratio so nothing is cropped on any side */
-  .h2a-media img { height: auto; object-fit: contain; }
+  .h2a-media { margin-top: 32px; border-radius: 18px; }
+  .h2a-media img { height: 300px; }
   /* hide the stat chips on small screens — they crowd the layout under the image */
   .h2a-chips { display: none; }
 }

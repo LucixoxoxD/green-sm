@@ -187,3 +187,50 @@ document.querySelectorAll(".reg-form").forEach((form) => {
     window.location.href = "thankyou.html";
   });
 });
+
+// ============ Scroll-reveal polish (below-the-fold sections) ============
+(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!("IntersectionObserver" in window)) return;
+
+  const targets = document.querySelectorAll(
+    [
+      ".earning .section-h", ".earn-card",
+      ".advantages .section-h", ".advantages .lead", ".adv-visual", ".pill",
+      ".req-copy", ".form-card",
+      ".steps .section-h", ".step", ".steps-after",
+      ".cta-banner h2", ".cta-banner p", ".cta-banner .btn",
+      ".events .section-h", ".events-sub", ".event-img",
+    ].join(", ")
+  );
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("revealed");
+        io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -36px 0px" }
+  );
+
+  targets.forEach((el) => {
+    // skip anything already on screen at load so nothing above the fold blinks
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) return;
+    el.classList.add("will-reveal");
+    // gentle stagger between siblings in the same grid/row
+    const siblings = Array.from(el.parentElement.children);
+    el.style.transitionDelay = `${(siblings.indexOf(el) % 4) * 70}ms`;
+    io.observe(el);
+  });
+
+  // safety net: if the observer never fires (odd embed/reader contexts),
+  // reveal everything rather than leave content hidden
+  setTimeout(() => {
+    document.querySelectorAll(".will-reveal:not(.revealed)").forEach((el) => {
+      el.classList.add("revealed");
+    });
+  }, 8000);
+})();

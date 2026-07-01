@@ -1060,3 +1060,48 @@ body.nav-open { overflow: hidden; }
   .hero-title { font-size: clamp(27px, 8.2vw, 34px); }
   .hero-sub { font-size: 13px; margin-bottom: 16px; }
 }
+
+/* ============ VISUAL POLISH (no palette/font/copy changes) ============ */
+/* brand-tinted text selection */
+::selection { background: rgba(33, 195, 214, .28); color: var(--teal-ink); }
+
+/* consistent, accessible focus rings using the existing cyan */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.h2a-btn:focus-visible {
+  outline: 3px solid rgba(33, 195, 214, .6);
+  outline-offset: 2px;
+}
+
+/* premium hairline edge on the hero photo so it sits crisply on the light bg */
+.h2a-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35);
+  pointer-events: none;
+}
+
+/* smoother, springier hover easing on interactive cards (same distances) */
+.earn-card, .step, .event-img, .pill {
+  transition: transform .28s cubic-bezier(.2, .7, .2, 1), box-shadow .28s cubic-bezier(.2, .7, .2, 1);
+}
+.btn, .h2a-btn { transition: background .2s ease, transform .2s cubic-bezier(.2, .7, .2, 1), box-shadow .2s cubic-bezier(.2, .7, .2, 1); }
+
+/* glassier sticky navbar (same tint, richer blur) */
+.navbar { backdrop-filter: blur(12px) saturate(1.35); -webkit-backdrop-filter: blur(12px) saturate(1.35); }
+
+/* scroll-reveal: JS adds .will-reveal, then .revealed when scrolled into view */
+.will-reveal { opacity: 0; transform: translateY(16px); }
+.will-reveal.revealed {
+  opacity: 1;
+  transform: none;
+  transition: opacity .55s ease, transform .55s cubic-bezier(.2, .7, .2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .will-reveal { opacity: 1; transform: none; }
+  .earn-card, .step, .event-img, .pill, .btn, .h2a-btn { transition: none; }
+}

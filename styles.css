@@ -306,22 +306,20 @@ body.nav-open { overflow: hidden; }
 /* ---- image + overlay ---- */
 .h2a-media {
   position: relative;
-  /* hug the image so the frame wraps the whole (uncropped) photo, centered */
-  width: auto;
-  max-width: 100%;
+  width: 100%;
   margin-top: 24px;
-  /* smaller, tighter rounded corners */
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 22px 50px rgba(10, 42, 43, 0.18);
 }
 .h2a-media img {
   display: block;
-  /* size by height (capped to the viewport) with auto width so the WHOLE photo
-     shows uncropped AND the entire hero still fits one screen */
-  height: clamp(300px, 50vh, 470px);
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  /* big full-width banner (like the reference design) — cover crop keeps it
+     edge-to-edge with the India Gate centered and cars along the bottom */
+  height: clamp(340px, 52vh, 580px);
+  object-fit: cover;
+  object-position: center 55%;
 }
 
 /* ---- floating chips ---- */

@@ -306,7 +306,9 @@ body.nav-open { overflow: hidden; }
 /* ---- image + overlay ---- */
 .h2a-media {
   position: relative;
-  width: 100%;
+  /* hug the image so the frame wraps the whole (uncropped) photo, centered */
+  width: auto;
+  max-width: 100%;
   margin-top: 24px;
   /* smaller, tighter rounded corners */
   border-radius: 12px;
@@ -315,12 +317,11 @@ body.nav-open { overflow: hidden; }
 }
 .h2a-media img {
   display: block;
-  width: 100%;
-  /* full-width banner, a bit larger; height scales with the viewport so the
-     whole hero still fits one screen. cover keeps it edge-to-edge. */
-  height: clamp(340px, 50vh, 580px);
-  object-fit: cover;
-  object-position: center 55%;
+  /* size by height (capped to the viewport) with auto width so the WHOLE photo
+     shows uncropped AND the entire hero still fits one screen */
+  height: clamp(300px, 50vh, 470px);
+  width: auto;
+  max-width: 100%;
 }
 
 /* ---- floating chips ---- */

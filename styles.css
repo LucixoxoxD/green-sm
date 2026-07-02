@@ -205,11 +205,10 @@ body.nav-open { overflow: hidden; }
 .hero-2a-inner {
   position: relative;
   z-index: 1;
-  /* wider shell so the hero image fills more of the screen (Option B); the text
-     elements below stay compact/centered, only the image spans this full width.
-     the image's own viewport-fit cap still applies, so it never overflows the
-     screen height — this just stops the shell from choking its width */
-  max-width: 1560px;
+  /* near-full-bleed shell — the hero image spans almost the whole screen; the
+     text elements stay compact/centered (capped at 960px below), and the
+     image's own viewport-fit cap keeps it from overflowing the screen height */
+  max-width: 1800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -383,19 +382,56 @@ body.nav-open { overflow: hidden; }
   .h2a-chips { display: none; }
 }
 
-/* ---- desktop-only: maximize the photo, reveal the monument ---- */
+/* ---- desktop-only: near-full-bleed premium banner ---- */
 @media (min-width: 769px) {
-  .hero-2a { padding: 16px 64px 20px; }
+  .hero-2a { padding: 16px 28px 26px; }
   /* one line instead of two — saves ~28px that goes to the photo */
   .h2a-sub { max-width: none; margin-top: 10px; }
   .h2a-cta { margin-top: 16px; }
-  /* whole photo, zero crop: card keeps the image's natural aspect and narrows
-     on shorter screens so full India Gate + all cars always fit the viewport */
+  /* the photo spans (almost) the full screen width. the top ~28% of the image
+     is empty sky, so the width-cap formula allows widths where cropping ONLY
+     eats sky/road margins — India Gate and the cars always stay in frame */
   .h2a-media {
-    margin-top: 16px;
-    width: min(100%, calc((100vh - 285px) * 1.7763));
+    margin-top: 18px;
+    width: min(100%, calc((100vh - 310px) * 2.55));
+    border-radius: 24px;
+    /* layered depth: tight contact shadow + wide soft teal-tinted ambient */
+    box-shadow:
+      0 2px 6px rgba(10, 42, 43, 0.10),
+      0 30px 80px -18px rgba(10, 42, 43, 0.38);
   }
-  .h2a-media img { height: auto; }
+  .h2a-media img {
+    height: clamp(420px, calc(100vh - 310px), 780px);
+    object-fit: cover;
+    /* bias the crop toward the top sky; wheels stay on the bottom edge */
+    object-position: center 82%;
+  }
+  /* cinematic bottom grade so the image "sits" in the page instead of looking
+     pasted — deep-teal wash rising from the bottom, brand-consistent */
+  .h2a-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(239, 250, 250, 0.18) 0%, rgba(239, 250, 250, 0) 12%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0) 62%, rgba(6, 40, 42, 0.42) 100%);
+  }
+  /* gentle ambient zoom — the banner feels alive, not a static paste */
+  @media (prefers-reduced-motion: no-preference) {
+    .h2a-media { overflow: hidden; }
+    .h2a-media img {
+      animation: h2aAmbient 26s ease-in-out infinite alternate;
+      transform-origin: 50% 78%;
+      will-change: transform;
+    }
+  }
+}
+@keyframes h2aAmbient {
+  from { transform: scale(1); }
+  to   { transform: scale(1.045); }
 }
 
 

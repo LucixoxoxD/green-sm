@@ -1,2 +1,6 @@
 # Local Claude Code settings (personal, machine-specific)
 .claude/settings.local.json
+
+# Design handoff bundle (reference only, not part of the site)
+greensm-landing.zip
+design_handoff_split_premium_hero/

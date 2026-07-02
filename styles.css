@@ -206,8 +206,10 @@ body.nav-open { overflow: hidden; }
   position: relative;
   z-index: 1;
   /* wider shell so the hero image fills more of the screen (Option B); the text
-     elements below stay compact/centered, only the image spans this full width */
-  max-width: 1240px;
+     elements below stay compact/centered, only the image spans this full width.
+     the image's own viewport-fit cap still applies, so it never overflows the
+     screen height — this just stops the shell from choking its width */
+  max-width: 1560px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

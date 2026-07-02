@@ -20,6 +20,14 @@
   font-style: normal;
   font-display: swap;
 }
+/* Override ONLY the rupee sign (₹, U+20B9) with a clean system font — the
+   display/Vietnamese fonts render it awkwardly. Listed first in the stacks
+   below so ₹ picks this up everywhere while every other glyph is unaffected. */
+@font-face {
+  font-family: "RupeeFix";
+  src: local("Segoe UI"), local("Roboto"), local("Noto Sans"), local("Helvetica Neue"), local("Arial");
+  unicode-range: U+20B9;
+}
 
 /* ============ DESIGN TOKENS (matched to xanhsm reference) ============ */
 :root {
@@ -39,8 +47,8 @@
   --shadow: 0 22px 50px -24px rgba(8, 70, 74, 0.45);
   --shadow-sm: 0 10px 26px -16px rgba(8, 70, 74, 0.4);
   --maxw: 1200px;
-  --font: "PublicSansXanhSM", "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "XanhDisplay", "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font: "RupeeFix", "PublicSansXanhSM", "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "RupeeFix", "XanhDisplay", "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 /* ============ RESET ============ */
@@ -347,6 +355,7 @@ body.nav-open { overflow: hidden; }
   font-size: 26px;
   flex: none;
 }
+.h1b-card-ic svg { width: 28px; height: 28px; display: block; }
 .h1b-card-txt { display: flex; flex-direction: column; }
 .h1b-card-txt strong { font-family: var(--font), sans-serif; font-weight: 800; font-size: 26px; color: #0E3B43; line-height: 1.1; }
 .h1b-card-txt small { font-size: 14px; font-weight: 700; color: #5E7B80; }
@@ -395,7 +404,7 @@ body.nav-open { overflow: hidden; }
   overflow: hidden;
   padding: 20px 64px 24px;
   background: linear-gradient(180deg, #EFFAFA 0%, #F7FDFD 55%, #FFFFFF 100%);
-  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  font-family: "RupeeFix", "Be Vietnam Pro", system-ui, sans-serif;
 }
 /* soft cyan radial glow blob, top-center behind the content */
 .hero-2a::before {
@@ -489,7 +498,7 @@ body.nav-open { overflow: hidden; }
   gap: 9px;
   padding: 15px 26px;
   border-radius: 999px;
-  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  font-family: "RupeeFix", "Be Vietnam Pro", system-ui, sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 1;

@@ -254,6 +254,13 @@ body.nav-open { overflow: hidden; }
   line-height: 1.55;
   max-width: 540px;
 }
+/* yellow marker-highlight behind the earning amount in the subhead */
+.h1b-sub-hl {
+  background: linear-gradient(transparent 60%, rgba(249,198,35,0.55) 60%);
+  color: #0E3B43;
+  font-weight: 700;
+  padding: 0 2px;
+}
 .h1b-cta { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; margin-top: 6px; }
 .h1b-btn {
   display: inline-flex;

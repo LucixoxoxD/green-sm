@@ -652,16 +652,20 @@
       .footer-grid { grid-template-columns: 1fr; gap: 26px; }
     }
     @media (max-width: 600px) {
-      .cta-wrap { padding-inline: 0; padding-bottom: 0; }
-      .cta-banner { width: 100%; border-radius: 0; }
-      .footer-top { gap: 12px; flex-wrap: nowrap; }
-      .footer-logo-chip { padding: 6px 10px; }
-      .footer-logo-chip img { height: 26px; }
-      .footer-top .btn { padding: 11px 16px; font-size: 12.5px; }
-      .hero-sub { margin-top: 16px; }
+      .hero {
+        padding: 32px 20px 0;
+        background: linear-gradient(180deg, #EFFAFA 0%, #F7FDFD 55%, #FFFFFF 100%);
+      }
+      .hero-inner { max-width: 960px; }
+      .hero-title { font-size: clamp(30px, 9vw, 44px); }
+      .hero-sub {
+        margin-top: 12px;
+        font-size: 16px;
+        max-width: 34ch;
+      }
       .hero-cta {
         width: 100%;
-        max-width: none;
+        max-width: 360px;
         flex-direction: column;
         margin-top: 18px;
       }
@@ -676,79 +680,11 @@
       }
       .hero-cta .btn:hover { background: linear-gradient(180deg, #18bed1 0%, #119bb0 100%); }
       .hero-cta .btn:active { box-shadow: 0 6px 0 0 var(--yellow); transform: translateY(2px); }
-      .hero-media { width: calc(100% + 48px); margin-inline: -24px; margin-top: 0; border-radius: 0; }
+      .hero-media { width: calc(100% + 40px); margin-inline: -20px; margin-top: 0; border-radius: 0; }
       .hero-media::before { display: none; }
       .hero-media img { height: clamp(190px, 30vh, 300px); }
       .stat-band-inner { grid-template-columns: 1fr 1fr 1fr; padding: 16px 12px; gap: 8px; }
-      .stat + .stat::before { height: 34px; left: -4px; }
-      .earning-grid { grid-template-columns: 1fr; gap: 14px; }
-      .earn-card { display: flex; align-items: center; gap: 16px; padding: 18px; }
-      .earn-ic { margin-bottom: 0; flex: none; width: 48px; height: 48px; }
-      .earn-card p { font-size: 15px; }
-      .fayde-item { padding: 15px 16px; gap: 14px; }
-      .fayde-item p { font-size: 14.5px; }
-      .form-card { padding: 26px 20px; }
-      .steps-grid { grid-template-columns: 1fr; gap: 12px; }
-      /* premium step rows: number + text on a clean white card, vertically centered */
-      .step {
-        display: grid; grid-template-columns: 40px 1fr; gap: 14px;
-        text-align: left; align-items: center; padding: 12px 16px;
-        background: var(--white); border-radius: 14px;
-        box-shadow: 0 10px 24px -14px rgba(8, 70, 74, .45);
-      }
-      .step-num {
-        width: 40px; height: 40px; margin: 0; font-size: 16px;
-        box-shadow: 0 0 0 3px var(--white), var(--shadow-1);
-      }
-      .step h4 { margin-top: 0; }
-      .step p { margin-top: 4px; }
-      .events-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; gap: 12px; }
-      .event-img { border-width: 4px; }
-      .event-cap { font-size: 11.5px; padding: 26px 9px 8px; }
-      .event-cap { font-size: 12.5px; padding: 24px 12px 10px; }
-      .footer-top { justify-content: center; text-align: center; }
-      .footer-bottom { justify-content: center; text-align: center; }
-      .btn { padding: 15px 28px; font-size: 16px; }
-      .floater { width: 48px; height: 48px; }
-      .floater svg { width: 24px; height: 24px; }
-
-      /* --- mobile heading + spacing polish (match the main site's sizing) --- */
-      /* all section headers (Aapki Mehnat, Fayde, Kaun Apply, 4 Steps, Events) */
-      .section-h { font-size: clamp(19px, 5.2vw, 24px); line-height: 1.18; letter-spacing: -.3px; }
-      /* steps + events headers: keep to ONE line */
-      .process .section-h, .events .section-h { font-size: clamp(15px, 4.3vw, 17px); letter-spacing: -.4px; }
-      /* "Apply Karne Ke Liye..." sub-heading */
-      .daftar-sub { font-size: 15px; margin-top: 8px; }
-      .step h4 { font-size: 14.5px; line-height: 1.3; }
-      /* "Uske baad..." line: smaller, one line (lightning icon removed in markup) */
-      .steps-after { font-size: 12.5px; margin-top: 22px; gap: 0; white-space: nowrap; }
-      /* CTA banner heading fits in ~2 lines */
-      .cta-banner h2 { font-size: 20px; line-height: 1.22; max-width: none; }
-
-      /* fayde: stack in source order (header/sub/lead -> 5 pointers -> T&C+CTA) */
-      .fayde-sticky, .fayde-list, .fayde-foot { grid-column: auto; }
-      .fayde-foot { margin-top: 6px; }
-      /* section CTAs full-width & centered, like the main/default site */
-      .earning .btn-row, .fayde-foot .btn-row { display: flex; justify-content: center; }
-      .earning .btn-row .btn, .fayde-foot .btn-row .btn { width: 100%; max-width: 360px; }
-      /* remove the golden dash before the "Events" eyebrow, keep it centered */
-      .events .eyebrow::before { display: none; }
-
-      /* --- tighten vertical rhythm: kill the big empty gaps above/below the
-             section headers and content on mobile --- */
-      .sec-pad { padding-block: clamp(30px, 8vw, 46px); }
-      .daftar.sec-pad { padding-block: clamp(46px, 11vw, 72px); } /* waves need room */
-      .section-h { margin-top: 4px; }
-      .earning-grid { margin-top: 20px; }
-      .earning .btn-row { margin-top: 22px; }
-      .steps-grid { margin-top: 20px; }
-      .steps-after { margin-top: 18px; }
-      /* the fayde grid gap (36px) sits between the stacked blocks on mobile —
-         tighten it so lead->pointers and pointers->T&C aren't so far apart */
-      .fayde-grid { gap: 16px; margin-top: 6px; }
-      .fayde-foot { margin-top: 6px; }
-      .fayde-foot .tnc { margin-bottom: 12px; }
-    }
+      .stat + .stat::before { height: 34px; left: -4px; }    }
   </style>
 </head>
 <body>

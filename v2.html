@@ -669,7 +669,7 @@
       .fayde-item { padding: 15px 16px; gap: 14px; }
       .fayde-item p { font-size: 14.5px; }
       .form-card { padding: 26px 20px; }
-      .steps-grid { grid-template-columns: 1fr; gap: 26px; }
+      .steps-grid { grid-template-columns: 1fr; gap: 14px; }
       .step { display: grid; grid-template-columns: 54px 1fr; gap: 16px; text-align: left; align-items: start; }
       .step-num { margin: 0; }
       .step h4 { margin-top: 4px; }
@@ -683,6 +683,18 @@
       .btn { padding: 15px 28px; font-size: 16px; }
       .floater { width: 48px; height: 48px; }
       .floater svg { width: 24px; height: 24px; }
+
+      /* --- mobile heading + spacing polish (match the main site's sizing) --- */
+      /* all section headers (Aapki Mehnat, Fayde, Kaun Apply, 4 Steps, Events) */
+      .section-h { font-size: clamp(19px, 5.2vw, 24px); line-height: 1.18; letter-spacing: -.3px; }
+      /* "Apply Karne Ke Liye..." sub-heading */
+      .daftar-sub { font-size: 15px; margin-top: 8px; }
+      /* steps: tighter card text, less dead space */
+      .step h4 { font-size: 15px; }
+      /* "Uske baad..." line: smaller, one line (lightning icon removed in markup) */
+      .steps-after { font-size: 12.5px; margin-top: 22px; gap: 0; white-space: nowrap; }
+      /* CTA banner heading fits in ~2 lines */
+      .cta-banner h2 { font-size: 20px; line-height: 1.22; max-width: none; }
     }
   </style>
 </head>
@@ -900,7 +912,6 @@
         </div>
       </div>
       <p class="steps-after">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 12.5H11L9.5 22 19 10.5h-6.5z"/></svg>
         Uske baad, Green SM Ke Saath Driving Shuru Karein
       </p>
     </div>

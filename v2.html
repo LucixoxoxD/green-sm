@@ -467,7 +467,13 @@
     .event-wide { grid-column: span 2; }
 
     /* ============ FOOTER ============ */
-    .site-footer { background: linear-gradient(180deg, #0E3B43 0%, #08272B 100%); color: rgba(255, 255, 255, .85); }
+    /* footer starts a touch darker than the CTA banner (#0E3B43) for a subtle
+       step, with a hairline divider marking exactly where the CTA ends */
+    .site-footer {
+      background: linear-gradient(180deg, #0B333A 0%, #061E22 100%);
+      color: rgba(255, 255, 255, .85);
+      border-top: 1px solid rgba(255, 255, 255, .09);
+    }
     .footer-main { max-width: var(--maxw); margin: 0 auto; padding: clamp(48px, 6vw, 72px) 24px 28px; }
     .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-bottom: 34px; border-bottom: 1px solid rgba(255, 255, 255, .14); }
     .footer-logo-chip { background: var(--white); border-radius: 14px; padding: 10px 16px; box-shadow: var(--shadow-1); }
@@ -654,7 +660,8 @@
     @media (max-width: 600px) {
       .cta-wrap { padding-inline: 0; padding-bottom: 0; }
       /* full-bleed + no radius/shadow so the CTA fuses into the footer as one dark block */
-      .cta-banner { width: 100%; border-radius: 0; box-shadow: none; }
+      .cta-banner { width: 100%; border-radius: 0; box-shadow: none; padding: 34px 24px 22px; }
+      .footer-main { padding-top: 22px; }
       .footer-top { gap: 12px; flex-wrap: nowrap; }
       .footer-logo-chip { padding: 6px 10px; }
       .footer-logo-chip img { height: 26px; }

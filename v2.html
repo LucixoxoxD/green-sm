@@ -394,28 +394,24 @@
     .cta-banner {
       position: relative; overflow: hidden; isolation: isolate;
       max-width: var(--maxw); margin: 0 auto;
-      /* dark teal that matches the footer's top tone, so CTA + footer read as
-         ONE unified dark anchor block instead of a bright clashing stripe */
-      background: #0E3B43;
+      /* exact light hero gradient — the CTA reads as a bright, airy section so
+         only the footer stays as the dark anchor (no dark-on-dark heaviness).
+         no radial glow behind the button. */
+      background:
+        radial-gradient(90% 70% at 70% -10%, rgba(163, 231, 236, .55) 0%, rgba(163, 231, 236, 0) 60%),
+        radial-gradient(70% 60% at 12% 8%, rgba(255, 198, 41, .14) 0%, rgba(255, 198, 41, 0) 55%),
+        linear-gradient(180deg, var(--bg-mint) 0%, #f7fdfd 60%, var(--white) 100%);
       border-radius: 26px;
-      color: var(--white); text-align: center;
+      color: var(--heading); text-align: center;
       padding: clamp(48px, 6vw, 72px) 28px;
       box-shadow: var(--shadow-2);
     }
-    /* busy route-pattern removed — kept minimal; just a soft warm glow so the
-       yellow button feels intentional against the dark field */
-    .cta-banner::after {
-      content: ""; position: absolute; z-index: -1;
-      left: 50%; bottom: -30px; transform: translateX(-50%);
-      width: 340px; height: 220px; border-radius: 50%;
-      background: radial-gradient(closest-side, rgba(255, 198, 41, .16), transparent 70%);
-    }
     .cta-banner h2 {
       font-family: var(--font-display); font-weight: 700;
-      color: var(--white); font-size: clamp(26px, 3.4vw, 40px);
+      color: var(--heading); font-size: clamp(26px, 3.4vw, 40px);
       line-height: 1.12; letter-spacing: -.4px; max-width: 24ch; margin: 0 auto;
     }
-    .cta-banner p { color: rgba(255, 255, 255, .82); font-weight: 500; font-size: clamp(15px, 1.6vw, 18px); max-width: 54ch; margin: 16px auto 30px; }
+    .cta-banner p { color: var(--heading); font-weight: 600; font-size: clamp(15px, 1.6vw, 18px); max-width: 54ch; margin: 16px auto 30px; opacity: .88; }
 
     /* ============ EVENTS ============ */
     /* photo-wall treatment: mint backdrop with dot texture, framed tilted snapshots */
@@ -467,12 +463,11 @@
     .event-wide { grid-column: span 2; }
 
     /* ============ FOOTER ============ */
-    /* footer starts a touch darker than the CTA banner (#0E3B43) for a subtle
-       step, with a hairline divider marking exactly where the CTA ends */
+    /* solid dark-teal footer — the light CTA banner above meets it with a clean
+       light->dark edge, so no extra divider is needed */
     .site-footer {
       background: linear-gradient(180deg, #0B333A 0%, #061E22 100%);
       color: rgba(255, 255, 255, .85);
-      border-top: 1px solid rgba(255, 255, 255, .09);
     }
     .footer-main { max-width: var(--maxw); margin: 0 auto; padding: clamp(48px, 6vw, 72px) 24px 28px; }
     .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-bottom: 34px; border-bottom: 1px solid rgba(255, 255, 255, .14); }

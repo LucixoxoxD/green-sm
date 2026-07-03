@@ -225,14 +225,6 @@
     }
     .hero-cta { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
-    /* trust row under CTA */
-    .hero-trust {
-      margin-top: 26px; display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 8px 28px; color: var(--muted); font-size: 14px; font-weight: 600;
-    }
-    .hero-trust span { display: inline-flex; align-items: center; gap: 8px; }
-    .hero-trust svg { width: 17px; height: 17px; color: var(--cyan-deep); flex: none; }
-
     /* photo */
     .hero-media {
       position: relative; width: min(100%, var(--maxw)); margin: 40px auto 0;
@@ -597,30 +589,7 @@
     .wave path { fill: currentColor; }
     .daftar.sec-pad { padding-block: clamp(100px, 12vw, 150px); }
 
-    /* sticky mobile conversion bar (appears after scrolling past the hero) */
-    .cta-bar {
-      position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
-      display: none; gap: 10px; align-items: center;
-      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-      background: rgba(255, 255, 255, .93);
-      backdrop-filter: blur(12px) saturate(1.3);
-      -webkit-backdrop-filter: blur(12px) saturate(1.3);
-      box-shadow: 0 -10px 30px -12px rgba(8, 70, 74, .35);
-      transform: translateY(110%);
-      transition: transform .35s var(--ease);
-    }
-    body.show-ctabar .cta-bar { transform: none; }
-    .cta-bar .btn { flex: 1; padding: 14px 18px; font-size: 15.5px; }
-    .cta-bar .call-mini {
-      flex: none; width: 50px; height: 50px; border-radius: 14px;
-      display: grid; place-items: center; background: var(--teal-ink); color: #fff;
-    }
-    .cta-bar .call-mini svg { width: 22px; height: 22px; }
     .floaters { transition: bottom .3s var(--ease); }
-    @media (max-width: 980px) {
-      .cta-bar { display: flex; }
-      body.show-ctabar .floaters { bottom: calc(86px + env(safe-area-inset-bottom)); }
-    }
 
     /* form input icons */
     .reg-form input[name="nama"], .reg-form input[name="mobile"] {
@@ -643,7 +612,6 @@
     @media (prefers-reduced-motion: reduce) {
       .hero-inner > * { animation: none; }
       .marquee-track { animation: none; }
-      .cta-bar { transition: none; }
     }
 
     /* ============ RESPONSIVE ============ */
@@ -659,12 +627,13 @@
       .footer-grid { grid-template-columns: 1fr; gap: 26px; }
     }
     @media (max-width: 600px) {
-      .hero-cta { width: 100%; max-width: 340px; flex-direction: column; }
+      .hero-sub { margin-top: 16px; }
+      .hero-cta { width: 100%; max-width: 340px; flex-direction: column; margin-top: 22px; }
       .hero-cta .btn { width: 100%; }
-      .hero-media { width: calc(100% + 48px); margin-inline: -24px; border-radius: 0; }
+      .hero-media { width: calc(100% + 48px); margin-inline: -24px; margin-top: 28px; border-radius: 0; }
       .hero-media::before { display: none; }
-      .hero-media img { height: clamp(240px, 40vh, 340px); }
-      .stat-band-inner { grid-template-columns: 1fr 1fr 1fr; padding: 20px 12px; gap: 8px; }
+      .hero-media img { height: clamp(190px, 30vh, 300px); }
+      .stat-band-inner { grid-template-columns: 1fr 1fr 1fr; padding: 16px 12px; gap: 8px; }
       .stat + .stat::before { height: 34px; left: -4px; }
       .earning-grid { grid-template-columns: 1fr; gap: 14px; }
       .earn-card { display: flex; align-items: center; gap: 16px; padding: 18px; }
@@ -738,11 +707,6 @@
           Aaj Hi Join Karein
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-      </div>
-      <div class="hero-trust">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Health &amp; Life Insurance</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 12.5H11L9.5 22 19 10.5h-6.5z"/></svg>100% Electric</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Apne samay pe drive karein*</span>
       </div>
       <figure class="hero-media">
         <img src="assets/images/hero-latest.jpg" alt="Green SM electric cars in front of India Gate" fetchpriority="high" decoding="async" />
@@ -1048,14 +1012,6 @@
     </figure>
   </div>
 
-  <!-- ============ STICKY MOBILE CTA ============ -->
-  <div class="cta-bar">
-    <a href="#" data-open-modal class="btn">Aaj Hi Join Karein</a>
-    <a href="tel:8249437213" class="call-mini" aria-label="Call">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.4.55 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.3a1 1 0 0 1 1 1 11 11 0 0 0 .55 3.4 1 1 0 0 1-.25 1z"/></svg>
-    </a>
-  </div>
-
   <!-- ============ FLOATERS ============ -->
   <div class="floaters">
     <a href="https://wa.me/918249437213" class="floater wa" aria-label="WhatsApp" target="_blank" rel="noopener">
@@ -1070,15 +1026,13 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // ============ Navbar scroll state + progress bar + sticky CTA bar ============
+    // ============ Navbar scroll state + progress bar ============
     const navbar = document.querySelector(".navbar");
     const progressBar = document.querySelector(".scroll-progress");
-    const heroEl = document.querySelector(".hero");
     addEventListener("scroll", () => {
       navbar.classList.toggle("scrolled", scrollY > 8);
       const doc = document.documentElement;
       progressBar.style.transform = `scaleX(${scrollY / Math.max(doc.scrollHeight - innerHeight, 1)})`;
-      document.body.classList.toggle("show-ctabar", scrollY > heroEl.offsetHeight * 0.6);
     }, { passive: true });
 
     // ============ Mobile nav ============

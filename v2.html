@@ -718,6 +718,21 @@
       .earning .btn-row .btn, .fayde-foot .btn-row .btn { width: 100%; max-width: 360px; }
       /* remove the golden dash before the "Events" eyebrow, keep it centered */
       .events .eyebrow::before { display: none; }
+
+      /* --- tighten vertical rhythm: kill the big empty gaps above/below the
+             section headers and content on mobile --- */
+      .sec-pad { padding-block: clamp(30px, 8vw, 46px); }
+      .daftar.sec-pad { padding-block: clamp(46px, 11vw, 72px); } /* waves need room */
+      .section-h { margin-top: 4px; }
+      .earning-grid { margin-top: 20px; }
+      .earning .btn-row { margin-top: 22px; }
+      .steps-grid { margin-top: 20px; }
+      .steps-after { margin-top: 18px; }
+      /* the fayde grid gap (36px) sits between the stacked blocks on mobile —
+         tighten it so lead->pointers and pointers->T&C aren't so far apart */
+      .fayde-grid { gap: 16px; margin-top: 6px; }
+      .fayde-foot { margin-top: 6px; }
+      .fayde-foot .tnc { margin-bottom: 12px; }
     }
   </style>
 </head>

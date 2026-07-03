@@ -555,10 +555,45 @@
       border: 1px solid #7a1220; border-left: 4px solid #9b1626;
       border-radius: 16px; font-weight: 700; font-size: 14px; line-height: 1.4;
       z-index: 10000; box-shadow: 0 18px 45px rgba(64, 8, 18, .32);
+      backdrop-filter: blur(10px);
       opacity: 0; visibility: hidden; pointer-events: none;
-      transition: opacity .3s ease, transform .35s var(--ease), visibility .3s ease;
+      transition: opacity .3s ease, transform .35s cubic-bezier(.2, .8, .2, 1), visibility .3s ease;
     }
     .toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; pointer-events: auto; }
+    .toast.error {
+      background: linear-gradient(180deg, rgba(64, 12, 18, .98), rgba(28, 6, 9, .98));
+      border-color: #86111f;
+      border-left-color: #cf2034;
+    }
+    .toast-icon {
+      width: 18px; height: 18px; flex: none;
+      display: inline-grid; place-items: center;
+      color: #ffb7c0;
+    }
+    .toast-icon svg { width: 100%; height: 100%; }
+    .toast-text { display: block; }
+    @media (max-width: 600px) {
+      .toast {
+        left: 0; right: 0; bottom: 0; transform: translateY(110%);
+        width: 100%; max-width: none; box-sizing: border-box;
+        border-radius: 0; border-left-width: 0; border-right-width: 0; border-bottom-width: 0;
+        border-top: 1px solid #7a1220;
+        padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+        justify-content: flex-start;
+        box-shadow: 0 -10px 28px rgba(64, 8, 18, .34);
+      }
+      .toast.show { transform: translateY(0); }
+    }
+
+    /* Contact highlight — triggered by the "Contact" nav link (matches main site,
+       adapted to the dark v2 footer with a cyan glow + cyan text) */
+    @keyframes contactFlash {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(45, 204, 211, 0); background-color: rgba(45, 204, 211, 0); }
+      30%      { box-shadow: 0 0 0 6px rgba(45, 204, 211, .20); background-color: rgba(45, 204, 211, .14); }
+    }
+    .footer-col.flash { border-radius: 12px; animation: contactFlash 2s ease-in-out 1; }
+    .footer-col.flash h4 { color: var(--cyan-soft); }
+    .footer-col.flash .tel { color: var(--cyan-soft); }
 
     /* ============ REVEAL ============ */
     .will-reveal { opacity: 0; transform: translateY(18px) rotate(var(--tilt, 0deg)); }
@@ -1124,6 +1159,18 @@
     navBackdrop.addEventListener("click", () => setNav(false));
     navMobile.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setNav(false)));
 
+    // ============ Flash Contact (nav "Contact" link only) — matches main site ============
+    const contactBox = document.getElementById("contact-details");
+    function flashContact() {
+      if (!contactBox) return;
+      contactBox.classList.remove("flash");
+      void contactBox.offsetWidth; // restart the animation if already running
+      contactBox.classList.add("flash");
+      setTimeout(() => contactBox.classList.remove("flash"), 2050);
+    }
+    document.querySelectorAll('.nav-links a[href="#kontak"], .nav-mobile a[href="#kontak"]')
+      .forEach((a) => a.addEventListener("click", () => setTimeout(flashContact, 650)));
+
     // ============ Modal ============
     const modal = document.getElementById("regModal");
     function openModal(e) { if (e) e.preventDefault(); setNav(false); modal.classList.add("open"); document.body.style.overflow = "hidden"; }
@@ -1136,10 +1183,26 @@
     // ============ Toast ============
     const toast = document.getElementById("toast");
     let toastTimer;
-    function showToast(msg) {
-      toast.textContent = msg;
-      toast.classList.add("show");
+    function showToast(msg, isError = false) {
+      if (!toast) return;
       clearTimeout(toastTimer);
+      if (!toast.dataset.enhanced) {
+        toast.innerHTML = `
+          <span class="toast-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8v5" />
+              <path d="M12 16.5h.01" />
+              <path d="M10.29 4.86 2.82 18a1.9 1.9 0 0 0 1.65 2.85h15.06A1.9 1.9 0 0 0 21.18 18L13.71 4.86a1.9 1.9 0 0 0-3.42 0Z" />
+            </svg>
+          </span>
+          <span class="toast-text"></span>
+        `;
+        toast.dataset.enhanced = "true";
+      }
+      const toastText = toast.querySelector(".toast-text");
+      if (toastText) { toastText.textContent = msg; } else { toast.textContent = msg; }
+      toast.classList.toggle("error", isError);
+      toast.classList.add("show");
       toastTimer = setTimeout(() => toast.classList.remove("show"), 3500);
     }
 
@@ -1162,7 +1225,7 @@
         }
         if (firstInvalid) {
           firstInvalid.focus();
-          showToast("Kripya saari zaroori jankari sahi se bharein.");
+          showToast("Kripya saari zaroori jankari sahi se bharein.", true);
           return;
         }
         form.reset();

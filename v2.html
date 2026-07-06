@@ -206,8 +206,17 @@
       font-family: var(--font-display);
       font-weight: 700; color: var(--heading);
       font-size: clamp(38px, 5.6vw, 64px);
-      line-height: 1.03; letter-spacing: -1px;
+      /* XanhDisplay has no real 700 file, so the browser fakes bold. Android's
+         (Blink) synthetic bold is heavier than iOS/Safari's, and -1px tracking
+         made "riv" in "Driver" collide there. Default to a gentler -0.3px so the
+         faux-bold letters have room; iOS/Safari (below) keeps the tight -1px it
+         already renders perfectly. */
+      line-height: 1.03; letter-spacing: -0.3px;
       max-width: 18ch;
+    }
+    /* iOS/macOS Safari only — restore the original tight tracking (renders crisply) */
+    @supports (-webkit-touch-callout: none) {
+      .hero-title { letter-spacing: -1px; }
     }
     .hero-title .accent { color: var(--cyan-deep); position: relative; white-space: nowrap; }
     /* hand-drawn yellow underline flourish */

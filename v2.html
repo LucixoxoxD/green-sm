@@ -719,6 +719,10 @@
       .hero-media img { height: clamp(190px, 30vh, 300px); }
       .stat-band-inner { grid-template-columns: 1fr 1fr 1fr; padding: 16px 12px; gap: 8px; }
       .stat + .stat::before { height: 34px; left: -4px; }
+      /* Android/Blink renders this font a bit wider, wrapping the longest label
+         ("tak kamao har mahine") to 2 lines. Shrink it slightly so it stays one
+         line like the others; iOS keeps its size (below), where it already fits. */
+      .stat span { font-size: 11px; letter-spacing: -0.15px; }
       .earning-grid { grid-template-columns: 1fr; gap: 14px; }
       .earn-card { display: flex; align-items: center; gap: 16px; padding: 18px; }
       .earn-ic { margin-bottom: 0; flex: none; width: 48px; height: 48px; }
@@ -786,6 +790,14 @@
       .fayde-grid { gap: 16px; margin-top: 6px; }
       .fayde-foot { margin-top: 6px; }
       .fayde-foot .tnc { margin-bottom: 12px; }
+    }
+
+    /* iOS/macOS Safari renders the stat label narrower and already fits one
+       line, so keep its original size there (only Android needed the shrink). */
+    @supports (-webkit-touch-callout: none) {
+      @media (max-width: 600px) {
+        .stat span { font-size: clamp(12.5px, 1.3vw, 15px); letter-spacing: normal; }
+      }
     }
   </style>
 </head>

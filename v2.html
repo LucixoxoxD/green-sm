@@ -240,7 +240,7 @@
 
     /* photo */
     .hero-media {
-      position: relative; width: min(100%, var(--maxw)); margin: 40px auto 0;
+      position: relative; width: min(100%, 1020px); margin: 32px auto 0;
       border-radius: var(--radius) var(--radius) 0 0; overflow: hidden;
       box-shadow: 0 -1px 0 rgba(255,255,255,.6), var(--shadow-2);
     }
@@ -249,9 +249,15 @@
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35);
       pointer-events: none;
     }
+    /* The photo is 16:9 with India Gate's arch spanning the top ~28-65% of the
+       frame. A vh-based letterbox (old: 46vh at full maxw ≈ 2.85:1) cropped the
+       arch off entirely on desktop. Fixed 2.35:1 keeps ~76% of the image height
+       at every viewport, and 50% 75% biases the crop window low enough to keep
+       the cars while leaving sky headroom above the arch. Mobile (≤600px) sets
+       an explicit height, which overrides aspect-ratio, so this is desktop-only. */
     .hero-media img {
-      width: 100%; height: clamp(320px, 46vh, 520px);
-      object-fit: cover; object-position: center bottom;
+      width: 100%; height: auto; aspect-ratio: 2.35 / 1;
+      object-fit: cover; object-position: 50% 75%;
     }
 
     /* stat band overlapping the photo bottom */

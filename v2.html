@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Security: CSP mirrors index.html, plus 'unsafe-inline' for this page's inline script block -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://w.ladicdn.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
   <title>Green SM Driver Partner - Driver Nahi, Partner Bano!</title>
   <meta name="description" content="Green SM Driver Partner Community ka hissa bano aur Brand-New EV Cars ke saath kamao ₹50,000+* tak har mahine. Aaj hi join karein." />
   <meta name="robots" content="noindex" />
@@ -12,7 +17,7 @@
   <link rel="apple-touch-icon" href="assets/favicon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     /* ============ FONTS (same brand fonts) ============ */
     @font-face {
@@ -29,6 +34,13 @@
       font-family: "PublicSansXanhSM";
       src: url("assets/fonts/PublicSansForXanhSM-Bold.otf") format("opentype");
       font-weight: 700; font-style: normal; font-display: swap;
+    }
+    /* Override ONLY the rupee sign (₹, U+20B9) with a clean system font — the
+       display fonts render it awkwardly. Same fix as the main site. */
+    @font-face {
+      font-family: "RupeeFix";
+      src: local("Segoe UI"), local("Roboto"), local("Noto Sans"), local("Helvetica Neue"), local("Arial");
+      unicode-range: U+20B9;
     }
 
     /* ============ TOKENS — SAME COLOR SCHEME ============ */
@@ -49,8 +61,8 @@
       --maxw: 1180px;
       --radius: 20px;
       --radius-sm: 14px;
-      --font: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      --font-display: "XanhDisplay", "Public Sans", system-ui, sans-serif;
+      --font: "RupeeFix", "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --font-display: "RupeeFix", "XanhDisplay", "Public Sans", system-ui, sans-serif;
       --ease: cubic-bezier(.2, .7, .2, 1);
       --shadow-1: 0 1px 2px rgba(8, 70, 74, .06), 0 8px 24px -12px rgba(8, 70, 74, .18);
       --shadow-2: 0 2px 4px rgba(8, 70, 74, .07), 0 24px 48px -20px rgba(8, 70, 74, .32);
@@ -108,12 +120,6 @@
     .btn:active { transform: translate(4px, 5px); box-shadow: 0 0 0 0 var(--yellow); }
     .btn-gold { background: var(--yellow); color: var(--teal-ink); box-shadow: 4px 5px 0 0 rgba(7, 42, 45, .35); }
     .btn-gold:hover { background: var(--yellow-deep); box-shadow: 3px 4px 0 0 rgba(7, 42, 45, .35); }
-    .btn-ghost {
-      background: var(--white); color: var(--teal-ink);
-      border: 1.5px solid var(--line); box-shadow: var(--shadow-1);
-    }
-    .btn-ghost:hover { background: var(--bg-mint); transform: translateY(-1px); box-shadow: var(--shadow-1); }
-
     /* ============ NAVBAR ============ */
     .navbar {
       position: sticky; top: 0; z-index: 100;
@@ -489,9 +495,6 @@
       color: rgba(255, 255, 255, .85);
     }
     .footer-main { max-width: var(--maxw); margin: 0 auto; padding: clamp(48px, 6vw, 72px) 24px 28px; }
-    .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-bottom: 34px; border-bottom: 1px solid rgba(255, 255, 255, .14); }
-    .footer-logo-chip { background: var(--white); border-radius: 14px; padding: 10px 16px; box-shadow: var(--shadow-1); }
-    .footer-logo-chip img { height: 40px; width: auto; }
     .footer-grid { display: grid; grid-template-columns: 1fr 1.4fr 1.4fr; gap: 32px; padding-block: 34px; }
     .footer-col h4 {
       color: var(--white); font-size: 13px; font-weight: 800;
@@ -711,10 +714,6 @@
       /* full-bleed + no radius/shadow so the CTA fuses into the footer as one dark block */
       .cta-banner { width: 100%; border-radius: 0; box-shadow: none; padding: 34px 24px 22px; }
       .footer-main { padding-top: 22px; }
-      .footer-top { gap: 12px; flex-wrap: nowrap; }
-      .footer-logo-chip { padding: 6px 10px; }
-      .footer-logo-chip img { height: 26px; }
-      .footer-top .btn { padding: 11px 16px; font-size: 12.5px; }
       /* trim the big empty gap above the headline so the brand ticker below the
          stat band lands within the first screen (content/styling unchanged) */
       .hero { padding-top: 12px; }
@@ -727,12 +726,14 @@
       .hero-media { width: calc(100% + 48px); margin-inline: -24px; margin-top: 28px; border-radius: 40px 40px 0 0; }
       .hero-media::before { display: none; }
       .hero-media img { height: clamp(190px, 30vh, 300px); }
-      .stat-band-inner { grid-template-columns: 1fr 1fr 1fr; padding: 16px 12px; gap: 8px; }
+      /* first column gets a touch more share — its label ("tak kamao har
+         mahine") is much longer than "Electric Fleet" / "mein joining" */
+      .stat-band-inner { grid-template-columns: 1.22fr 1fr 1fr; padding: 16px 12px; gap: 8px; }
       .stat + .stat::before { height: 34px; left: -4px; }
       /* Android/Blink renders this font a bit wider, wrapping the longest label
-         ("tak kamao har mahine") to 2 lines. Shrink it slightly so it stays one
-         line like the others; iOS keeps its size (below), where it already fits. */
-      .stat span { font-size: 11px; letter-spacing: -0.15px; }
+         to 2 lines. Slightly smaller + vw-scaled so it stays one line down to
+         ~340px wide; iOS keeps its size (below), where it already fits. */
+      .stat span { font-size: clamp(10px, 3vw, 11px); letter-spacing: -0.15px; }
       .earning-grid { grid-template-columns: 1fr; gap: 14px; }
       .earn-card { display: flex; align-items: center; gap: 16px; padding: 18px; }
       .earn-ic { margin-bottom: 0; flex: none; width: 48px; height: 48px; }
@@ -756,9 +757,7 @@
       .step p { margin-top: 4px; }
       .events-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; gap: 12px; }
       .event-img { border-width: 4px; }
-      .event-cap { font-size: 11.5px; padding: 26px 9px 8px; }
       .event-cap { font-size: 12.5px; padding: 24px 12px 10px; }
-      .footer-top { justify-content: center; text-align: center; }
       .footer-bottom { justify-content: center; text-align: center; }
       .btn { padding: 15px 28px; font-size: 16px; }
       .floater { width: 48px; height: 48px; }
@@ -1242,6 +1241,14 @@
 
     // ============ Forms (same validation rules as live page) ============
     document.querySelectorAll(".reg-form").forEach((form) => {
+      // mobile: digits only, max 10 (same guard as the main site) — without this,
+      // letters can slip past the submit regex and reach the thank-you page
+      const mob = form.querySelector('[name="mobile"]');
+      if (mob) {
+        mob.addEventListener("input", () => {
+          mob.value = mob.value.replace(/\D/g, "").slice(0, 10);
+        });
+      }
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         let firstInvalid = null;

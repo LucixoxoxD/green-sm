@@ -603,10 +603,11 @@
     .steps-after svg { width: 20px; height: 20px; color: var(--yellow-deep); }
 
     /* ============ CTA BANNER ============ */
-    .cta-wrap { padding-inline: 24px; padding-bottom: clamp(56px, 8vw, 96px); }
+    /* full-bleed on every width (matches mobile) — no side gaps on wide desktops */
+    .cta-wrap { padding-inline: 0; padding-bottom: clamp(56px, 8vw, 96px); }
     .cta-banner {
       position: relative; overflow: hidden; isolation: isolate;
-      max-width: var(--maxw); margin: 0 auto;
+      width: 100%;
       /* exact light hero gradient — the CTA reads as a bright, airy section so
          only the footer stays as the dark anchor (no dark-on-dark heaviness).
          no radial glow behind the button. */
@@ -614,10 +615,10 @@
         radial-gradient(90% 70% at 70% -10%, rgba(163, 231, 236, .55) 0%, rgba(163, 231, 236, 0) 60%),
         radial-gradient(70% 60% at 12% 8%, rgba(255, 198, 41, .14) 0%, rgba(255, 198, 41, 0) 55%),
         linear-gradient(180deg, var(--bg-mint) 0%, #f7fdfd 60%, var(--white) 100%);
-      border-radius: 26px;
+      border-radius: 0;
       color: var(--heading); text-align: center;
       padding: clamp(48px, 6vw, 72px) 28px;
-      box-shadow: var(--shadow-2);
+      box-shadow: none;
     }
     .cta-banner h2 {
       font-family: var(--font-display); font-weight: 700;

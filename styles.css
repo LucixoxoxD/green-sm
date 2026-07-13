@@ -285,16 +285,19 @@ body.nav-open { overflow: hidden; }
   background: linear-gradient(135deg, #3ECBD6 0%, #14939F 100%);
   color: #FFFFFF;
   font-size: 21px;
-  padding: 18px 42px;
-  box-shadow: 0 14px 30px rgba(20,147,159,0.35);
+  letter-spacing: .2px;
+  padding: 18px 46px;
+  /* premium: soft inner top gloss + layered ambient shadow */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .28),
+    0 2px 5px rgba(20, 147, 159, .25),
+    0 14px 30px rgba(20, 147, 159, .35);
 }
-.h1b-btn-primary:hover { box-shadow: 0 18px 36px rgba(20,147,159,0.45); }
-.h1b-btn-secondary {
-  color: #0E3B43;
-  background: transparent;
-  border: 2px solid #0E3B43;
-  font-size: 19px;
-  padding: 15px 32px;
+.h1b-btn-primary:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .28),
+    0 3px 6px rgba(20, 147, 159, .28),
+    0 18px 36px rgba(20, 147, 159, .45);
 }
 .h1b-trust {
   display: flex;
@@ -812,6 +815,29 @@ body.nav-open { overflow: hidden; }
 .events-sub {
   max-width: 60ch; margin: 0 auto 44px; font-size: 16px;
   color: var(--muted); line-height: 1.6;
+}
+/* desktop: "Events" becomes the BIG section header and "Hamare Pichle..." the
+   smaller one-line sub — same header+sub pattern as the other sections.
+   Mobile keeps its existing eyebrow+sub look untouched. */
+@media (min-width: 769px) {
+  .events .eyebrow-y {
+    font-family: var(--font-display);
+    color: var(--heading);
+    font-weight: 700;
+    font-size: clamp(28px, 3.8vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -.4px;
+    text-transform: none;
+  }
+  .events-sub {
+    color: var(--cyan-deep);
+    font-weight: 800;
+    font-size: clamp(17px, 1.8vw, 22px);
+    line-height: 1.4;
+    white-space: nowrap;
+    max-width: none;
+    margin: 6px auto 44px;
+  }
 }
 .events-grid {
   display: grid;

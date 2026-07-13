@@ -349,10 +349,20 @@
       background: linear-gradient(135deg, #3ECBD6 0%, #14939F 100%);
       color: #FFFFFF;
       font-size: 21px;
-      padding: 18px 42px;
-      box-shadow: 0 14px 30px rgba(20,147,159,0.35);
+      letter-spacing: .2px;
+      padding: 18px 46px;
+      /* premium: soft inner top gloss + layered ambient shadow */
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .28),
+        0 2px 5px rgba(20, 147, 159, .25),
+        0 14px 30px rgba(20, 147, 159, .35);
     }
-    .h1b-btn-primary:hover { box-shadow: 0 18px 36px rgba(20,147,159,0.45); }
+    .h1b-btn-primary:hover {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .28),
+        0 3px 6px rgba(20, 147, 159, .28),
+        0 18px 36px rgba(20, 147, 159, .45);
+    }
     .h1b-trust {
       display: flex;
       align-items: center;
@@ -449,6 +459,39 @@
       .hero-1b { padding: 26px 64px 34px; }
       .h1b-rating { margin-top: 48px; }
     }
+    /* ---- desktop-only header polish (mobile keeps its own sizes) ---- */
+    @media (min-width: 769px) {
+      /* "Kaun Apply Kar Sakta Hai?" — one line inside its (possibly half-width) column */
+      .daftar .section-h { white-space: nowrap; font-size: clamp(24px, 2.5vw, 36px); }
+      /* "Sirf 4 Aasaan Steps Mein Join Karein" — one line, same style
+         (.sec-head caps at 720px, so lift the cap here so the single line
+         actually fits and stays centered) */
+      .process .sec-head { max-width: none; }
+      .process .section-h { white-space: nowrap; font-size: clamp(24px, 3vw, 42px); }
+      /* Events: "Events" becomes the BIG header, "Hamare Pichle..." the smaller
+         one-line sub — same header+sub pattern as the other sections */
+      .events .eyebrow {
+        font-family: var(--font-display);
+        color: var(--heading);
+        font-weight: 700;
+        font-size: clamp(28px, 3.6vw, 44px);
+        line-height: 1.1;
+        letter-spacing: -.4px;
+        text-transform: none;
+      }
+      .events .section-h {
+        font-family: var(--font);
+        color: var(--cyan-deep);
+        font-weight: 800;
+        font-size: clamp(17px, 1.8vw, 21px);
+        letter-spacing: 0;
+        white-space: nowrap;
+        margin-top: 6px;
+      }
+    }
+    /* no yellow dash before "Events" anywhere (mobile already hid it) */
+    .events .eyebrow::before { display: none; }
+
     /* desktop/mobile split: 1b hero on desktop, the existing stacked hero
        stays EXACTLY as-is on mobile/tablet-portrait (nothing below 769px changes) */
     @media (max-width: 768px) { .hero-1b { display: none; } }
@@ -604,7 +647,7 @@
 
     /* ============ CTA BANNER ============ */
     /* full-bleed on every width (matches mobile) — no side gaps on wide desktops */
-    .cta-wrap { padding-inline: 0; padding-bottom: clamp(56px, 8vw, 96px); }
+    .cta-wrap { padding-inline: 0; padding-bottom: clamp(28px, 3vw, 44px); }
     .cta-banner {
       position: relative; overflow: hidden; isolation: isolate;
       width: 100%;
@@ -617,7 +660,8 @@
         linear-gradient(180deg, var(--bg-mint) 0%, #f7fdfd 60%, var(--white) 100%);
       border-radius: 0;
       color: var(--heading); text-align: center;
-      padding: clamp(48px, 6vw, 72px) 28px;
+      /* less bottom padding — the button used to float over a big empty strip */
+      padding: clamp(48px, 6vw, 72px) 28px clamp(34px, 3.6vw, 48px);
       box-shadow: none;
     }
     .cta-banner h2 {
@@ -1047,7 +1091,7 @@
         <h1 class="h1b-title">Driver Nahi, <span class="h1b-teal">Partner Bano!</span></h1>
         <p class="h1b-sub">Brand-new EV cars ke saath kamao <mark class="h1b-sub-hl">&#8377;50,000+*</mark> tak har mahine. Aaj hi Green SM se judiye.</p>
         <div class="h1b-cta">
-          <a href="#" data-open-modal class="h1b-btn h1b-btn-primary">Aaj Hi Join Karein&nbsp;&nbsp;&#8594;</a>
+          <a href="#" data-open-modal class="h1b-btn h1b-btn-primary">Aaj Hi Join Karein</a>
         </div>
         <div class="h1b-trust">
           <span><em>&#10003;</em> Health Insurance</span>

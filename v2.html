@@ -271,8 +271,11 @@
       position: relative;
       isolation: isolate;
       overflow: hidden;
-      padding: 72px 64px 88px;
-      min-height: 700px;
+      /* tighter than index's 72/88 + 700px: v2 has the stat band + rotating
+         marquee right below, and they must land on the FIRST screen. Height is
+         viewport-aware — hero flexes so navbar+hero+band+marquee ≈ one screen */
+      padding: 44px 64px 52px;
+      min-height: min(660px, calc(100vh - 290px));
       display: flex;
       align-items: center;
       background: linear-gradient(180deg, #FFFFFF 0%, #EAF8FA 100%);
@@ -439,6 +442,12 @@
     @keyframes gsm-float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
+    }
+    /* short laptop screens (<=800px tall): trim hero padding a bit more so the
+       stat band + marquee still finish inside the first screen */
+    @media (min-width: 769px) and (max-height: 800px) {
+      .hero-1b { padding: 26px 64px 34px; }
+      .h1b-rating { margin-top: 48px; }
     }
     /* desktop/mobile split: 1b hero on desktop, the existing stacked hero
        stays EXACTLY as-is on mobile/tablet-portrait (nothing below 769px changes) */

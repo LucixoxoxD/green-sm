@@ -548,12 +548,16 @@
     .earn-ic svg { width: 26px; height: 26px; }
     .earn-card p { font-size: 16px; font-weight: 600; color: var(--heading); line-height: 1.5; }
     .earn-card strong { color: var(--cyan-deep); }
-    .earning .btn-row { margin-top: 40px; text-align: center; }
+    .earning .btn-row { margin-top: 32px; text-align: center; }
+    .earning.sec-pad { padding-bottom: clamp(28px, 4vw, 44px); }
+    .fayde.sec-pad { padding-top: clamp(28px, 4vw, 44px); }
+    .fayde .fayde-grid { margin-top: 0; }
+    .fayde .section-h { margin-top: 0; }
 
     /* ============ FAYDE ============ */
     .fayde { background: var(--bg-mint); overflow: hidden; }
     .fayde-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(36px, 5vw, 72px); align-items: start; margin-top: 10px; }
-    .fayde-sticky { position: sticky; top: 100px; }
+    .fayde-sticky { align-self: start; }
     .fayde-sub { color: var(--cyan-deep); font-weight: 800; font-size: clamp(17px, 2vw, 21px); margin-top: 8px; }
     .fayde-list { display: grid; gap: 14px; }
     .fayde-item {

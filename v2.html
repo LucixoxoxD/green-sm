@@ -556,8 +556,17 @@
 
     /* ============ FAYDE ============ */
     .fayde { background: var(--bg-mint); overflow: hidden; }
-    .fayde-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(36px, 5vw, 72px); align-items: start; margin-top: 10px; }
-    .fayde-sticky { align-self: start; }
+    .fayde-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      grid-template-areas: "head list" "cta list";
+      grid-template-rows: auto 1fr;
+      column-gap: clamp(36px, 5vw, 72px);
+      row-gap: 0;
+      align-items: start; margin-top: 10px;
+    }
+    .fayde-sticky { grid-area: head; align-self: start; }
+    .fayde-list { grid-area: list; }
     .fayde-sub { color: var(--cyan-deep); font-weight: 800; font-size: clamp(17px, 2vw, 21px); margin-top: 8px; }
     .fayde-list { display: grid; gap: 14px; }
     .fayde-item {
@@ -576,10 +585,10 @@
     .fayde-item p { font-size: 16px; font-weight: 600; color: var(--heading); line-height: 1.45; }
     .tnc { color: var(--muted); font-size: 13px; margin-top: 20px; }
     .fayde .btn-row { margin-top: 28px; }
-    /* CTA + T&C sit below both columns (below the 5 pointers), centered */
-    .fayde-foot { grid-column: 1 / -1; text-align: center; margin-top: 10px; }
-    .fayde-foot .tnc { margin-top: 0; margin-bottom: 16px; }
+    /* CTA + T&C sit in the left column, aligned beside the pointer cards */
+    .fayde-foot { grid-area: cta; align-self: center; text-align: left; margin-top: 36px; }
     .fayde-foot .btn-row { margin-top: 0; }
+    .fayde-foot .tnc { margin-top: 18px; margin-bottom: 0; }
 
     /* ============ REQUIREMENTS + FORM ============ */
     .daftar {
@@ -938,8 +947,11 @@
     #earning, #fayde, #daftar, #process, #events, #kontak { scroll-margin-top: 84px; }
     @media (max-width: 980px) {
       .earning-grid { grid-template-columns: 1fr 1fr; }
-      .fayde-grid { grid-template-columns: 1fr; }
-      .fayde-sticky { position: static; }
+      .fayde-grid { grid-template-columns: 1fr; grid-template-areas: none; grid-template-rows: none; }
+      .fayde-sticky { position: static; grid-area: auto; }
+      .fayde-list { grid-area: auto; }
+      .fayde-foot { grid-area: auto; align-self: auto; text-align: center; margin-top: 6px; }
+      .fayde-foot .tnc { margin-top: 0; }
       .daftar-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr 1fr; gap: 34px 22px; }
       .steps-grid::before { display: none; }
